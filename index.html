@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consaltia - Services IT professionnels : création de sites web, assistance technique, automatisation, cloud, cybersécurité et conseil digital.">
+    <meta name="keywords" content="services IT, création site web, assistance technique, automatisation, cloud, cybersécurité, conseil digital">
+    <title>Consaltia - Services IT Professionnels | Solutions Numériques Modernes</title>
+    
+    <!-- Polices Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Logo en Base64 -->
+    <style>
+        /* Vous pouvez remplacer l'URL du logo dans le HTML plus bas */
+    </style>
+    
+    <style>
+/* ===================================
+   VARIABLES CSS ET RÉINITIALISATION
+   =================================== */
+
+:root {
+    --color-primary: #001656;
+    --color-secondary: #435A87;
+    --color-background: #F5F7FB;
+    --color-text: #111111;
+    --color-text-light: #666666;
+    --color-white: #FFFFFF;
+    --color-border: #E5E8ED;
+    --color-success: #10B981;
+    --color-warning: #F59E0B;
+    --color-error: #EF4444;
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Open Sans', sans-serif;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --shadow-sm: 0 2px 4px rgba(0, 22, 86, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 22, 86, 0.08);
+    --shadow-lg: 0 8px 24px rgba(0, 22, 86, 0.12);
+    --shadow-xl: 0 16px 48px rgba(0, 22, 86, 0.15);
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 50%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-secondary);
+    color: var(--color-text);
+    line-height: 1.6;
+    background-color: var(--color-white);
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-normal);
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    border: none;
+    background: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-top: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-border);
+}
+
+.btn-outline:hover {
+    border-color: var(--color-primary);
+    background: var(--color-background);
+}
+
+/* NAVIGATION */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    transition: all var(--transition-normal);
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.nav-brand {
+    flex-shrink: 0;
+}
+
+.nav-logo {
+    height: 50px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+}
+
+.nav-link:hover {
+    color: var(--color-primary);
+    background: var(--color-background);
+}
+
+.nav-link-cta {
+    background: var(--color-primary);
+    color: var(--color-white);
+    text-align: center;
+    margin-left: var(--spacing-sm);
+}
+
+.nav-link-cta:hover {
+    background: var(--color-secondary);
+}
+
+@media (min-width: 992px) {
+    .nav-toggle {
+        display: none;
+    }
+    
+    .nav-menu {
+        position: static;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+        transform: translateX(0);
+        box-shadow: none;
+        max-height: none;
+    }
+    
+    .nav-link {
+        padding: 0.5rem 1rem;
+    }
+    
+    .nav-link-cta {
+        margin-top: 0;
+        margin-left: var(--spacing-sm);
+    }
+}
+
+/* HERO */
+.hero {
+    margin-top: 80px;
+    background: linear-gradient(135deg, rgba(0, 22, 86, 0.5) 0%, rgba(67, 90, 135, 0.5) 100%), url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--color-white);
+    padding: var(--spacing-xl) 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+    animation: pulseGrid 20s ease-in-out infinite;
+}
+
+@keyframes pulseGrid {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.05);
+    }
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hero-container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-title {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+    animation: fadeIn 1s ease-out, float 6s ease-in-out infinite;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.95;
+    line-height: 1.6;
+    animation: fadeIn 1.2s ease-out;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hero-cta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: center;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.hero-cta .btn {
+    transition: all 0.3s ease;
+}
+
+.hero-cta .btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+    .hero {
+        padding: 6rem 0;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .hero-cta {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+/* RÉALISATIONS */
+.realisations {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-white);
+}
+
+.realisations-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+    .realisations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .realisations-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.realisation-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+}
+
+.realisation-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.realisation-image {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+}
+
+.realisation-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.realisation-card:hover .realisation-image img {
+    transform: scale(1.1);
+}
+
+.realisation-overlay {
+    position: absolute;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+}
+
+.realisation-category {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.375rem 0.875rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.realisation-content {
+    padding: var(--spacing-md);
+}
+
+.realisation-title {
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.realisation-description {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.realisation-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background: var(--color-background);
+    color: var(--color-secondary);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.813rem;
+    font-weight: 500;
+}
+
+/* SERVICES */
+.services {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-background);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.service-card {
+    background: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    border: 2px solid transparent;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+.service-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+    transition: transform var(--transition-normal);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.service-icon i {
+    font-size: 2rem;
+    color: var(--color-white);
+}
+
+.service-title {
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.service-description {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.service-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.service-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--color-text);
+}
+
+.service-features i {
+    color: var(--color-success);
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+/* VALEURS */
+.valeurs {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, rgba(0, 22, 86, 0.03) 0%, rgba(67, 90, 135, 0.03) 100%);
+}
+
+.valeurs-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+    .valeurs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .valeurs-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.valeur-card {
+    background: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.valeur-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.valeur-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--color-background);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-md);
+    transition: all var(--transition-normal);
+}
+
+.valeur-card:hover .valeur-icon {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    transform: rotate(360deg);
+}
+
+.valeur-icon i {
+    font-size: 2rem;
+    color: var(--color-primary);
+    transition: color var(--transition-normal);
+}
+
+.valeur-card:hover .valeur-icon i {
+    color: var(--color-white);
+}
+
+.valeur-title {
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.valeur-description {
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+/* AVIS */
+.avis {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-white);
+}
+
+.avis-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+    .avis-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .avis-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.avis-card {
+    background: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--color-border);
+    transition: all var(--transition-normal);
+    position: relative;
+}
+
+.avis-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+.avis-google-logo {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+    transition: opacity var(--transition-normal);
+}
+
+.avis-card:hover .avis-google-logo {
+    opacity: 1;
+}
+
+.avis-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.avis-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.avis-avatar i {
+    font-size: 1.5rem;
+    color: var(--color-white);
+}
+
+.avis-info {
+    flex: 1;
+}
+
+.avis-name {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+}
+
+.avis-company {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+}
+
+.avis-rating {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.avis-rating i {
+    color: #FFC107;
+    font-size: 1rem;
+}
+
+.avis-text {
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.95rem;
+}
+
+.avis-date {
+    font-size: 0.813rem;
+    color: var(--color-text-light);
+}
+
+.avis-cta {
+    text-align: center;
+}
+
+/* CONFIANCE - CARROUSEL */
+.confiance {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-background);
+    overflow: hidden;
+}
+
+.clients-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: var(--spacing-md) 0;
+}
+
+.clients-carousel {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    animation: scroll 40s linear infinite;
+    width: max-content;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.clients-carousel:hover {
+    animation-play-state: paused;
+}
+
+.client-logo {
+    background: var(--color-white);
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    height: 100px;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.client-logo:hover {
+    transform: scale(1.05) translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.client-logo img {
+    max-width: 180px;
+    max-height: 70px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.7);
+    transition: all var(--transition-normal);
+}
+
+.client-logo:hover img {
+    filter: grayscale(0%) opacity(1);
+}
+
+.client-logo span {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+/* CONTACT */
+.contact {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-white);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+
+@media (min-width: 992px) {
+    .contact-content {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+.contact-info {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+}
+
+.contact-info h3 {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.contact-item {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+}
+
+.contact-item strong {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.contact-item p {
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.contact-form {
+    background: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-border);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+    .form-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.875rem;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+    background: var(--color-white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 22, 86, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-top: 0.25rem;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.btn-submit {
+    width: 100%;
+    position: relative;
+}
+
+.form-message {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-weight: 600;
+    display: none;
+}
+
+.form-message.success {
+    display: block;
+    background: #D1FAE5;
+    color: #065F46;
+    border: 2px solid #10B981;
+}
+
+.form-message.error {
+    display: block;
+    background: #FEE2E2;
+    color: #991B1B;
+    border: 2px solid #EF4444;
+}
+
+/* FOOTER */
+.footer {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-xl) 0 var(--spacing-md);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .footer-content {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-brand {
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-logo {
+    height: 50px;
+    width: auto;
+}
+
+.footer-description {
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-social {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+}
+
+.footer-social a:hover {
+    background: var(--color-white);
+    color: var(--color-primary);
+    transform: translateY(-4px);
+}
+
+.footer-title {
+    font-family: var(--font-primary);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-links,
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-links a {
+    opacity: 0.9;
+    transition: all var(--transition-fast);
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    padding-left: 0.5rem;
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    opacity: 0.9;
+}
+
+.footer-contact i {
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+.footer-contact a {
+    transition: opacity var(--transition-fast);
+}
+
+.footer-contact a:hover {
+    opacity: 1;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: center;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.footer-legal {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-legal a {
+    opacity: 0.9;
+    transition: opacity var(--transition-fast);
+}
+
+.footer-legal a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.footer-legal span {
+    opacity: 0.5;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar fixe -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <img src="logo.png" alt="Logo Consaltia" class="nav-logo">
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#realisations" class="nav-link">Nos réalisations</a></li>
+                <li><a href="#services" class="nav-link">Nos services</a></li>
+                <li><a href="#valeurs" class="nav-link">Nos valeurs</a></li>
+                <li><a href="#avis" class="nav-link">Avis clients</a></li>
+                <li><a href="#contact" class="nav-link nav-link-cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section Hero -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Transformez vos idées en solutions digitales</h1>
+                <p class="hero-subtitle">Consaltia vous accompagne dans votre transformation numérique avec des services IT sur mesure et innovants</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Parlez-nous de votre projet</a>
+                    <a href="#services" class="btn btn-secondary">Découvrir nos services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Mes réalisations -->
+    <section class="realisations" id="realisations">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos réalisations</h2>
+                <p class="section-subtitle">Découvrez quelques projets qui illustrent notre expertise et notre engagement envers l'excellence</p>
+            </div>
+            
+            <div class="realisations-grid">
+                <article class="realisation-card">
+                    <div class="realisation-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Dashboard Analytics">
+                        <div class="realisation-overlay">
+                            <span class="realisation-category">Web Application</span>
+                        </div>
+                    </div>
+                    <div class="realisation-content">
+                        <h3 class="realisation-title">Plateforme Analytics B2B</h3>
+                        <p class="realisation-description">Développement d'une plateforme d'analyse de données en temps réel pour optimiser les performances commerciales</p>
+                        <div class="realisation-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">AWS</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="realisation-card">
+                    <div class="realisation-image">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop" alt="Site E-commerce">
+                        <div class="realisation-overlay">
+                            <span class="realisation-category">E-commerce</span>
+                        </div>
+                    </div>
+                    <div class="realisation-content">
+                        <h3 class="realisation-title">Boutique en ligne premium</h3>
+                        <p class="realisation-description">Création d'un site e-commerce responsive avec système de paiement sécurisé et gestion des stocks</p>
+                        <div class="realisation-tags">
+                            <span class="tag">Shopify</span>
+                            <span class="tag">UX/UI</span>
+                            <span class="tag">SEO</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="realisation-card">
+                    <div class="realisation-image">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop" alt="Application Mobile">
+                        <div class="realisation-overlay">
+                            <span class="realisation-category">Mobile App</span>
+                        </div>
+                    </div>
+                    <div class="realisation-content">
+                        <h3 class="realisation-title">Application de gestion RH</h3>
+                        <p class="realisation-description">Application mobile pour la gestion des ressources humaines et le suivi des performances</p>
+                        <div class="realisation-tags">
+                            <span class="tag">Flutter</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">API REST</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="realisation-card">
+                    <div class="realisation-image">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop" alt="Infrastructure Cloud">
+                        <div class="realisation-overlay">
+                            <span class="realisation-category">Infrastructure</span>
+                        </div>
+                    </div>
+                    <div class="realisation-content">
+                        <h3 class="realisation-title">Migration Cloud complète</h3>
+                        <p class="realisation-description">Migration d'infrastructure on-premise vers AWS avec haute disponibilité et sécurité renforcée</p>
+                        <div class="realisation-tags">
+                            <span class="tag">AWS</span>
+                            <span class="tag">DevOps</span>
+                            <span class="tag">Kubernetes</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="realisation-card">
+                    <div class="realisation-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop" alt="Automatisation">
+                        <div class="realisation-overlay">
+                            <span class="realisation-category">Automatisation</span>
+                        </div>
+                    </div>
+                    <div class="realisation-content">
+                        <h3 class="realisation-title">Automatisation comptable</h3>
+                        <p class="realisation-description">Solution d'automatisation des processus comptables réduisant le temps de traitement de 70%</p>
+                        <div class="realisation-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">RPA</span>
+                            <span class="tag">OCR</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="realisation-card">
+                    <div class="realisation-image">
+                        <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=600&h=400&fit=crop" alt="Site Vitrine">
+                        <div class="realisation-overlay">
+                            <span class="realisation-category">Site Vitrine</span>
+                        </div>
+                    </div>
+                    <div class="realisation-content">
+                        <h3 class="realisation-title">Site corporate moderne</h3>
+                        <p class="realisation-description">Refonte complète du site corporate avec design moderne et optimisation SEO</p>
+                        <div class="realisation-tags">
+                            <span class="tag">WordPress</span>
+                            <span class="tag">Design</span>
+                            <span class="tag">Performance</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Mes services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos services</h2>
+                <p class="section-subtitle">Consaltia apporte des solutions numériques modernes et efficaces adaptées à vos besoins spécifiques</p>
+            </div>
+            
+            <div class="services-grid">
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="service-title">Création ou refonte de site web</h3>
+                    <p class="service-description">Sites vitrines élégants, plateformes e-commerce performantes, design UX/UI moderne et optimisation SEO pour maximiser votre visibilité en ligne.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Design responsive et moderne</li>
+                        <li><i class="fas fa-check"></i> Optimisation SEO avancée</li>
+                        <li><i class="fas fa-check"></i> Performance et rapidité</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="service-title">Assistance technique</h3>
+                    <p class="service-description">Dépannage informatique, optimisation des systèmes, installation de logiciels et support digital pour assurer la continuité de votre activité.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Support réactif 7j/7</li>
+                        <li><i class="fas fa-check"></i> Résolution rapide des incidents</li>
+                        <li><i class="fas fa-check"></i> Maintenance préventive</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="service-title">Automatisation de métier</h3>
+                    <p class="service-description">Développement de scripts personnalisés, automatisation des tâches répétitives et optimisation des workflows pour gagner en productivité.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Gain de temps considérable</li>
+                        <li><i class="fas fa-check"></i> Réduction des erreurs</li>
+                        <li><i class="fas fa-check"></i> Solutions sur mesure</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="service-title">Aide aux étudiants et PFE</h3>
+                    <p class="service-description">Encadrement professionnel par des professeurs certifiés, correction de projets, mentorat personnalisé et support technique pour la réussite académique.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Professeurs certifiés</li>
+                        <li><i class="fas fa-check"></i> Suivi personnalisé</li>
+                        <li><i class="fas fa-check"></i> Expertise méthodologique</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="service-title">Cloud</h3>
+                    <p class="service-description">Hébergement cloud sécurisé, migration d'infrastructures, déploiement de solutions cloud et maintenance continue pour une disponibilité optimale.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Infrastructure scalable</li>
+                        <li><i class="fas fa-check"></i> Haute disponibilité</li>
+                        <li><i class="fas fa-check"></i> Sécurité renforcée</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="service-title">Cybersécurité</h3>
+                    <p class="service-description">Audits de sécurité complets, sécurisation des systèmes, mise en place des bonnes pratiques et protection efficace de vos données sensibles.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Audit de sécurité complet</li>
+                        <li><i class="fas fa-check"></i> Protection des données</li>
+                        <li><i class="fas fa-check"></i> Conformité RGPD</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="service-title">Rédaction de cahier des charges</h3>
+                    <p class="service-description">Analyse approfondie des besoins, cadrage précis du projet, documentation technique détaillée pour garantir le succès de vos initiatives digitales.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Analyse des besoins</li>
+                        <li><i class="fas fa-check"></i> Spécifications détaillées</li>
+                        <li><i class="fas fa-check"></i> Documentation complète</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Nos valeurs -->
+    <section class="valeurs" id="valeurs">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos valeurs</h2>
+                <p class="section-subtitle">Les principes qui guident notre approche et forgent notre excellence au quotidien</p>
+            </div>
+            
+            <div class="valeurs-grid">
+                <article class="valeur-card">
+                    <div class="valeur-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="valeur-title">Transparence</h3>
+                    <p class="valeur-description">Nous croyons en une communication claire et honnête à chaque étape de nos projets. Nos clients sont informés en temps réel de l'avancement et des décisions importantes.</p>
+                </article>
+
+                <article class="valeur-card">
+                    <div class="valeur-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="valeur-title">Expertise</h3>
+                    <p class="valeur-description">Notre équipe de professionnels certifiés maîtrise les dernières technologies et meilleures pratiques pour vous offrir des solutions de pointe et pérennes.</p>
+                </article>
+
+                <article class="valeur-card">
+                    <div class="valeur-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="valeur-title">Engagement</h3>
+                    <p class="valeur-description">Nous nous investissons pleinement dans chaque projet comme s'il était le nôtre. Votre réussite est notre priorité et nous mettons tout en œuvre pour l'atteindre.</p>
+                </article>
+
+                <article class="valeur-card">
+                    <div class="valeur-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="valeur-title">Proximité client</h3>
+                    <p class="valeur-description">Nous cultivons une relation de confiance basée sur l'écoute et la disponibilité. Chaque client bénéficie d'un accompagnement personnalisé et d'un suivi attentif.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Avis clients -->
+    <section class="avis" id="avis">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Avis clients</h2>
+                <p class="section-subtitle">Découvrez ce que nos clients disent de nos services et de notre accompagnement</p>
+            </div>
+            
+            <div class="avis-grid">
+                <article class="avis-card">
+                    <img src="google-logo.png" alt="Google" class="avis-google-logo">
+                    <div class="avis-header">
+                        <div class="avis-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="avis-info">
+                            <h4 class="avis-name">Sophie Martin</h4>
+                            <p class="avis-company">Directrice Marketing, TechVision</p>
+                        </div>
+                    </div>
+                    <div class="avis-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="avis-text">"Consaltia a transformé notre présence en ligne avec un site moderne et performant. L'équipe est professionnelle, réactive et a parfaitement compris nos besoins. Je recommande vivement leurs services !"</p>
+                    <div class="avis-date">Il y a 2 semaines</div>
+                </article>
+
+                <article class="avis-card">
+                    <img src="google-logo.png" alt="Google" class="avis-google-logo">
+                    <div class="avis-header">
+                        <div class="avis-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="avis-info">
+                            <h4 class="avis-name">Marc Dubois</h4>
+                            <p class="avis-company">CEO, InnovatePlus</p>
+                        </div>
+                    </div>
+                    <div class="avis-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="avis-text">"Excellente prestation sur notre migration cloud. L'équipe technique est très compétente et a géré le projet avec professionnalisme. Aucune interruption de service pendant la transition. Bravo !"</p>
+                    <div class="avis-date">Il y a 1 mois</div>
+                </article>
+
+                <article class="avis-card">
+                    <img src="google-logo.png" alt="Google" class="avis-google-logo">
+                    <div class="avis-header">
+                        <div class="avis-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="avis-info">
+                            <h4 class="avis-name">Amélie Rousseau</h4>
+                            <p class="avis-company">Fondatrice, EcoShop</p>
+                        </div>
+                    </div>
+                    <div class="avis-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="avis-text">"Notre boutique en ligne a dépassé toutes nos attentes ! Design magnifique, navigation fluide et optimisation SEO qui nous apporte de nombreux clients. Un grand merci à toute l'équipe Consaltia."</p>
+                    <div class="avis-date">Il y a 3 semaines</div>
+                </article>
+
+                <article class="avis-card">
+                    <img src="google-logo.png" alt="Google" class="avis-google-logo">
+                    <div class="avis-header">
+                        <div class="avis-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="avis-info">
+                            <h4 class="avis-name">Thomas Bernard</h4>
+                            <p class="avis-company">Responsable IT, FinanceGroup</p>
+                        </div>
+                    </div>
+                    <div class="avis-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="avis-text">"L'audit de sécurité réalisé par Consaltia nous a permis d'identifier et corriger plusieurs vulnérabilités critiques. Leur expertise en cybersécurité est indéniable. Service impeccable !"</p>
+                    <div class="avis-date">Il y a 1 semaine</div>
+                </article>
+
+                <article class="avis-card">
+                    <img src="google-logo.png" alt="Google" class="avis-google-logo">
+                    <div class="avis-header">
+                        <div class="avis-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="avis-info">
+                            <h4 class="avis-name">Laura Petit</h4>
+                            <p class="avis-company">Gérante, ConseilPro</p>
+                        </div>
+                    </div>
+                    <div class="avis-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="avis-text">"Leur solution d'automatisation nous fait gagner un temps précieux chaque jour. L'accompagnement a été excellent du début à la fin. Je recommande sans hésitation pour tout projet IT."</p>
+                    <div class="avis-date">Il y a 2 mois</div>
+                </article>
+
+                <article class="avis-card">
+                    <img src="google-logo.png" alt="Google" class="avis-google-logo">
+                    <div class="avis-header">
+                        <div class="avis-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="avis-info">
+                            <h4 class="avis-name">Alexandre Leroy</h4>
+                            <p class="avis-company">Étudiant Master 2, Université Paris</p>
+                        </div>
+                    </div>
+                    <div class="avis-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="avis-text">"L'encadrement pour mon PFE a été exceptionnel. Les professeurs certifiés m'ont guidé avec pédagogie et expertise. J'ai obtenu une excellente note grâce à leur accompagnement. Merci !"</p>
+                    <div class="avis-date">Il y a 3 semaines</div>
+                </article>
+            </div>
+
+            <div class="avis-cta">
+                <a href="https://www.google.com/search?q=consaltia+avis" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <i class="fab fa-google"></i> Voir tous les avis sur Google
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Ils nous font confiance - CARROUSEL -->
+    <section class="confiance" id="confiance">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ils nous font confiance</h2>
+                <p class="section-subtitle">Des entreprises de tous secteurs nous font confiance pour leurs projets digitaux</p>
+            </div>
+            
+            <div class="clients-carousel-wrapper">
+                <div class="clients-carousel" id="clientsCarousel">
+                    <!-- Les logos seront chargés dynamiquement par JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Parlez-nous de votre projet</h2>
+                <p class="section-subtitle">Vous avez un projet en tête ? Contactez-nous et discutons de la meilleure façon de le concrétiser ensemble</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Coordonnées</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e0838f8e94818394a0838f8e93818c948981ce8692">antoinee.laurentt@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Téléphone</strong>
+                            <p>+33 6 64 94 12 29</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Adresse</strong>
+                            <p>Rue Saint Martin<br>75003 Paris, France</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Horaires</strong>
+                            <p>Lundi - Vendredi : 9h00 - 18h00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nom">Nom / Prénom *</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="societe">Société</label>
+                            <input type="text" id="societe" name="societe">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sujet">Sujet *</label>
+                        <select id="sujet" name="sujet" required>
+                            <option value="">Sélectionnez un sujet</option>
+                            <option value="site-web">Création / Refonte de site web</option>
+                            <option value="assistance">Assistance technique</option>
+                            <option value="automatisation">Automatisation de métier</option>
+                            <option value="pfe">Aide PFE / Étudiants</option>
+                            <option value="cloud">Services Cloud</option>
+                            <option value="cybersecurite">Cybersécurité</option>
+                            <option value="cahier-charges">Cahier des charges</option>
+                            <option value="autre">Autre demande</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="rgpd" name="rgpd" required>
+                        <label for="rgpd">J'accepte que mes données personnelles soient utilisées pour me recontacter dans le cadre de ma demande. *</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span class="btn-text">Envoyer le message</span>
+                        <span class="btn-loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Envoi en cours...
+                        </span>
+                    </button>
+
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-brand">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cellipse cx='100' cy='30' rx='95' ry='25' fill='white'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23001656' font-family='Arial, sans-serif' font-size='24' font-weight='bold'%3ECONSALTIA%3C/text%3E%3C/svg%3E" alt="Logo Consaltia" class="footer-logo">
+                    </div>
+                    <p class="footer-description">Consaltia - Votre partenaire de confiance pour tous vos projets digitaux et services IT professionnels.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Liens rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="#realisations">Nos réalisations</a></li>
+                        <li><a href="#services">Nos services</a></li>
+                        <li><a href="#valeurs">Nos valeurs</a></li>
+                        <li><a href="#avis">Avis clients</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Création de sites web</a></li>
+                        <li><a href="#services">Assistance technique</a></li>
+                        <li><a href="#services">Automatisation</a></li>
+                        <li><a href="#services">Cloud & Hébergement</a></li>
+                        <li><a href="#services">Cybersécurité</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="/cdn-cgi/l/email-protection#b7d4d8d9c3d6d4c3f7d4d8d9c4d6dbc3ded699d1c5"><span class="__cf_email__" data-cfemail="20434f4e5441435460434f4e53414c5449410e4652">antoinee.laurentt@gmail.com</span></a>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+33664941229">+33 6 64 94 12 29</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Rue Saint Martin<br>75003 Paris, France</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2012 Consaltia. Tous droits réservés.</p>
+                <div class="footer-legal">
+                    <a href="#">Mentions légales</a>
+                    <span>|</span>
+                    <a href="#">Politique de confidentialité</a>
+                    <span>|</span>
+                    <a href="#">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript intégré -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+'use strict';
+
+console.log('🚀 Script Consaltia chargé !');
+
+// ===================================
+// CARROUSEL DE LOGOS - PRIORITÉ
+// ===================================
+
+const frenchCompanies = [
+    { name: 'Orange', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/200px-Orange_logo.svg.png' },
+    { name: 'Carrefour', logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/3/3b/Logo_Carrefour.svg/200px-Logo_Carrefour.svg.png' },
+    { name: 'Renault', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Renault_2021.svg/200px-Renault_2021.svg.png' },
+    { name: 'Peugeot', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/Peugeot_logo.svg/200px-Peugeot_logo.svg.png' },
+    { name: 'Michelin', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Michelin_logo.svg/200px-Michelin_logo.svg.png' },
+    { name: 'Danone', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Danone_logo.svg/200px-Danone_logo.svg.png' },
+    { name: 'SNCF', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/SNCF.svg/200px-SNCF.svg.png' },
+    { name: 'Airbus', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Airbus_logo.svg/200px-Airbus_logo.svg.png' },
+    { name: 'Decathlon', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Decathlon_Logo.svg/200px-Decathlon_Logo.svg.png' },
+    { name: 'Auchan', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Auchan_Logo.svg/200px-Auchan_Logo.svg.png' },
+    { name: 'La Poste', logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/0/03/La_Poste_2021_logo.svg/200px-La_Poste_2021_logo.svg.png' },
+    { name: 'Bouygues', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Bouygues_logo.svg/200px-Bouygues_logo.svg.png' }
+];
+
+function createClientLogo(company, index) {
+    const logoDiv = document.createElement('div');
+    logoDiv.className = 'client-logo';
+    
+    const img = document.createElement('img');
+    img.src = company.logo;
+    img.alt = company.name;
+    img.loading = index < 6 ? 'eager' : 'lazy';
+    
+    img.onerror = function() {
+        this.style.display = 'none';
+        const fallback = document.createElement('span');
+        fallback.textContent = company.name;
+        logoDiv.appendChild(fallback);
+    };
+    
+    logoDiv.appendChild(img);
+    return logoDiv;
+}
+
+function initClientsCarousel() {
+    console.log('🎪 Initialisation du carrousel...');
+    const carousel = document.getElementById('clientsCarousel');
+    
+    if (!carousel) {
+        console.error('❌ Carrousel non trouvé !');
+        return;
+    }
+    
+    const allCompanies = [...frenchCompanies, ...frenchCompanies, ...frenchCompanies];
+    
+    allCompanies.forEach((company, index) => {
+        const logoElement = createClientLogo(company, index);
+        carousel.appendChild(logoElement);
+    });
+    
+    console.log(`✅ Carrousel initialisé avec ${allCompanies.length} logos !`);
+}
+
+// Initialiser immédiatement
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initClientsCarousel);
+} else {
+    initClientsCarousel();
+}
+
+// ===================================
+// NAVBAR SCROLL
+// ===================================
+
+const navbar = document.getElementById('navbar');
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// ===================================
+// SMOOTH SCROLL
+// ===================================
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (!targetElement) return;
+        
+        const navbarHeight = navbar.offsetHeight;
+        const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    });
+});
+
+// ===================================
+// ANIMATIONS AU SCROLL
+// ===================================
+
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeIn 0.6s ease forwards';
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+const animatedElements = document.querySelectorAll('.realisation-card, .service-card, .valeur-card, .avis-card');
+
+animatedElements.forEach((el, index) => {
+    el.style.opacity = '0';
+    el.style.animationDelay = `${index * 0.05}s`;
+    observer.observe(el);
+});
+
+// ===================================
+// FORMULAIRE CONTACT
+// ===================================
+
+const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('formMessage');
+
+if (contactForm && formMessage) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
+        
+        if (!data.nom || !data.email || !data.sujet || !data.message) {
+            showFormMessage('Veuillez remplir tous les champs obligatoires.', 'error');
+            return;
+        }
+        
+        if (!data.rgpd) {
+            showFormMessage('Veuillez accepter la politique de confidentialité.', 'error');
+            return;
+        }
+        
+        if (!isValidEmail(data.email)) {
+            showFormMessage('Veuillez entrer une adresse email valide.', 'error');
+            return;
+        }
+        
+        const submitBtn = contactForm.querySelector('.btn-submit');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoading = submitBtn.querySelector('.btn-loading');
+        
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'flex';
+        submitBtn.disabled = true;
+        
+        try {
+            await simulateFormSubmission(data);
+            showFormMessage('✓ Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.', 'success');
+            contactForm.reset();
+            setTimeout(() => {
+                formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        } catch (error) {
+            showFormMessage('Une erreur est survenue lors de l\'envoi. Veuillez réessayer.', 'error');
+        } finally {
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    });
+}
+
+function showFormMessage(message, type) {
+    formMessage.textContent = message;
+    formMessage.className = `form-message ${type}`;
+    formMessage.style.display = 'block';
+    setTimeout(() => {
+        formMessage.style.display = 'none';
+    }, 10000);
+}
+
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function simulateFormSubmission(data) {
+    return new Promise((resolve, reject) => {        setTimeout(() => {
+            if (Math.random() > 0.05) {
+                console.log('Formulaire soumis:', data);
+                resolve();
+            } else {
+                reject(new Error('Erreur de simulation'));
+            }
+        }, 1500);
+    });
+}
+
+console.log('✅ Script Consaltia initialisé avec succès !');
+    </script>
+</body>
+</html>
