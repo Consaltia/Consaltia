@@ -14,7 +14,8 @@
     
     <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <!-- Logo en Base64 -->
     <style>
         /* Vous pouvez remplacer l'URL du logo dans le HTML plus bas */
@@ -2133,9 +2134,15 @@ animatedElements.forEach((el, index) => {
     observer.observe(el);
 });
 
-// ===================================
-// FORMULAIRE CONTACT
-// ===================================
+// IMPORTANT : Remplacez ces valeurs par vos vraies clés EmailJS
+const EMAILJS_CONFIG = {
+    publicKey: 'GzOwIG4VnYV5L60O8',      // ← À remplacer
+    serviceId: 'service_2d16zmd',       // ← À remplacer
+    templateId: 'template_gwu3czl'      // ← À remplacer
+};
+
+// Initialiser EmailJS
+emailjs.init(EMAILJS_CONFIG.publicKey);
 
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
@@ -2147,6 +2154,7 @@ if (contactForm && formMessage) {
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
         
+        // Validation
         if (!data.nom || !data.email || !data.sujet || !data.message) {
             showFormMessage('Veuillez remplir tous les champs obligatoires.', 'error');
             return;
@@ -2162,6 +2170,7 @@ if (contactForm && formMessage) {
             return;
         }
         
+        // UI Loading
         const submitBtn = contactForm.querySelector('.btn-submit');
         const btnText = submitBtn.querySelector('.btn-text');
         const btnLoading = submitBtn.querySelector('.btn-loading');
@@ -2171,14 +2180,31 @@ if (contactForm && formMessage) {
         submitBtn.disabled = true;
         
         try {
-            await simulateFormSubmission(data);
+            // Envoyer via EmailJS
+            const response = await emailjs.send(
+                EMAILJS_CONFIG.serviceId,
+                EMAILJS_CONFIG.templateId,
+                {
+                    nom: data.nom,
+                    societe: data.societe || 'Non renseignée',
+                    email: data.email,
+                    telephone: data.telephone || 'Non renseigné',
+                    sujet: data.sujet,
+                    message: data.message
+                }
+            );
+            
+            console.log('✅ Email envoyé avec succès !', response);
             showFormMessage('✓ Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.', 'success');
             contactForm.reset();
+            
             setTimeout(() => {
                 formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }, 100);
+            
         } catch (error) {
-            showFormMessage('Une erreur est survenue lors de l\'envoi. Veuillez réessayer.', 'error');
+            console.error('❌ Erreur EmailJS:', error);
+            showFormMessage('Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou nous contacter directement.', 'error');
         } finally {
             btnText.style.display = 'inline';
             btnLoading.style.display = 'none';
