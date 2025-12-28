@@ -373,10 +373,10 @@ button {
 /* HERO */
 .hero {
     margin-top: 80px;
-    background: linear-gradient(135deg, rgba(0, 22, 86, 0.5) 0%, rgba(67, 90, 135, 0.45) 100%), url('background.png');
+    background: linear-gradient(135deg, rgba(0, 22, 86, 0.85) 0%, rgba(67, 90, 135, 0.85) 100%), url('background.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;  /* ← CHANGÉ : scroll au lieu de fixed */
     color: var(--color-white);
     padding: var(--spacing-xl) 0;
     position: relative;
@@ -384,6 +384,13 @@ button {
     min-height: 600px;
     display: flex;
     align-items: center;
+}
+
+/* Parallax effect sur desktop uniquement (fixed cause des bugs sur mobile) */
+@media (min-width: 992px) {
+    .hero {
+        background-attachment: fixed;  /* ← AJOUTÉ : fixed seulement sur desktop */
+    }
 }
 
 .hero::before {
