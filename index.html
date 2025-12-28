@@ -232,6 +232,39 @@ button {
     width: auto;
 }
 
+/* Bouton burger - visible uniquement sur mobile */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 .nav-menu {
     display: flex;
     flex-direction: row;
@@ -266,6 +299,52 @@ button {
     background: var(--color-secondary);
 }
 
+/* Media queries responsive */
+@media (max-width: 991px) {
+    /* Afficher le bouton burger sur mobile */
+    .nav-toggle {
+        display: flex;
+    }
+    
+    /* Menu mobile - caché par défaut */
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--color-white);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2rem;
+        gap: 1rem;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: var(--shadow-lg);
+        overflow-y: auto;
+        z-index: 999;
+    }
+    
+    /* Menu ouvert quand active */
+    .nav-menu.active {
+        transform: translateX(0);
+    }
+    
+    /* Liens en pleine largeur sur mobile */
+    .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+    
+    .nav-link-cta {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+}
+
+/* Desktop - menu horizontal */
 @media (min-width: 992px) {
     .nav-toggle {
         display: none;
@@ -294,7 +373,7 @@ button {
 /* HERO */
 .hero {
     margin-top: 80px;
-    background: linear-gradient(135deg, rgba(0, 22, 86, 0.5) 0%, rgba(67, 90, 135, 0.5) 100%), url('background.png');
+    background: linear-gradient(135deg, rgba(0, 22, 86, 0.5) 0%, rgba(67, 90, 135, 0.45) 100%), url('background.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -1238,6 +1317,13 @@ button {
                 <img src="logo.png" alt="Logo Consaltia" class="nav-logo">
             </div>
             
+            <!-- Bouton burger pour mobile -->
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#realisations" class="nav-link">Nos réalisations</a></li>
                 <li><a href="#services" class="nav-link">Nos services</a></li>
@@ -1695,7 +1781,7 @@ button {
         </div>
     </section>
 
-    <!-- Section Contact -->
+      <!-- Section Contact -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
@@ -1797,7 +1883,7 @@ button {
         </div>
     </section>
 
-    <!-- Footer -->
+     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1868,11 +1954,48 @@ button {
         </div>
     </footer>
 
+
     <!-- JavaScript intégré -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 'use strict';
 
 console.log('🚀 Script Consaltia chargé !');
+
+// ===================================
+// MENU BURGER MOBILE
+// ===================================
+
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+const navLinks = document.querySelectorAll('.nav-link');
+
+if (navToggle && navMenu) {
+    // Toggle menu au clic sur le burger
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        // Bloquer le scroll quand le menu est ouvert
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Fermer le menu au clic sur un lien
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Fermer le menu au clic en dehors
+    document.addEventListener('click', (e) => {
+        if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
 
 // ===================================
 // CARROUSEL DE LOGOS - PRIORITÉ
