@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://consaltia.github.io/Consaltia/sitemap.xml
