@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Page d'accueil -->
+    <url>
+        <loc>https://consaltia.github.io/Consaltia/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Pages actuelles (si tu en ajoutes, ajoute-les ici) -->
+    <url>
+        <loc>https://consaltia.github.io/Consaltia/index.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Pages futures recommandées (décommenter quand elles existeront) -->
+    <!--
+    <url>
+        <loc>https://consaltia.github.io/Consaltia/services-informatiques</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://consaltia.github.io/Consaltia/accompagnement-etudiants</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://consaltia.github.io/Consaltia/formation-it</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://consaltia.github.io/Consaltia/depannage-informatique</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    -->
+
+</urlset>
