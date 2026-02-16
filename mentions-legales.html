@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mentions légales du site Consaltia - Services IT professionnels">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Mentions Légales - Consaltia</title>
+    
+    <!-- Polices Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+:root {
+    --color-primary: #001656;
+    --color-secondary: #435A87;
+    --color-background: #F5F7FB;
+    --color-text: #111111;
+    --color-text-light: #666666;
+    --color-white: #FFFFFF;
+    --color-border: #E5E8ED;
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Open Sans', sans-serif;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+    --shadow-sm: 0 2px 4px rgba(0, 22, 86, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 22, 86, 0.08);
+    --radius-md: 8px;
+    --radius-lg: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-secondary);
+    color: var(--color-text);
+    line-height: 1.7;
+    background-color: var(--color-background);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    box-shadow: var(--shadow-md);
+    z-index: 1000;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    height: 50px;
+    width: auto;
+}
+
+.nav-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--radius-md);
+    font-family: var(--font-primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-back:hover {
+    background: var(--color-secondary);
+    color: var(--color-white);
+    transform: translateX(-4px);
+}
+
+/* MAIN CONTENT */
+.main-content {
+    margin-top: 80px;
+    padding: var(--spacing-xl) var(--spacing-md);
+    min-height: calc(100vh - 80px - 200px);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xl);
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.page-title {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.page-subtitle {
+    color: var(--color-text-light);
+    font-size: 1rem;
+}
+
+.section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-title {
+    font-family: var(--font-primary);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-background);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.section-title i {
+    color: var(--color-secondary);
+    font-size: 1.1rem;
+}
+
+.section-content {
+    color: var(--color-text);
+    padding-left: 0.5rem;
+}
+
+.section-content p {
+    margin-bottom: 0.75rem;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+}
+
+.info-list li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.info-list li i {
+    color: var(--color-primary);
+    margin-top: 0.25rem;
+    width: 20px;
+    flex-shrink: 0;
+}
+
+.info-list li strong {
+    color: var(--color-primary);
+    min-width: 140px;
+}
+
+.highlight-box {
+    background: var(--color-background);
+    border-left: 4px solid var(--color-primary);
+    padding: var(--spacing-md);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin: var(--spacing-md) 0;
+}
+
+.highlight-box p {
+    margin: 0;
+}
+
+/* FOOTER */
+.footer {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-lg) var(--spacing-md);
+    text-align: center;
+}
+
+.footer p {
+    opacity: 0.9;
+}
+
+.footer a {
+    color: var(--color-white);
+    text-decoration: underline;
+}
+
+.footer a:hover {
+    color: var(--color-white);
+    opacity: 0.8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-md);
+        margin: 0 var(--spacing-sm);
+    }
+    
+    .page-title {
+        font-size: 1.75rem;
+    }
+    
+    .section-title {
+        font-size: 1.15rem;
+    }
+    
+    .info-list li {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .info-list li strong {
+        min-width: auto;
+    }
+    
+    .nav-back span {
+        display: none;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="logo.png" alt="Logo Consaltia" class="nav-logo">
+            </a>
+            <a href="index.html" class="nav-back">
+                <i class="fas fa-arrow-left"></i>
+                <span>Retour au site</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <header class="page-header">
+                <h1 class="page-title">Mentions Légales</h1>
+                <p class="page-subtitle">Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique</p>
+            </header>
+
+            <!-- Éditeur du site -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-user-tie"></i>
+                    Éditeur du site
+                </h2>
+                <div class="section-content">
+                    <ul class="info-list">
+                        <li>
+                            <i class="fas fa-building"></i>
+                            <strong>Raison sociale :</strong> Consaltia
+                        </li>
+                        <li>
+                            <i class="fas fa-user"></i>
+                            <strong>Dirigeant :</strong> Omar OMAR
+                        </li>
+                        <li>
+                            <i class="fas fa-briefcase"></i>
+                            <strong>Statut juridique :</strong> Micro-entrepreneur (Entreprise individuelle)
+                        </li>
+                        <li>
+                            <i class="fas fa-hashtag"></i>
+                            <strong>SIREN :</strong> 938 866 902
+                        </li>
+                        <li>
+                            <i class="fas fa-file-alt"></i>
+                            <strong>Code APE :</strong> 6201Z - Programmation informatique
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <strong>Adresse :</strong> Paris, France
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-envelope"></i>
+                    Contact
+                </h2>
+                <div class="section-content">
+                    <ul class="info-list">
+                        <li>
+                            <i class="fas fa-at"></i>
+                            <strong>Email :</strong> <a href="mailto:consaltia@gmail.com">consaltia@gmail.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <strong>Téléphone :</strong> <a href="tel:+33664941229">06 64 94 12 29</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Hébergement -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-server"></i>
+                    Hébergement
+                </h2>
+                <div class="section-content">
+                    <ul class="info-list">
+                        <li>
+                            <i class="fab fa-github"></i>
+                            <strong>Hébergeur :</strong> GitHub Pages
+                        </li>
+                        <li>
+                            <i class="fas fa-building"></i>
+                            <strong>Société :</strong> GitHub, Inc.
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <strong>Adresse :</strong> 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis
+                        </li>
+                        <li>
+                            <i class="fas fa-globe"></i>
+                            <strong>Site web :</strong> <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">https://pages.github.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Propriété intellectuelle -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-copyright"></i>
+                    Propriété intellectuelle
+                </h2>
+                <div class="section-content">
+                    <p>
+                        L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, etc.) est la propriété exclusive de Consaltia, sauf mentions contraires.
+                    </p>
+                    <p>
+                        Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation écrite préalable de Consaltia.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Protection des données personnelles -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-shield-alt"></i>
+                    Protection des données personnelles (RGPD)
+                </h2>
+                <div class="section-content">
+                    <div class="highlight-box">
+                        <p><strong>Responsable du traitement :</strong> Omar OMAR - Consaltia</p>
+                    </div>
+                    
+                    <p><strong>Données collectées :</strong></p>
+                    <p>
+                        Le site Consaltia ne collecte aucune donnée personnelle de manière automatique. Aucun cookie de traçage, aucun outil d'analyse tiers (Google Analytics, etc.) n'est utilisé sur ce site.
+                    </p>
+                    
+                    <p><strong>Formulaire de contact :</strong></p>
+                    <p>
+                        Lorsque vous utilisez le formulaire de contact, les informations que vous fournissez (nom, email, téléphone, message) sont transmises directement par email au responsable du site. Ces données sont utilisées uniquement pour répondre à votre demande et ne sont ni stockées dans une base de données, ni partagées avec des tiers.
+                    </p>
+                    
+                    <p><strong>Vos droits :</strong></p>
+                    <p>
+                        Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez des droits suivants concernant vos données personnelles :
+                    </p>
+                    <ul class="info-list">
+                        <li><i class="fas fa-check"></i> Droit d'accès à vos données</li>
+                        <li><i class="fas fa-check"></i> Droit de rectification</li>
+                        <li><i class="fas fa-check"></i> Droit à l'effacement</li>
+                        <li><i class="fas fa-check"></i> Droit à la portabilité</li>
+                        <li><i class="fas fa-check"></i> Droit d'opposition au traitement</li>
+                    </ul>
+                    <p>
+                        Pour exercer ces droits, vous pouvez nous contacter à l'adresse : <a href="mailto:consaltia@gmail.com">consaltia@gmail.com</a>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Cookies -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-cookie-bite"></i>
+                    Cookies
+                </h2>
+                <div class="section-content">
+                    <p>
+                        Le site Consaltia <strong>n'utilise aucun cookie</strong> de traçage publicitaire ou analytique.
+                    </p>
+                    <p>
+                        Seuls des cookies techniques strictement nécessaires au fonctionnement du site peuvent être utilisés par l'hébergeur (GitHub Pages). Ces cookies ne collectent aucune donnée personnelle.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Limitation de responsabilité -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Limitation de responsabilité
+                </h2>
+                <div class="section-content">
+                    <p>
+                        Les informations contenues sur ce site sont aussi précises que possible. Cependant, Consaltia ne peut garantir l'exactitude, la complétude et l'actualité des informations diffusées.
+                    </p>
+                    <p>
+                        Consaltia ne pourra être tenu responsable des dommages directs ou indirects résultant de l'accès ou de l'utilisation de ce site.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Droit applicable -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-balance-scale"></i>
+                    Droit applicable
+                </h2>
+                <div class="section-content">
+                    <p>
+                        Les présentes mentions légales sont régies par le droit français. En cas de litige, les tribunaux français seront seuls compétents.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Date de mise à jour -->
+            <section class="section" style="text-align: center; margin-top: var(--spacing-xl); padding-top: var(--spacing-lg); border-top: 2px solid var(--color-border);">
+                <p style="color: var(--color-text-light); font-size: 0.9rem;">
+                    <i class="fas fa-calendar-alt"></i> Dernière mise à jour : Février 2026
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2012 Consaltia. Tous droits réservés. | <a href="index.html">Retour à l'accueil</a></p>
+    </footer>
+
+</body>
+</html>
