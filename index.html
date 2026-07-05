@@ -1664,6 +1664,172 @@ button {
         font-size: 15px;
     }
 }
+
+/* ===================================
+   PARCOURS / EXPERIENCE TIMELINE
+   =================================== */
+.timeline {
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+    padding-left: 0;
+}
+
+/* Vertical spine */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 27px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+    opacity: 0.35;
+}
+
+.timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: var(--spacing-md);
+    padding-bottom: var(--spacing-lg);
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-logo {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-full);
+    background: var(--color-white);
+    border: 2px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1;
+    flex-shrink: 0;
+}
+
+.timeline-logo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+    background: var(--color-white);
+}
+
+.timeline-logo-fallback {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1.25rem;
+}
+
+.timeline-card {
+    background: var(--color-white);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-md);
+    transition: all var(--transition-normal);
+}
+
+.timeline-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+.timeline-company {
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.3;
+}
+
+.timeline-role {
+    display: inline-block;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-top: 0.15rem;
+}
+
+.timeline-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    margin: 0.6rem 0 var(--spacing-sm);
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+}
+
+.timeline-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.timeline-meta i {
+    color: var(--color-secondary);
+}
+
+.timeline-context-label {
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.timeline-list li {
+    position: relative;
+    padding-left: 1.1rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.timeline-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-full);
+    background: var(--color-secondary);
+}
+
+@media (max-width: 560px) {
+    .timeline::before {
+        left: 20px;
+    }
+    .timeline-item {
+        grid-template-columns: 42px 1fr;
+        gap: var(--spacing-sm);
+    }
+    .timeline-logo {
+        width: 42px;
+        height: 42px;
+    }
+    .timeline-card {
+        padding: var(--spacing-sm);
+    }
+}
     </style>
 </head>
 <body>
@@ -1684,7 +1850,7 @@ button {
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#apropos" class="nav-link">À propos</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#realisations" class="nav-link">Portfolio</a></li>
+                <li><a href="#parcours" class="nav-link">Parcours</a></li>
                 <li><a href="#references" class="nav-link">Références</a></li>
                 <li><a href="#contact" class="nav-link nav-link-cta">Contact</a></li>
             </ul>
@@ -1749,86 +1915,124 @@ button {
         </div>
     </section>
 
-    <!-- Section Portfolio -->
-    <section class="realisations" id="realisations">
+    <!-- Section Parcours / Expérience -->
+    <section class="realisations" id="parcours">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">Portfolio</h2>
-                <p class="section-subtitle">Une sélection de projets réels sera publiée ici. Les cartes ci-dessous sont des gabarits à compléter — aucun visuel générique n'est présenté comme un projet réel.</p>
+                <h2 class="section-title">Parcours</h2>
+                <p class="section-subtitle">Mon expérience de développeur salarié, avant de me lancer en freelance sous la marque Consaltia. Chaque poste retrace le contexte et mes contributions clés.</p>
             </div>
 
-            <!--
-                TODO: Replace each placeholder card below with a real project.
-                For every project, fill in:
-                  - title            (project name)
-                  - description       (what it does / your role / outcome — no invented metrics)
-                  - link / GitHub     (href on the "Voir le projet" link)
-                  - screenshot path   (replace the placeholder icon with <img src="/assets/portfolio/<name>.jpg" alt="...">)
-                Note: projects intentionally do NOT list technical stacks.
-                Do NOT use stock images as if they were real projects. Delete any card you don't fill in.
-            -->
-            <div class="realisations-grid">
-                <article class="realisation-card reveal">
-                    <div class="realisation-image is-placeholder">
-                        <!-- TODO: add screenshot at /assets/portfolio/project-1.jpg -->
-                        <i class="fas fa-image"></i>
-                        <div class="realisation-overlay">
-                            <span class="realisation-category"><!-- TODO: category -->Projet</span>
-                        </div>
+            <!-- TODO: add each company's logo/symbol image to the project root.
+                 Expected filenames (or rename the src attributes below):
+                 amadeus.png · g-on.png · stuart.png · edf.png · credit-agricole.png
+                 If a logo is missing, the circle falls back to the company initial. -->
+            <div class="timeline">
+                <article class="timeline-item reveal">
+                    <div class="timeline-logo">
+                        <span class="timeline-logo-fallback">A</span>
+                        <img src="amadeus.png" alt="Amadeus" loading="lazy" onerror="this.remove()">
                     </div>
-                    <div class="realisation-content">
-                        <h3 class="realisation-title"><!-- TODO: project title -->Projet 1 — à compléter</h3>
-                        <p class="realisation-description"><!-- TODO: description --> Décrivez le projet, votre rôle et le résultat livré.</p>
-                        <!-- TODO: add real link/GitHub URL -->
-                        <a href="#" class="realisation-todo" aria-disabled="true">Lien / GitHub — à ajouter</a>
+                    <div class="timeline-card">
+                        <h3 class="timeline-company">Amadeus</h3>
+                        <span class="timeline-role">Senior Software Developer</span>
+                        <div class="timeline-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Janvier 2026 – Juin 2026</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Antibes</span>
+                            <span><i class="fas fa-file-signature"></i> CDD</span>
+                        </div>
+                        <p class="timeline-context-label">Contributions clés :</p>
+                        <ul class="timeline-list">
+                            <li>Développement de fonctionnalités sur les plateformes de distribution du secteur du voyage : conception d'API backend, développement de composants frontend, intégration avec des systèmes distribués à fort volume.</li>
+                            <li>Contribution à la qualité logicielle : tests automatisés, revues de code, respect des standards de performance et de fiabilité d'un environnement international. Anglais quotidien.</li>
+                        </ul>
                     </div>
                 </article>
 
-                <article class="realisation-card reveal">
-                    <div class="realisation-image is-placeholder">
-                        <!-- TODO: add screenshot at /assets/portfolio/project-2.jpg -->
-                        <i class="fas fa-image"></i>
-                        <div class="realisation-overlay">
-                            <span class="realisation-category"><!-- TODO: category -->Projet</span>
-                        </div>
+                <article class="timeline-item reveal">
+                    <div class="timeline-logo">
+                        <span class="timeline-logo-fallback">G</span>
+                        <img src="g-on.png" alt="G-ON" loading="lazy" onerror="this.remove()">
                     </div>
-                    <div class="realisation-content">
-                        <h3 class="realisation-title"><!-- TODO: project title -->Projet 2 — à compléter</h3>
-                        <p class="realisation-description"><!-- TODO: description --> Décrivez le projet, votre rôle et le résultat livré.</p>
-                        <!-- TODO: add real link/GitHub URL -->
-                        <a href="#" class="realisation-todo" aria-disabled="true">Lien / GitHub — à ajouter</a>
+                    <div class="timeline-card">
+                        <h3 class="timeline-company">G-ON <span style="font-weight:400;font-size:0.85rem;color:var(--color-text-light)">(ingénierie durable)</span></h3>
+                        <span class="timeline-role">Développeur Fullstack</span>
+                        <div class="timeline-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Novembre 2024 – Novembre 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Paris</span>
+                            <span><i class="fas fa-file-signature"></i> CDI</span>
+                        </div>
+                        <p class="timeline-context-label">Contributions clés :</p>
+                        <ul class="timeline-list">
+                            <li>Conception et développement d'outils internes : application de gestion de projet, module de migration de données et chatbot d'assistance interne — développement des API backend, création des interfaces frontend (tableaux de bord, formulaires dynamiques, exports) et modélisation de la base de données.</li>
+                            <li>Mise en place de la chaîne CI/CD complète : pipeline automatisé couvrant build, tests unitaires et d'intégration, analyse de qualité de code et déploiement en staging et production. Conteneurisation de l'ensemble des services.</li>
+                            <li>Déploiement et administration de l'infrastructure cloud : provisioning via Infrastructure as Code, gestion des environnements, monitoring et alerting. Structure autonome, responsabilité complète de la chaîne technique.</li>
+                        </ul>
                     </div>
                 </article>
 
-                <article class="realisation-card reveal">
-                    <div class="realisation-image is-placeholder">
-                        <!-- TODO: add screenshot at /assets/portfolio/project-3.jpg -->
-                        <i class="fas fa-image"></i>
-                        <div class="realisation-overlay">
-                            <span class="realisation-category"><!-- TODO: category -->Projet</span>
-                        </div>
+                <article class="timeline-item reveal">
+                    <div class="timeline-logo">
+                        <span class="timeline-logo-fallback">S</span>
+                        <img src="stuart.png" alt="Stuart" loading="lazy" onerror="this.remove()">
                     </div>
-                    <div class="realisation-content">
-                        <h3 class="realisation-title"><!-- TODO: project title -->Projet 3 — à compléter</h3>
-                        <p class="realisation-description"><!-- TODO: description --> Décrivez le projet, votre rôle et le résultat livré.</p>
-                        <!-- TODO: add real link/GitHub URL -->
-                        <a href="#" class="realisation-todo" aria-disabled="true">Lien / GitHub — à ajouter</a>
+                    <div class="timeline-card">
+                        <h3 class="timeline-company">Stuart <span style="font-weight:400;font-size:0.85rem;color:var(--color-text-light)">(DPDgroup / La Poste)</span></h3>
+                        <span class="timeline-role">Développeur Fullstack</span>
+                        <div class="timeline-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Mai 2023 – Septembre 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> La Défense</span>
+                            <span><i class="fas fa-file-signature"></i> CDI</span>
+                        </div>
+                        <p class="timeline-context-label">Contributions clés :</p>
+                        <ul class="timeline-list">
+                            <li>Développement de l'API de la plateforme de livraison : conception et implémentation d'endpoints REST, extensions de services (gestion des commandes, tarification dynamique, suivi en temps réel) et intégration avec les systèmes de messaging pour le traitement événementiel.</li>
+                            <li>Amélioration continue des pipelines CI/CD : optimisation des temps de build, parallélisation des tests, analyse statique, déploiements automatisés en stratégie blue-green.</li>
+                            <li>Gestion de l'infrastructure cloud conteneurisée : orchestration des services, scaling automatique, gestion des secrets et de la configuration par environnement, monitoring applicatif. Mentorat de développeurs juniors et animation des revues de code. Équipe de 5 développeurs, Scrum.</li>
+                        </ul>
                     </div>
                 </article>
 
-                <article class="realisation-card reveal">
-                    <div class="realisation-image is-placeholder">
-                        <!-- TODO: add screenshot at /assets/portfolio/project-4.jpg -->
-                        <i class="fas fa-image"></i>
-                        <div class="realisation-overlay">
-                            <span class="realisation-category"><!-- TODO: category -->Projet</span>
-                        </div>
+                <article class="timeline-item reveal">
+                    <div class="timeline-logo">
+                        <span class="timeline-logo-fallback">E</span>
+                        <img src="edf.png" alt="EDF" loading="lazy" onerror="this.remove()">
                     </div>
-                    <div class="realisation-content">
-                        <h3 class="realisation-title"><!-- TODO: project title -->Projet 4 — à compléter</h3>
-                        <p class="realisation-description"><!-- TODO: description --> Décrivez le projet, votre rôle et le résultat livré.</p>
-                        <!-- TODO: add real link/GitHub URL -->
-                        <a href="#" class="realisation-todo" aria-disabled="true">Lien / GitHub — à ajouter</a>
+                    <div class="timeline-card">
+                        <h3 class="timeline-company">EDF <span style="font-weight:400;font-size:0.85rem;color:var(--color-text-light)">(Direction Technique)</span></h3>
+                        <span class="timeline-role">Développeur Fullstack</span>
+                        <div class="timeline-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Février 2022 – Avril 2023</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Paris</span>
+                            <span><i class="fas fa-file-signature"></i> CDI</span>
+                        </div>
+                        <p class="timeline-context-label">Contributions clés :</p>
+                        <ul class="timeline-list">
+                            <li>Contribution au projet de centralisation des données des installations nucléaires : conception d'API backend multi-modules, développement des interfaces frontend (visualisation de données, formulaires complexes, responsive), gestion des migrations de base de données.</li>
+                            <li>Participation à la mise en place des pipelines CI/CD et au déploiement cloud des services. Rédaction de la documentation technique et collaboration avec les équipes métier pour la définition des besoins.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="timeline-item reveal">
+                    <div class="timeline-logo">
+                        <span class="timeline-logo-fallback">C</span>
+                        <img src="credit-agricole.png" alt="Groupe Crédit Agricole" loading="lazy" onerror="this.remove()">
+                    </div>
+                    <div class="timeline-card">
+                        <h3 class="timeline-company">Groupe Crédit Agricole</h3>
+                        <span class="timeline-role">Développeur Fullstack</span>
+                        <div class="timeline-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Janvier 2020 – Décembre 2021</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Paris</span>
+                            <span><i class="fas fa-file-signature"></i> CDI</span>
+                        </div>
+                        <p class="timeline-context-label">Contributions clés :</p>
+                        <ul class="timeline-list">
+                            <li>Développement d'applications internes pour les équipes de marchés d'investissement : création d'API backend, développement de composants frontend (tableaux de bord, formulaires dynamiques, visualisation de données), modélisation et requêtes complexes en base de données.</li>
+                            <li>Intégration avec les systèmes existants : connecteurs REST vers les référentiels, messaging asynchrone pour le traitement des flux, synchronisation entre applications front-office et back-office.</li>
+                            <li>Mise en place et amélioration des pipelines CI/CD, conteneurisation des services, déploiement automatisé sur les environnements de recette et production. Gestion de la sécurité applicative (authentification, gestion des droits, conformité aux standards bancaires). Agile Scrum, équipe de 8 développeurs.</li>
+                        </ul>
                     </div>
                 </article>
             </div>
@@ -2067,7 +2271,7 @@ button {
                     <ul class="footer-links">
                         <li><a href="#apropos">À propos</a></li>
                         <li><a href="#services">Services</a></li>
-                        <li><a href="#realisations">Portfolio</a></li>
+                        <li><a href="#parcours">Parcours</a></li>
                         <li><a href="#references">Références</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
