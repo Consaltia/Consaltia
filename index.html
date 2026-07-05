@@ -2282,7 +2282,7 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
     const SPACE_TOP = '#000B2B';   // primaire assombri (≈ ×0.5)
     const SPACE_MID = '#001656';   // primaire
     const EARTH_DEEP = '#000E36';  // primaire assombri (≈ ×0.65)
-    const EARTH_RIM = '#26375F';   // mélange primaire/secondaire
+    const EARTH_RIM = '#2F4577';   // mélange primaire/secondaire
 
     let W = 0, H = 0;
     let stars = [];
@@ -2326,15 +2326,15 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
         surface.width = Math.max(2, W);
         surface.height = bandH;
         const sctx = surface.getContext('2d');
-        const blobs = Math.max(14, Math.round(W / 22));
+        const blobs = Math.max(24, Math.round(W / 12));
         for (let i = 0; i < blobs; i++) {
             const bx = Math.random() * W;
             const by = Math.random() * bandH;
-            const br = 30 + Math.random() * 110;
+            const br = 40 + Math.random() * 150;
             const isCloud = Math.random() < 0.45;
             for (const shift of [-W, 0, W]) {
                 const g = sctx.createRadialGradient(bx + shift, by, 0, bx + shift, by, br);
-                g.addColorStop(0, isCloud ? 'rgba(255,255,255,0.10)' : 'rgba(67,90,135,0.22)');
+                g.addColorStop(0, isCloud ? 'rgba(255,255,255,0.26)' : 'rgba(67,90,135,0.45)');
                 g.addColorStop(1, 'rgba(67,90,135,0)');
                 sctx.fillStyle = g;
                 sctx.beginPath();
@@ -2351,7 +2351,7 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
 
         earthGrad = ctx.createRadialGradient(earth.cx, earth.cy, R * 0.9, earth.cx, earth.cy, R);
         earthGrad.addColorStop(0, EARTH_DEEP);
-        earthGrad.addColorStop(0.82, EARTH_DEEP);
+        earthGrad.addColorStop(0.68, EARTH_DEEP);
         earthGrad.addColorStop(1, EARTH_RIM);
 
         glowGrad = ctx.createRadialGradient(earth.cx, earth.cy, R * 0.975, earth.cx, earth.cy, R * 1.06);
@@ -2365,7 +2365,7 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
         veilGrad = ctx.createLinearGradient(0, 0, 0, H);
         veilGrad.addColorStop(0, 'rgba(0,22,86,0.20)');
         veilGrad.addColorStop(0.55, 'rgba(0,22,86,0.28)');
-        veilGrad.addColorStop(1, 'rgba(0,11,43,0.45)');
+        veilGrad.addColorStop(1, 'rgba(0,11,43,0.30)');
     }
 
     function draw(t) {
@@ -2379,28 +2379,28 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
         ctx.fillStyle = '#FFFFFF';
         for (let i = 0; i < stars.length; i++) {
             const s = stars[i];
-            ctx.globalAlpha = s.base * (0.72 + 0.28 * Math.sin(sec * s.twinkle + s.phase));
-            const x = (s.x + sec * 1.5 * s.layer) % W;
+            ctx.globalAlpha = s.base * (0.55 + 0.45 * Math.sin(sec * s.twinkle + s.phase));
+            const x = (s.x + sec * 3 * s.layer) % W;
             ctx.beginPath();
             ctx.arc(x, s.y, s.r, 0, Math.PI * 2);
             ctx.fill();
         }
         ctx.globalAlpha = 1;
 
-        // Terre : disque clippé, surface qui dérive lentement (~4 px/s → rotation apparente)
+        // Terre : disque clippé, surface qui dérive lentement (~12 px/s → rotation apparente)
         ctx.save();
         ctx.beginPath();
         ctx.arc(earth.cx, earth.cy, earth.R, 0, Math.PI * 2);
         ctx.clip();
         ctx.fillStyle = earthGrad;
         ctx.fillRect(0, 0, W, H);
-        const offset = (sec * 4) % W;
+        const offset = (sec * 12) % W;
         ctx.drawImage(surface, -offset, earth.horizonY - 20);
         ctx.drawImage(surface, W - offset, earth.horizonY - 20);
         ctx.restore();
 
-        // Halo atmosphérique : pulsation douce (~12 s de période)
-        ctx.globalAlpha = 0.8 + 0.2 * Math.sin(sec * 0.5);
+        // Halo atmosphérique : pulsation douce (~8 s de période)
+        ctx.globalAlpha = 0.65 + 0.35 * Math.sin(sec * 0.8);
         ctx.fillStyle = glowGrad;
         ctx.fillRect(0, earth.horizonY - earth.R * 0.09, W, earth.R * 0.2);
         ctx.globalAlpha = 1;
