@@ -519,22 +519,6 @@ button {
     display: block;
 }
 
-/* Placeholder aux bonnes dimensions tant que la vraie photo n'est pas fournie */
-.hero-photo-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(160deg, var(--color-background) 0%, rgba(67, 90, 135, 0.18) 100%);
-}
-
-.hero-photo-placeholder i {
-    font-size: 4.5rem;
-    color: var(--color-secondary);
-    opacity: 0.45;
-}
-
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -1748,13 +1732,8 @@ section[id] {
                 </div>
 
                 <div class="hero-media">
-                    <!-- TODO: add photo at /assets/profile.jpg -->
-                    <!-- Une fois la photo ajoutée, remplacer le placeholder ci-dessous par :
-                         <img src="/assets/profile.jpg" alt="Portrait de Eng. Antoine"> -->
                     <div class="hero-photo">
-                        <div class="hero-photo-placeholder" role="img" aria-label="Photo de profil à venir">
-                            <i class="fas fa-user" aria-hidden="true"></i>
-                        </div>
+                        <img src="MYPIC.png" alt="Portrait de Eng. Antoine" decoding="async" fetchpriority="high">
                     </div>
                 </div>
             </div>
