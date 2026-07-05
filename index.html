@@ -1720,8 +1720,8 @@ button {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    padding: 6px;
+    object-fit: cover;
+    border-radius: var(--radius-full);
     background: var(--color-white);
 }
 
@@ -1932,10 +1932,8 @@ button {
                 <p class="section-subtitle">Mon expérience de développeur salarié, avant de me lancer en freelance sous la marque Consaltia. Chaque poste retrace le contexte et mes contributions clés.</p>
             </div>
 
-            <!-- TODO: add each company's logo/symbol image to the project root.
-                 Expected filenames (or rename the src attributes below):
-                 amadeus.png · g-on.png · stuart.png · edf.png · credit-agricole.png
-                 If a logo is missing, the circle falls back to the company initial. -->
+            <!-- Company logos live in the project root; filenames are case-sensitive on
+                 GitHub Pages. If a logo is missing, the circle falls back to the initial. -->
             <div class="timeline">
                 <article class="timeline-item reveal">
                     <div class="timeline-logo">
@@ -1950,12 +1948,7 @@ button {
                             <span><i class="fas fa-map-marker-alt"></i> Antibes</span>
                             <span><i class="fas fa-file-signature"></i> CDD</span>
                         </div>
-                        <p class="timeline-context">Contexte : acteur mondial de la technologie du voyage. J'ai contribué aux plateformes de distribution qui traitent de très gros volumes de transactions, dans un environnement international et fortement distribué.</p>
-                        <p class="timeline-context-label">Contributions clés :</p>
-                        <ul class="timeline-list">
-                            <li>Développement de fonctionnalités sur les plateformes de distribution du secteur du voyage : conception d'API backend, développement de composants frontend, intégration avec des systèmes distribués à fort volume.</li>
-                            <li>Contribution à la qualité logicielle : tests automatisés, revues de code, respect des standards de performance et de fiabilité d'un environnement international. Anglais quotidien.</li>
-                        </ul>
+                        <p class="timeline-context">Acteur mondial de la technologie du voyage. J'ai contribué aux plateformes de distribution qui traitent de très gros volumes de transactions, dans un environnement international et fortement distribué : conception d'API backend, développement de composants frontend, et exigences fortes de performance, de fiabilité et de qualité (tests automatisés, revues de code). Anglais quotidien.</p>
                     </div>
                 </article>
 
@@ -1972,13 +1965,7 @@ button {
                             <span><i class="fas fa-map-marker-alt"></i> Paris</span>
                             <span><i class="fas fa-file-signature"></i> CDI</span>
                         </div>
-                        <p class="timeline-context">Contexte : structure autonome spécialisée dans l'ingénierie durable. J'ai conçu et livré plusieurs outils internes de bout en bout — une application de gestion de projet, un module de migration de données et un chatbot d'assistance interne — en assumant l'ensemble de la chaîne technique, du code à l'infrastructure cloud.</p>
-                        <p class="timeline-context-label">Contributions clés :</p>
-                        <ul class="timeline-list">
-                            <li>Conception et développement d'outils internes : application de gestion de projet, module de migration de données et chatbot d'assistance interne — développement des API backend, création des interfaces frontend (tableaux de bord, formulaires dynamiques, exports) et modélisation de la base de données.</li>
-                            <li>Mise en place de la chaîne CI/CD complète : pipeline automatisé couvrant build, tests unitaires et d'intégration, analyse de qualité de code et déploiement en staging et production. Conteneurisation de l'ensemble des services.</li>
-                            <li>Déploiement et administration de l'infrastructure cloud : provisioning via Infrastructure as Code, gestion des environnements, monitoring et alerting. Structure autonome, responsabilité complète de la chaîne technique.</li>
-                        </ul>
+                        <p class="timeline-context">Structure autonome spécialisée dans l'ingénierie durable. J'ai conçu et livré de bout en bout plusieurs outils internes — une application de gestion de projet, un module de migration de données et un chatbot d'assistance interne — avec la responsabilité complète de la chaîne technique : API backend et interfaces frontend, base de données, chaîne CI/CD, conteneurisation et infrastructure cloud (Infrastructure as Code, monitoring).</p>
                     </div>
                 </article>
 
@@ -1995,13 +1982,7 @@ button {
                             <span><i class="fas fa-map-marker-alt"></i> La Défense</span>
                             <span><i class="fas fa-file-signature"></i> CDI</span>
                         </div>
-                        <p class="timeline-context">Contexte : plateforme de livraison à la demande du groupe DPD / La Poste. J'ai travaillé sur l'API cœur du produit — commandes, tarification dynamique et suivi en temps réel — au sein d'une équipe Scrum de 5 développeurs.</p>
-                        <p class="timeline-context-label">Contributions clés :</p>
-                        <ul class="timeline-list">
-                            <li>Développement de l'API de la plateforme de livraison : conception et implémentation d'endpoints REST, extensions de services (gestion des commandes, tarification dynamique, suivi en temps réel) et intégration avec les systèmes de messaging pour le traitement événementiel.</li>
-                            <li>Amélioration continue des pipelines CI/CD : optimisation des temps de build, parallélisation des tests, analyse statique, déploiements automatisés en stratégie blue-green.</li>
-                            <li>Gestion de l'infrastructure cloud conteneurisée : orchestration des services, scaling automatique, gestion des secrets et de la configuration par environnement, monitoring applicatif. Mentorat de développeurs juniors et animation des revues de code. Équipe de 5 développeurs, Scrum.</li>
-                        </ul>
+                        <p class="timeline-context">Plateforme de livraison à la demande du groupe DPD / La Poste. J'ai travaillé sur l'API cœur du produit — commandes, tarification dynamique, suivi en temps réel et traitement événementiel par messaging — ainsi que sur les pipelines CI/CD et l'infrastructure cloud conteneurisée. Mentorat de développeurs juniors, au sein d'une équipe Scrum de 5 développeurs.</p>
                     </div>
                 </article>
 
@@ -2018,12 +1999,7 @@ button {
                             <span><i class="fas fa-map-marker-alt"></i> Paris</span>
                             <span><i class="fas fa-file-signature"></i> CDI</span>
                         </div>
-                        <p class="timeline-context">Contexte : Direction Technique d'EDF. J'ai contribué à un projet de centralisation des données des installations nucléaires, dans un environnement technique exigeant et régulé.</p>
-                        <p class="timeline-context-label">Contributions clés :</p>
-                        <ul class="timeline-list">
-                            <li>Contribution au projet de centralisation des données des installations nucléaires : conception d'API backend multi-modules, développement des interfaces frontend (visualisation de données, formulaires complexes, responsive), gestion des migrations de base de données.</li>
-                            <li>Participation à la mise en place des pipelines CI/CD et au déploiement cloud des services. Rédaction de la documentation technique et collaboration avec les équipes métier pour la définition des besoins.</li>
-                        </ul>
+                        <p class="timeline-context">Direction Technique d'EDF. J'ai contribué à un projet de centralisation des données des installations nucléaires — API backend multi-modules, interfaces frontend de visualisation de données, migrations de base de données et déploiement cloud — dans un environnement technique exigeant et régulé, en collaboration avec les équipes métier.</p>
                     </div>
                 </article>
 
@@ -2040,13 +2016,7 @@ button {
                             <span><i class="fas fa-map-marker-alt"></i> Paris</span>
                             <span><i class="fas fa-file-signature"></i> CDI</span>
                         </div>
-                        <p class="timeline-context">Contexte : banque de financement et d'investissement. J'ai développé des applications internes pour les équipes de marchés d'investissement, intégrées au système d'information existant, dans un cadre bancaire régulé et une équipe Scrum de 8 développeurs.</p>
-                        <p class="timeline-context-label">Contributions clés :</p>
-                        <ul class="timeline-list">
-                            <li>Développement d'applications internes pour les équipes de marchés d'investissement : création d'API backend, développement de composants frontend (tableaux de bord, formulaires dynamiques, visualisation de données), modélisation et requêtes complexes en base de données.</li>
-                            <li>Intégration avec les systèmes existants : connecteurs REST vers les référentiels, messaging asynchrone pour le traitement des flux, synchronisation entre applications front-office et back-office.</li>
-                            <li>Mise en place et amélioration des pipelines CI/CD, conteneurisation des services, déploiement automatisé sur les environnements de recette et production. Gestion de la sécurité applicative (authentification, gestion des droits, conformité aux standards bancaires). Agile Scrum, équipe de 8 développeurs.</li>
-                        </ul>
+                        <p class="timeline-context">Banque de financement et d'investissement. J'ai développé des applications internes pour les équipes de marchés d'investissement, intégrées au système d'information existant (connecteurs REST, messaging asynchrone, synchronisation front-office / back-office), avec pipelines CI/CD, conteneurisation et sécurité applicative conforme aux standards bancaires. Agile Scrum, équipe de 8 développeurs.</p>
                     </div>
                 </article>
             </div>
