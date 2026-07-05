@@ -404,12 +404,12 @@ button {
 /* HERO */
 .hero {
     margin-top: 80px;
-    /* Overlay renforcé (mêmes bleus de la palette) pour garantir le contraste AA
-       du texte blanc quel que soit le fond. background-attachment:fixed supprimé
-       (jank de scroll + repaints). */
-    background: linear-gradient(135deg, rgba(0, 22, 86, 0.72) 0%, rgba(67, 90, 135, 0.62) 100%), url('background.png');
-    background-size: cover;
-    background-position: center;
+    /* Fond statique de secours (avant init du canvas, JS coupé, reduced-motion).
+       Dégradé "espace" dérivé des bleus de la palette : primaire assombri (50%)
+       → primaire #001656 → mélange primaire/secondaire à l'horizon.
+       Le PNG statique (background.png) est remplacé par une scène Terre/étoiles
+       générée en Canvas 2D — voir #heroCanvas dans le markup et le JS. */
+    background: linear-gradient(180deg, #000B2B 0%, #001656 62%, #26375F 100%);
     color: var(--color-white);
     padding: var(--spacing-xl) 0;
     position: relative;
@@ -419,44 +419,17 @@ button {
     align-items: center;
 }
 
-/* Grille technique statique (repère visuel discret, aucun coût d'animation) */
-.hero::before {
-    content: '';
+/* Scène animée générée en code (Terre + atmosphère + étoiles).
+   Couvre le hero sans distorsion à toutes tailles ; peinte sous le contenu
+   (z-index 0 < .hero-container z-index 1) ; aucune interaction. */
+.hero-canvas {
     position: absolute;
     inset: 0;
-    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-    opacity: 0.35;
-}
-
-/* Unique animation d'ambiance : voile de dégradé bleu qui dérive très lentement.
-   Transform/opacity uniquement (compositor-friendly), coupé en reduced-motion. */
-.hero::after {
-    content: '';
-    position: absolute;
-    top: -20%;
-    left: -30%;
-    width: 160%;
-    height: 140%;
-    background: linear-gradient(115deg,
-        transparent 30%,
-        rgba(67, 90, 135, 0.28) 46%,
-        rgba(255, 255, 255, 0.07) 52%,
-        rgba(0, 22, 86, 0.25) 60%,
-        transparent 75%);
-    animation: heroSheen 16s var(--ease-smooth, ease-in-out) infinite alternate;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    display: block;
     pointer-events: none;
-    will-change: transform;
-}
-
-@keyframes heroSheen {
-    0% {
-        transform: translate3d(-6%, 0, 0);
-        opacity: 0.7;
-    }
-    100% {
-        transform: translate3d(6%, 2%, 0);
-        opacity: 1;
-    }
 }
 
 .hero-container {
@@ -1658,13 +1631,9 @@ section[id] {
     }
 }
 
-/* --- Reduced motion : compléments (le bloc global coupe déjà animations/transitions) --- */
+/* --- Reduced motion : compléments (le bloc global coupe déjà animations/transitions).
+       Le canvas hero dessine une seule frame statique (géré côté JS). --- */
 @media (prefers-reduced-motion: reduce) {
-    .hero::after {
-        animation: none !important;
-        opacity: 0.6;
-    }
-
     .hero-title,
     .hero-subtitle,
     .hero-cta,
@@ -1707,6 +1676,7 @@ section[id] {
 
     <!-- Section Hero -->
     <section class="hero">
+        <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
         <div class="container hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">Full-stack &amp; cloud developer — I design, deploy, and operate your applications end to end.</h1>
@@ -2291,6 +2261,215 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
     statNums.forEach(el => countObserver.observe(el));
 }
 // (reduced-motion ou pas d'IO : les chiffres restent dans leur état final, déjà présent dans le HTML)
+
+// ===================================
+// HERO — SCÈNE « TERRE DEPUIS L'ESPACE » GÉNÉRÉE EN CODE (Canvas 2D)
+// Remplace l'ancien background.png statique. Même ambiance (espace navy,
+// horizon terrestre courbé, halo atmosphérique, étoiles), palette inchangée.
+// Perf : 30 fps max, DPR plafonné à 1.5, dégradés/texture mis en cache,
+// pause hors viewport et onglet caché. Reduced-motion : 1 frame statique.
+// ===================================
+
+(function initHeroScene() {
+    const canvas = document.getElementById('heroCanvas');
+    if (!canvas || !canvas.getContext) return;
+
+    const ctx = canvas.getContext('2d');
+    const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+    const FRAME_MS = 1000 / 30; // mouvement ambiant : 30 fps suffisent
+
+    // Teintes dérivées de la palette (#001656 primaire / #435A87 secondaire / blanc)
+    const SPACE_TOP = '#000B2B';   // primaire assombri (≈ ×0.5)
+    const SPACE_MID = '#001656';   // primaire
+    const EARTH_DEEP = '#000E36';  // primaire assombri (≈ ×0.65)
+    const EARTH_RIM = '#26375F';   // mélange primaire/secondaire
+
+    let W = 0, H = 0;
+    let stars = [];
+    let earth = null;      // { cx, cy, R, horizonY }
+    let surface = null;    // texture nuages/surface pré-rendue (défilement bouclé)
+    let spaceGrad = null, earthGrad = null, glowGrad = null, veilGrad = null;
+    let rafId = null;
+    let lastFrame = 0;
+    let heroVisible = true;
+
+    function build() {
+        W = canvas.clientWidth;
+        H = canvas.clientHeight;
+        if (!W || !H) return;
+        canvas.width = Math.round(W * DPR);
+        canvas.height = Math.round(H * DPR);
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+        // Géométrie : très grand cercle dont seul l'arc supérieur est visible
+        // → horizon courbé en bas du hero, comme sur la photo d'origine.
+        const R = Math.max(W, H) * 1.5;
+        const horizonY = H * 0.80;
+        earth = { cx: W / 2, cy: horizonY + R, R: R, horizonY: horizonY };
+
+        // Étoiles au-dessus de l'horizon, deux couches de parallaxe
+        const count = Math.min(180, Math.round((W * H) / 7000));
+        stars = Array.from({ length: count }, (_, i) => ({
+            x: Math.random() * W,
+            y: Math.random() * horizonY * 0.96,
+            r: 0.4 + Math.random() * 1.1,
+            base: 0.25 + Math.random() * 0.55,
+            twinkle: 0.4 + Math.random() * 1.2,
+            phase: Math.random() * Math.PI * 2,
+            layer: i % 2 === 0 ? 1 : 0.5
+        }));
+
+        // Texture de surface : taches douces (nuages/reliefs) pré-rendues une fois.
+        // Chaque tache est dessinée 3× (x-W, x, x+W) pour un défilement sans couture.
+        surface = document.createElement('canvas');
+        const bandH = Math.ceil(H - horizonY + 100);
+        surface.width = Math.max(2, W);
+        surface.height = bandH;
+        const sctx = surface.getContext('2d');
+        const blobs = Math.max(14, Math.round(W / 22));
+        for (let i = 0; i < blobs; i++) {
+            const bx = Math.random() * W;
+            const by = Math.random() * bandH;
+            const br = 30 + Math.random() * 110;
+            const isCloud = Math.random() < 0.45;
+            for (const shift of [-W, 0, W]) {
+                const g = sctx.createRadialGradient(bx + shift, by, 0, bx + shift, by, br);
+                g.addColorStop(0, isCloud ? 'rgba(255,255,255,0.10)' : 'rgba(67,90,135,0.22)');
+                g.addColorStop(1, 'rgba(67,90,135,0)');
+                sctx.fillStyle = g;
+                sctx.beginPath();
+                sctx.arc(bx + shift, by, br, 0, Math.PI * 2);
+                sctx.fill();
+            }
+        }
+
+        // Dégradés mis en cache (recréés uniquement au resize)
+        spaceGrad = ctx.createLinearGradient(0, 0, 0, H);
+        spaceGrad.addColorStop(0, SPACE_TOP);
+        spaceGrad.addColorStop(0.75, SPACE_MID);
+        spaceGrad.addColorStop(1, SPACE_MID);
+
+        earthGrad = ctx.createRadialGradient(earth.cx, earth.cy, R * 0.9, earth.cx, earth.cy, R);
+        earthGrad.addColorStop(0, EARTH_DEEP);
+        earthGrad.addColorStop(0.82, EARTH_DEEP);
+        earthGrad.addColorStop(1, EARTH_RIM);
+
+        glowGrad = ctx.createRadialGradient(earth.cx, earth.cy, R * 0.975, earth.cx, earth.cy, R * 1.06);
+        glowGrad.addColorStop(0, 'rgba(255,255,255,0)');
+        glowGrad.addColorStop(0.28, 'rgba(255,255,255,0.14)');
+        glowGrad.addColorStop(0.42, 'rgba(67,90,135,0.32)');
+        glowGrad.addColorStop(1, 'rgba(67,90,135,0)');
+
+        // Voile de lisibilité : préserve le contraste AA du texte blanc
+        // (rôle de l'ancien overlay sur le PNG).
+        veilGrad = ctx.createLinearGradient(0, 0, 0, H);
+        veilGrad.addColorStop(0, 'rgba(0,22,86,0.20)');
+        veilGrad.addColorStop(0.55, 'rgba(0,22,86,0.28)');
+        veilGrad.addColorStop(1, 'rgba(0,11,43,0.45)');
+    }
+
+    function draw(t) {
+        const sec = t / 1000;
+
+        // Espace
+        ctx.fillStyle = spaceGrad;
+        ctx.fillRect(0, 0, W, H);
+
+        // Étoiles : scintillement sinusoïdal + dérive horizontale très lente (parallaxe)
+        ctx.fillStyle = '#FFFFFF';
+        for (let i = 0; i < stars.length; i++) {
+            const s = stars[i];
+            ctx.globalAlpha = s.base * (0.72 + 0.28 * Math.sin(sec * s.twinkle + s.phase));
+            const x = (s.x + sec * 1.5 * s.layer) % W;
+            ctx.beginPath();
+            ctx.arc(x, s.y, s.r, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+
+        // Terre : disque clippé, surface qui dérive lentement (~4 px/s → rotation apparente)
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(earth.cx, earth.cy, earth.R, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.fillStyle = earthGrad;
+        ctx.fillRect(0, 0, W, H);
+        const offset = (sec * 4) % W;
+        ctx.drawImage(surface, -offset, earth.horizonY - 20);
+        ctx.drawImage(surface, W - offset, earth.horizonY - 20);
+        ctx.restore();
+
+        // Halo atmosphérique : pulsation douce (~12 s de période)
+        ctx.globalAlpha = 0.8 + 0.2 * Math.sin(sec * 0.5);
+        ctx.fillStyle = glowGrad;
+        ctx.fillRect(0, earth.horizonY - earth.R * 0.09, W, earth.R * 0.2);
+        ctx.globalAlpha = 1;
+
+        // Liseré d'horizon
+        ctx.strokeStyle = 'rgba(255,255,255,0.20)';
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.arc(earth.cx, earth.cy, earth.R, Math.PI * 1.2, Math.PI * 1.8);
+        ctx.stroke();
+
+        // Voile de lisibilité (contraste AA du contenu)
+        ctx.fillStyle = veilGrad;
+        ctx.fillRect(0, 0, W, H);
+    }
+
+    function loop(t) {
+        rafId = requestAnimationFrame(loop);
+        if (t - lastFrame < FRAME_MS) return;
+        lastFrame = t;
+        draw(t);
+    }
+
+    function start() {
+        if (rafId === null) {
+            rafId = requestAnimationFrame(loop);
+        }
+    }
+
+    function stop() {
+        if (rafId !== null) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
+    }
+
+    // Resize : reconstruire la scène (debounce), redessiner si figé
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            build();
+            if (rafId === null) draw(lastFrame);
+        }, 150);
+    });
+
+    build();
+
+    if (prefersReducedMotion) {
+        // Pas d'animation : une seule frame statique (équivalent « premier frame »)
+        draw(0);
+        return;
+    }
+
+    // Pause quand le hero sort du viewport ou que l'onglet est caché
+    if ('IntersectionObserver' in window) {
+        const heroObserver = new IntersectionObserver((entries) => {
+            heroVisible = entries[0].isIntersecting;
+            if (heroVisible && !document.hidden) { start(); } else { stop(); }
+        }, { threshold: 0 });
+        heroObserver.observe(canvas);
+    }
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) { stop(); } else if (heroVisible) { start(); }
+    });
+
+    start();
+})();
 
 // IMPORTANT : Remplacez ces valeurs par vos vraies clés EmailJS
 const EMAILJS_CONFIG = {
