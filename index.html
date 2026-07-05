@@ -330,6 +330,36 @@ button {
     background: var(--color-secondary);
 }
 
+/* Bouton de langue FR/EN (affiche la langue cible) */
+.lang-toggle {
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--color-primary);
+    background: transparent;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 0.45rem 0.9rem;
+    margin-left: 0.75rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.lang-toggle:hover {
+    border-color: var(--color-primary);
+    background: var(--color-background);
+}
+
+@media (max-width: 991px) {
+    .lang-toggle {
+        margin: 1rem auto 0;
+        display: block;
+        padding: 0.6rem 1.6rem;
+        font-size: 1rem;
+    }
+}
+
 /* Media queries responsive */
 @media (max-width: 991px) {
     /* Afficher le bouton burger sur mobile */
@@ -1796,7 +1826,7 @@ section[id] {
     </style>
 </head>
 <body>
-    <a href="#main" class="skip-link">Aller au contenu</a>
+    <a href="#main" class="skip-link" data-i18n="skip">Aller au contenu</a>
 
     <!-- Navbar fixe -->
     <nav class="navbar" id="navbar">
@@ -1813,11 +1843,12 @@ section[id] {
             </button>
             
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#apropos" class="nav-link">À propos</a></li>
+                <li><a href="#apropos" class="nav-link" data-i18n="nav.about">À propos</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#parcours" class="nav-link">Parcours</a></li>
-                <li><a href="#references" class="nav-link">Témoignages</a></li>
+                <li><a href="#parcours" class="nav-link" data-i18n="nav.parcours">Parcours</a></li>
+                <li><a href="#references" class="nav-link" data-i18n="nav.temoignages">Témoignages</a></li>
                 <li><a href="#contact" class="nav-link nav-link-cta">Contact</a></li>
+                <li><button type="button" class="lang-toggle" id="langToggle" aria-label="Switch to English">EN</button></li>
             </ul>
         </div>
     </nav>
@@ -1829,16 +1860,16 @@ section[id] {
         <div class="container hero-container">
             <div class="hero-grid">
                 <div class="hero-content">
-                    <h1 class="hero-title">Full-stack &amp; cloud developer — I design, deploy, and operate your applications end to end.</h1>
-                    <p class="hero-subtitle">Consaltia is the freelance practice of a single developer — one point of contact, from the API to the cloud.</p>
+                    <h1 class="hero-title" data-i18n="hero.title">Développeur full-stack &amp; cloud — je conçois, déploie et opère vos applications de bout en bout.</h1>
+                    <p class="hero-subtitle" data-i18n="hero.subtitle">Consaltia, la pratique freelance d'un développeur unique — un seul interlocuteur, de l'API au cloud.</p>
                     <div class="hero-cta">
-                        <a href="#contact" class="btn btn-primary">Get in touch</a>
-                        <a href="#services" class="btn btn-secondary">See what I do</a>
+                        <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Me contacter</a>
+                        <a href="#services" class="btn btn-secondary" data-i18n="hero.cta2">Découvrir mes services</a>
                     </div>
                     <div class="hero-stats">
-                        <span class="hero-stat"><span class="stat-num" data-count="6">6</span>+ years experience</span>
-                        <span class="hero-stat"><span class="stat-num" data-count="5">5</span> sectors</span>
-                        <span class="hero-stat">Full-chain delivery (API → cloud)</span>
+                        <span class="hero-stat"><span class="stat-num" data-count="6">6</span><span data-i18n="hero.stat1">+ ans d'expérience</span></span>
+                        <span class="hero-stat"><span class="stat-num" data-count="5">5</span><span data-i18n="hero.stat2"> secteurs</span></span>
+                        <span class="hero-stat" data-i18n="hero.stat3">Livraison de bout en bout (API → cloud)</span>
                     </div>
                 </div>
 
@@ -1855,8 +1886,8 @@ section[id] {
     <section class="apropos" id="apropos">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">À propos</h2>
-                <p class="section-subtitle">Le développeur derrière Consaltia.</p>
+                <h2 class="section-title" data-i18n="about.title">À propos</h2>
+                <p class="section-subtitle" data-i18n="about.subtitle">Le développeur derrière Consaltia.</p>
             </div>
 
             <div class="apropos-content">
@@ -1865,9 +1896,9 @@ section[id] {
                         <img src="personalpic.png" alt="Portrait de Eng. Antoine" loading="lazy" decoding="async">
                     </div>
                     <div class="apropos-name">Eng. Antoine</div>
-                    <p class="apropos-role">Développeur full-stack &amp; cloud · Freelance</p>
+                    <p class="apropos-role" data-i18n="about.role">Développeur full-stack &amp; cloud · Freelance</p>
                     <div class="profile-badges">
-                        <span class="pill">6+ ans d'expérience</span>
+                        <span class="pill" data-i18n="about.badge1">6+ ans d'expérience</span>
                         <span class="pill">Full-Stack &amp; Cloud</span>
                         <span class="pill">AWS &amp; Azure</span>
                         <span class="pill">React / Spring Boot</span>
@@ -1875,14 +1906,14 @@ section[id] {
                 </div>
 
                 <div class="apropos-text reveal">
-                    <p>Développeur full-stack &amp; cloud, en freelance.</p>
-                    <p>Après 6 ans à concevoir et déployer des applications web en tant que développeur — dans la banque, l'énergie, la logistique, l'ingénierie et le voyage — je suis désormais disponible en freelance sous la marque Consaltia.</p>
-                    <p>Au fil de ces années, j'ai couvert toute la chaîne : conception d'API et de microservices, développement backend et frontend, modélisation de bases de données, pipelines CI/CD, conteneurisation et déploiement cloud sur AWS et Azure. J'ai travaillé en équipe Agile, animé des revues de code, encadré des développeurs juniors et livré en production dans des environnements exigeants et régulés.</p>
-                    <p>Aujourd'hui, je mets cette expérience directement au service de vos projets — un seul interlocuteur, de bout en bout.</p>
+                    <p data-i18n="about.p1">Développeur full-stack &amp; cloud, en freelance.</p>
+                    <p data-i18n="about.p2">Après 6 ans à concevoir et déployer des applications web en tant que développeur — dans la banque, l'énergie, la logistique, l'ingénierie et le voyage — je suis désormais disponible en freelance sous la marque Consaltia.</p>
+                    <p data-i18n="about.p3">Au fil de ces années, j'ai couvert toute la chaîne : conception d'API et de microservices, développement backend et frontend, modélisation de bases de données, pipelines CI/CD, conteneurisation et déploiement cloud sur AWS et Azure. J'ai travaillé en équipe Agile, animé des revues de code, encadré des développeurs juniors et livré en production dans des environnements exigeants et régulés.</p>
+                    <p data-i18n="about.p4">Aujourd'hui, je mets cette expérience directement au service de vos projets — un seul interlocuteur, de bout en bout.</p>
                     <!-- TODO: decide whether to list named former employers publicly — check NDA/confidentiality first -->
 
                     <div class="techstack">
-                        <h3>Stack technique</h3>
+                        <h3 data-i18n="about.stack">Stack technique</h3>
                         <div class="techstack-badges">
                             <span class="pill">Java / Spring Boot</span>
                             <span class="pill">Python</span>
@@ -1909,8 +1940,8 @@ section[id] {
     <section class="realisations" id="parcours">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">Parcours</h2>
-                <p class="section-subtitle">Six ans d'expérience salariée — cinq entreprises, cinq secteurs.</p>
+                <h2 class="section-title" data-i18n="parcours.title">Parcours</h2>
+                <p class="section-subtitle" data-i18n="parcours.subtitle">Six ans d'expérience salariée — cinq entreprises, cinq secteurs.</p>
             </div>
 
             <!-- Company logos live in the project root; filenames are case-sensitive on
@@ -1925,11 +1956,11 @@ section[id] {
                         <h3 class="timeline-company">Amadeus</h3>
                         <span class="timeline-role">Senior Software Developer</span>
                         <div class="timeline-meta">
-                            <span><i class="fas fa-calendar-alt"></i> Janvier 2026 – Juin 2026</span>
+                            <span data-i18n="dt.amadeus"><i class="fas fa-calendar-alt"></i> Janvier 2026 – Juin 2026</span>
                             <span><i class="fas fa-map-marker-alt"></i> Antibes</span>
-                            <span><i class="fas fa-file-signature"></i> CDD</span>
+                            <span data-i18n="ct.cdd"><i class="fas fa-file-signature"></i> CDD</span>
                         </div>
-                        <p class="timeline-context">Plateformes de distribution du voyage, à très fort volume : API backend, composants frontend, exigences élevées de performance et de qualité (tests, revues de code). Environnement international, anglais quotidien.</p>
+                        <p class="timeline-context" data-i18n="tl.amadeus">Plateformes de distribution du voyage, à très fort volume : API backend, composants frontend, exigences élevées de performance et de qualité (tests, revues de code). Environnement international, anglais quotidien.</p>
                     </div>
                 </article>
 
@@ -1939,14 +1970,14 @@ section[id] {
                         <img src="G-ON.png?v=2" alt="G-ON" loading="lazy" onerror="this.remove()">
                     </div>
                     <div class="timeline-card">
-                        <h3 class="timeline-company">G-ON <span style="font-weight:400;font-size:0.85rem;color:var(--color-text-light)">(ingénierie durable)</span></h3>
-                        <span class="timeline-role">Développeur Fullstack</span>
+                        <h3 class="timeline-company">G-ON <span style="font-weight:400;font-size:0.85rem;color:var(--color-text-light)" data-i18n="sx.gon">(ingénierie durable)</span></h3>
+                        <span class="timeline-role" data-i18n="role.fullstack">Développeur Fullstack</span>
                         <div class="timeline-meta">
-                            <span><i class="fas fa-calendar-alt"></i> Novembre 2024 – Novembre 2025</span>
+                            <span data-i18n="dt.gon"><i class="fas fa-calendar-alt"></i> Novembre 2024 – Novembre 2025</span>
                             <span><i class="fas fa-map-marker-alt"></i> Paris</span>
-                            <span><i class="fas fa-file-signature"></i> CDI</span>
+                            <span data-i18n="ct.cdi"><i class="fas fa-file-signature"></i> CDI</span>
                         </div>
-                        <p class="timeline-context">Conception et livraison de bout en bout des outils internes (gestion de projet, migration de données, chatbot) avec la responsabilité complète de la chaîne : API, frontend, base de données, CI/CD, conteneurisation et cloud (IaC, monitoring).</p>
+                        <p class="timeline-context" data-i18n="tl.gon">Conception et livraison de bout en bout des outils internes (gestion de projet, migration de données, chatbot) avec la responsabilité complète de la chaîne : API, frontend, base de données, CI/CD, conteneurisation et cloud (IaC, monitoring).</p>
                     </div>
                 </article>
 
@@ -1957,13 +1988,13 @@ section[id] {
                     </div>
                     <div class="timeline-card">
                         <h3 class="timeline-company">Stuart <span style="font-weight:400;font-size:0.85rem;color:var(--color-text-light)">(DPDgroup / La Poste)</span></h3>
-                        <span class="timeline-role">Développeur Fullstack</span>
+                        <span class="timeline-role" data-i18n="role.fullstack">Développeur Fullstack</span>
                         <div class="timeline-meta">
-                            <span><i class="fas fa-calendar-alt"></i> Mai 2023 – Septembre 2024</span>
+                            <span data-i18n="dt.stuart"><i class="fas fa-calendar-alt"></i> Mai 2023 – Septembre 2024</span>
                             <span><i class="fas fa-map-marker-alt"></i> La Défense</span>
-                            <span><i class="fas fa-file-signature"></i> CDI</span>
+                            <span data-i18n="ct.cdi"><i class="fas fa-file-signature"></i> CDI</span>
                         </div>
-                        <p class="timeline-context">API cœur de la plateforme de livraison (commandes, tarification dynamique, suivi temps réel), pipelines CI/CD et infrastructure cloud conteneurisée. Mentorat de juniors, équipe Scrum de 5.</p>
+                        <p class="timeline-context" data-i18n="tl.stuart">API cœur de la plateforme de livraison (commandes, tarification dynamique, suivi temps réel), pipelines CI/CD et infrastructure cloud conteneurisée. Mentorat de juniors, équipe Scrum de 5.</p>
                     </div>
                 </article>
 
@@ -1973,14 +2004,14 @@ section[id] {
                         <img src="edf.png" alt="EDF" loading="lazy" onerror="this.remove()">
                     </div>
                     <div class="timeline-card">
-                        <h3 class="timeline-company">EDF <span style="font-weight:400;font-size:0.85rem;color:var(--color-text-light)">(Direction Technique)</span></h3>
-                        <span class="timeline-role">Développeur Fullstack</span>
+                        <h3 class="timeline-company">EDF <span style="font-weight:400;font-size:0.85rem;color:var(--color-text-light)" data-i18n="sx.edf">(Direction Technique)</span></h3>
+                        <span class="timeline-role" data-i18n="role.fullstack">Développeur Fullstack</span>
                         <div class="timeline-meta">
-                            <span><i class="fas fa-calendar-alt"></i> Février 2022 – Avril 2023</span>
+                            <span data-i18n="dt.edf"><i class="fas fa-calendar-alt"></i> Février 2022 – Avril 2023</span>
                             <span><i class="fas fa-map-marker-alt"></i> Paris</span>
-                            <span><i class="fas fa-file-signature"></i> CDI</span>
+                            <span data-i18n="ct.cdi"><i class="fas fa-file-signature"></i> CDI</span>
                         </div>
-                        <p class="timeline-context">Centralisation des données des installations nucléaires : API multi-modules, interfaces de visualisation, migrations de données, déploiement cloud — en environnement régulé, avec les équipes métier.</p>
+                        <p class="timeline-context" data-i18n="tl.edf">Centralisation des données des installations nucléaires : API multi-modules, interfaces de visualisation, migrations de données, déploiement cloud — en environnement régulé, avec les équipes métier.</p>
                     </div>
                 </article>
 
@@ -1991,13 +2022,13 @@ section[id] {
                     </div>
                     <div class="timeline-card">
                         <h3 class="timeline-company">Groupe Crédit Agricole</h3>
-                        <span class="timeline-role">Développeur Fullstack</span>
+                        <span class="timeline-role" data-i18n="role.fullstack">Développeur Fullstack</span>
                         <div class="timeline-meta">
-                            <span><i class="fas fa-calendar-alt"></i> Janvier 2020 – Décembre 2021</span>
+                            <span data-i18n="dt.ca"><i class="fas fa-calendar-alt"></i> Janvier 2020 – Décembre 2021</span>
                             <span><i class="fas fa-map-marker-alt"></i> Paris</span>
-                            <span><i class="fas fa-file-signature"></i> CDI</span>
+                            <span data-i18n="ct.cdi"><i class="fas fa-file-signature"></i> CDI</span>
                         </div>
-                        <p class="timeline-context">Applications internes pour les équipes de marchés d'investissement, intégrées au SI existant (connecteurs REST, messaging asynchrone, synchro front/back-office). CI/CD, conteneurisation, sécurité aux standards bancaires. Scrum, équipe de 8.</p>
+                        <p class="timeline-context" data-i18n="tl.ca">Applications internes pour les équipes de marchés d'investissement, intégrées au SI existant (connecteurs REST, messaging asynchrone, synchro front/back-office). CI/CD, conteneurisation, sécurité aux standards bancaires. Scrum, équipe de 8.</p>
                     </div>
                 </article>
             </div>
@@ -2009,7 +2040,7 @@ section[id] {
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title">Services</h2>
-                <p class="section-subtitle">Je me concentre sur trois compétences complémentaires — de la conception applicative à l'exploitation en production.</p>
+                <p class="section-subtitle" data-i18n="services.subtitle">Je me concentre sur trois compétences complémentaires — de la conception applicative à l'exploitation en production.</p>
             </div>
 
             <div class="services-grid">
@@ -2020,8 +2051,8 @@ section[id] {
                         <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=500&fit=crop&auto=format" alt="Écran affichant du code — illustration développement full-stack" loading="lazy" width="800" height="500">
                     </div>
                     <div class="service-body">
-                        <h3 class="service-title">Développement full-stack</h3>
-                        <p class="service-description">Je conçois et développe vos applications web de bout en bout, du frontend à l'API et à la base de données.</p>
+                        <h3 class="service-title" data-i18n="svc1.title">Développement full-stack</h3>
+                        <p class="service-description" data-i18n="svc1.desc">Je conçois et développe vos applications web de bout en bout, du frontend à l'API et à la base de données.</p>
                     </div>
                 </article>
 
@@ -2031,7 +2062,7 @@ section[id] {
                     </div>
                     <div class="service-body">
                         <h3 class="service-title">DevOps</h3>
-                        <p class="service-description">J'automatise vos livraisons et fiabilise vos déploiements grâce à des pipelines CI/CD et à la conteneurisation.</p>
+                        <p class="service-description" data-i18n="svc2.desc">J'automatise vos livraisons et fiabilise vos déploiements grâce à des pipelines CI/CD et à la conteneurisation.</p>
                     </div>
                 </article>
 
@@ -2040,8 +2071,8 @@ section[id] {
                         <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop&auto=format" alt="Baies de serveurs — illustration infrastructure cloud" loading="lazy" width="800" height="500">
                     </div>
                     <div class="service-body">
-                        <h3 class="service-title">Infrastructure cloud</h3>
-                        <p class="service-description">Je déploie et opère vos applications sur le cloud, avec une infrastructure reproductible et scalable.</p>
+                        <h3 class="service-title" data-i18n="svc3.title">Infrastructure cloud</h3>
+                        <p class="service-description" data-i18n="svc3.desc">Je déploie et opère vos applications sur le cloud, avec une infrastructure reproductible et scalable.</p>
                     </div>
                 </article>
             </div>
@@ -2052,8 +2083,8 @@ section[id] {
     <section class="methode" id="methode">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">Ma façon de travailler</h2>
-                <p class="section-subtitle">De l'idée à la production, chaque mission suit un déroulé clair — transparent, itératif et engagé.</p>
+                <h2 class="section-title" data-i18n="methode.title">Ma façon de travailler</h2>
+                <p class="section-subtitle" data-i18n="methode.subtitle">De l'idée à la production, chaque mission suit un déroulé clair — transparent, itératif et engagé.</p>
             </div>
 
             <div class="methode-steps">
@@ -2062,8 +2093,8 @@ section[id] {
                         <i class="fas fa-comments" aria-hidden="true"></i>
                         <span class="methode-num">1</span>
                     </div>
-                    <h3 class="methode-title">Échange &amp; cadrage</h3>
-                    <p class="methode-text">On définit ensemble le périmètre, les priorités et le budget : vous savez ce qui sera livré, et quand.</p>
+                    <h3 class="methode-title" data-i18n="m1.title">Échange &amp; cadrage</h3>
+                    <p class="methode-text" data-i18n="m1.text">On définit ensemble le périmètre, les priorités et le budget : vous savez ce qui sera livré, et quand.</p>
                 </article>
 
                 <article class="methode-step reveal">
@@ -2071,8 +2102,8 @@ section[id] {
                         <i class="fas fa-diagram-project" aria-hidden="true"></i>
                         <span class="methode-num">2</span>
                     </div>
-                    <h3 class="methode-title">Conception</h3>
-                    <p class="methode-text">Architecture et choix techniques validés avec vous avant la première ligne de code.</p>
+                    <h3 class="methode-title" data-i18n="m2.title">Conception</h3>
+                    <p class="methode-text" data-i18n="m2.text">Architecture et choix techniques validés avec vous avant la première ligne de code.</p>
                 </article>
 
                 <article class="methode-step reveal">
@@ -2080,8 +2111,8 @@ section[id] {
                         <i class="fas fa-code" aria-hidden="true"></i>
                         <span class="methode-num">3</span>
                     </div>
-                    <h3 class="methode-title">Développement itératif</h3>
-                    <p class="methode-text">Cycles courts, démos régulières : vous voyez le produit avancer et ajustez à tout moment.</p>
+                    <h3 class="methode-title" data-i18n="m3.title">Développement itératif</h3>
+                    <p class="methode-text" data-i18n="m3.text">Cycles courts, démos régulières : vous voyez le produit avancer et ajustez à tout moment.</p>
                 </article>
 
                 <article class="methode-step reveal">
@@ -2089,8 +2120,8 @@ section[id] {
                         <i class="fas fa-check-double" aria-hidden="true"></i>
                         <span class="methode-num">4</span>
                     </div>
-                    <h3 class="methode-title">Qualité &amp; tests</h3>
-                    <p class="methode-text">Tests automatisés, revues de code, validation en staging : chaque livraison est prête pour la production.</p>
+                    <h3 class="methode-title" data-i18n="m4.title">Qualité &amp; tests</h3>
+                    <p class="methode-text" data-i18n="m4.text">Tests automatisés, revues de code, validation en staging : chaque livraison est prête pour la production.</p>
                 </article>
 
                 <article class="methode-step reveal">
@@ -2098,8 +2129,8 @@ section[id] {
                         <i class="fas fa-rocket" aria-hidden="true"></i>
                         <span class="methode-num">5</span>
                     </div>
-                    <h3 class="methode-title">Déploiement &amp; suivi</h3>
-                    <p class="methode-text">Mise en production (CI/CD, cloud), monitoring, documentation — je reste disponible après livraison.</p>
+                    <h3 class="methode-title" data-i18n="m5.title">Déploiement &amp; suivi</h3>
+                    <p class="methode-text" data-i18n="m5.text">Mise en production (CI/CD, cloud), monitoring, documentation — je reste disponible après livraison.</p>
                 </article>
             </div>
         </div>
@@ -2109,8 +2140,8 @@ section[id] {
     <section class="references" id="references">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">Témoignages</h2>
-                <p class="section-subtitle">Ce qu'en disent celles et ceux avec qui j'ai travaillé — noms non publiés par respect de la vie privée.</p>
+                <h2 class="section-title" data-i18n="temo.title">Témoignages</h2>
+                <p class="section-subtitle" data-i18n="temo.subtitle">Ce qu'en disent celles et ceux avec qui j'ai travaillé — noms non publiés par respect de la vie privée.</p>
             </div>
 
             <!-- Témoignages recueillis auprès d'anciens managers/collègues et validés
@@ -2130,7 +2161,7 @@ section[id] {
                             <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                         </div>
                     </header>
-                    <p class="temoignage-text">« Immédiatement opérationnel sur nos plateformes à fort volume : du code fiable, des tests rigoureux, un vrai niveau senior. »</p>
+                    <p class="temoignage-text" data-i18n="temo.q1">« Immédiatement opérationnel sur nos plateformes à fort volume : du code fiable, des tests rigoureux, un vrai niveau senior. »</p>
                 </article>
 
                 <article class="temoignage-card reveal">
@@ -2145,7 +2176,7 @@ section[id] {
                             <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                         </div>
                     </header>
-                    <p class="temoignage-text">« Antoine a porté seul toute notre chaîne technique, du code à l'infrastructure cloud. Un interlocuteur unique, autonome et fiable — exactement ce qu'il nous fallait. »</p>
+                    <p class="temoignage-text" data-i18n="temo.q2">« Antoine a porté seul toute notre chaîne technique, du code à l'infrastructure cloud. Un interlocuteur unique, autonome et fiable — exactement ce qu'il nous fallait. »</p>
                 </article>
 
                 <article class="temoignage-card reveal">
@@ -2160,7 +2191,7 @@ section[id] {
                             <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                         </div>
                     </header>
-                    <p class="temoignage-text">« Rigoureux et professionnel dans un environnement exigeant et régulé. Collaboration fluide, documentation soignée. »</p>
+                    <p class="temoignage-text" data-i18n="temo.q3">« Rigoureux et professionnel dans un environnement exigeant et régulé. Collaboration fluide, documentation soignée. »</p>
                 </article>
 
                 <article class="temoignage-card reveal">
@@ -2175,11 +2206,11 @@ section[id] {
                             <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                         </div>
                     </header>
-                    <p class="temoignage-text">« Deux ans de collaboration sérieuse et productive sur nos applications de marchés. Toujours attentif à la sécurité et aux standards bancaires. »</p>
+                    <p class="temoignage-text" data-i18n="temo.q4">« Deux ans de collaboration sérieuse et productive sur nos applications de marchés. Toujours attentif à la sécurité et aux standards bancaires. »</p>
                 </article>
             </div>
 
-            <p class="references-note reveal">Références détaillées et mises en relation disponibles sur demande — <a href="#contact">contactez-moi</a>.</p>
+            <p class="references-note reveal" data-i18n="temo.note">Références détaillées et mises en relation disponibles sur demande — <a href="#contact">contactez-moi</a>.</p>
         </div>
     </section>
 
@@ -2187,8 +2218,8 @@ section[id] {
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">Parlons de votre projet</h2>
-                <p class="section-subtitle">Vous avez un projet en tête ? Écrivez-moi et discutons de la meilleure façon de le concrétiser.</p>
+                <h2 class="section-title" data-i18n="contact.title">Parlons de votre projet</h2>
+                <p class="section-subtitle" data-i18n="contact.subtitle">Vous avez un projet en tête ? Écrivez-moi et discutons de la meilleure façon de le concrétiser.</p>
             </div>
 
             <div class="contact-content">
@@ -2206,7 +2237,7 @@ section[id] {
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="telephone">Téléphone</label>
+                            <label for="telephone" data-i18n="form.tel">Téléphone</label>
                             <input type="tel" id="telephone" name="telephone">
                         </div>
                     </div>
@@ -2218,12 +2249,12 @@ section[id] {
 
                     <div class="form-group checkbox-group">
                         <input type="checkbox" id="rgpd" name="rgpd" required>
-                        <label for="rgpd">J'accepte que mes données personnelles soient utilisées pour me recontacter dans le cadre de ma demande. *</label>
+                        <label for="rgpd" data-i18n="form.rgpd">J'accepte que mes données personnelles soient utilisées pour me recontacter dans le cadre de ma demande. *</label>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-submit">
-                        <span class="btn-text">Envoyer le message</span>
-                        <span class="btn-loading" style="display: none;">
+                        <span class="btn-text" data-i18n="form.send">Envoyer le message</span>
+                        <span class="btn-loading" style="display: none;" data-i18n="form.sending">
                             <i class="fas fa-spinner fa-spin"></i> Envoi en cours...
                         </span>
                     </button>
@@ -2244,7 +2275,7 @@ section[id] {
                     <div class="footer-brand">
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cellipse cx='100' cy='30' rx='95' ry='25' fill='white'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23001656' font-family='Arial, sans-serif' font-size='24' font-weight='bold'%3ECONSALTIA%3C/text%3E%3C/svg%3E" alt="Logo Consaltia" class="footer-logo">
                     </div>
-                    <p class="footer-tagline">Développeur full-stack &amp; cloud en freelance. Conception, déploiement et exploitation de vos applications.</p>
+                    <p class="footer-tagline" data-i18n="footer.tagline">Développeur full-stack &amp; cloud en freelance. Conception, déploiement et exploitation de vos applications.</p>
                     <div class="footer-social">
                         <a href="https://www.linkedin.com/in/antoine-laurent-2686b5260/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://github.com/Consaltia" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -2255,10 +2286,10 @@ section[id] {
                 <div class="footer-column">
                     <h4 class="footer-title">Navigation</h4>
                     <ul class="footer-links">
-                        <li><a href="#apropos">À propos</a></li>
+                        <li><a href="#apropos" data-i18n="nav.about">À propos</a></li>
                         <li><a href="#services">Services</a></li>
-                        <li><a href="#parcours">Parcours</a></li>
-                        <li><a href="#references">Témoignages</a></li>
+                        <li><a href="#parcours" data-i18n="nav.parcours">Parcours</a></li>
+                        <li><a href="#references" data-i18n="nav.temoignages">Témoignages</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -2276,20 +2307,20 @@ section[id] {
                         </li>
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Paris, France · disponible à distance</span>
+                            <span data-i18n="footer.location">Paris, France · disponible à distance</span>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 Consaltia. Tous droits réservés.</p>
+                <p data-i18n="footer.rights">&copy; 2026 Consaltia. Tous droits réservés.</p>
                 <div class="footer-legal">
-                    <a href="mentions-legales.html">Mentions légales</a>
+                    <a href="mentions-legales.html" data-i18n="footer.legal1">Mentions légales</a>
                     <span>|</span>
-                    <a href="#">Politique de confidentialité</a>
+                    <a href="#" data-i18n="footer.legal2">Politique de confidentialité</a>
                     <span>|</span>
-                    <a href="#">CGV</a>
+                    <a href="#" data-i18n="footer.legal3">CGV</a>
                 </div>
             </div>
         </div>
@@ -2451,6 +2482,144 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
 }
 // (reduced-motion ou pas d'IO : les chiffres restent dans leur état final, déjà présent dans le HTML)
 
+// ===================================
+// I18N — BASCULE FR / EN
+// FR = langue par défaut (contenu dans le HTML). EN = dictionnaire ci-dessous.
+// Au passage en EN, le HTML français de chaque élément [data-i18n] est mis en
+// cache puis restauré au retour en FR. Choix mémorisé (localStorage),
+// <html lang> tenu à jour.
+// ===================================
+
+const I18N_EN = {
+    'skip': 'Skip to content',
+    'nav.about': 'About',
+    'nav.parcours': 'Experience',
+    'nav.temoignages': 'Testimonials',
+    'hero.title': 'Full-stack &amp; cloud developer — I design, deploy, and operate your applications end to end.',
+    'hero.subtitle': 'Consaltia is the freelance practice of a single developer — one point of contact, from the API to the cloud.',
+    'hero.cta1': 'Get in touch',
+    'hero.cta2': 'See what I do',
+    'hero.stat1': '+ years experience',
+    'hero.stat2': ' sectors',
+    'hero.stat3': 'Full-chain delivery (API → cloud)',
+    'about.title': 'About',
+    'about.subtitle': 'The developer behind Consaltia.',
+    'about.role': 'Full-stack &amp; cloud developer · Freelance',
+    'about.badge1': '6+ years experience',
+    'about.p1': 'Full-stack &amp; cloud developer, freelancing.',
+    'about.p2': 'After 6 years designing and deploying web applications as a developer — in banking, energy, logistics, engineering and travel — I am now available for freelance work under the Consaltia brand.',
+    'about.p3': 'Over those years I covered the whole chain: API and microservice design, backend and frontend development, database modelling, CI/CD pipelines, containerisation and cloud deployment on AWS and Azure. I worked in Agile teams, led code reviews, mentored junior developers and shipped to production in demanding, regulated environments.',
+    'about.p4': 'Today, I put that experience directly to work on your projects — one point of contact, end to end.',
+    'about.stack': 'Tech stack',
+    'parcours.title': 'Experience',
+    'parcours.subtitle': 'Six years of employed experience — five companies, five sectors.',
+    'role.fullstack': 'Full-Stack Developer',
+    'ct.cdi': '<i class="fas fa-file-signature"></i> Permanent',
+    'ct.cdd': '<i class="fas fa-file-signature"></i> Fixed-term',
+    'dt.amadeus': '<i class="fas fa-calendar-alt"></i> January 2026 – June 2026',
+    'dt.gon': '<i class="fas fa-calendar-alt"></i> November 2024 – November 2025',
+    'dt.stuart': '<i class="fas fa-calendar-alt"></i> May 2023 – September 2024',
+    'dt.edf': '<i class="fas fa-calendar-alt"></i> February 2022 – April 2023',
+    'dt.ca': '<i class="fas fa-calendar-alt"></i> January 2020 – December 2021',
+    'sx.gon': '(sustainable engineering)',
+    'sx.edf': '(Technical Division)',
+    'tl.amadeus': 'Very high-volume travel distribution platforms: backend APIs, frontend components, high performance and quality standards (testing, code reviews). International environment, English daily.',
+    'tl.gon': 'End-to-end design and delivery of internal tools (project management, data migration, chatbot) with full ownership of the chain: APIs, frontend, database, CI/CD, containerisation and cloud (IaC, monitoring).',
+    'tl.stuart': 'Core API of the delivery platform (orders, dynamic pricing, real-time tracking), CI/CD pipelines and containerised cloud infrastructure. Mentored juniors, Scrum team of 5.',
+    'tl.edf': 'Centralising nuclear-facility data: multi-module APIs, data-visualisation interfaces, data migrations, cloud deployment — in a regulated environment, alongside business teams.',
+    'tl.ca': 'Internal applications for investment-market teams, integrated with the existing IS (REST connectors, async messaging, front/back-office sync). CI/CD, containerisation, banking-grade security. Scrum, team of 8.',
+    'services.subtitle': 'I focus on three complementary skills — from application design to production operations.',
+    'svc1.title': 'Full-stack development',
+    'svc1.desc': 'I design and build your web applications end to end, from the frontend to the API and the database.',
+    'svc2.desc': 'I automate your releases and make deployments reliable with CI/CD pipelines and containerisation.',
+    'svc3.title': 'Cloud infrastructure',
+    'svc3.desc': 'I deploy and operate your applications in the cloud, with reproducible, scalable infrastructure.',
+    'methode.title': 'How I work',
+    'methode.subtitle': 'From idea to production, every project follows a clear path — transparent, iterative and committed.',
+    'm1.title': 'Scoping',
+    'm1.text': 'We define the scope, priorities and budget together: you know what will be delivered, and when.',
+    'm2.title': 'Design',
+    'm2.text': 'Architecture and technical choices validated with you before the first line of code.',
+    'm3.title': 'Iterative development',
+    'm3.text': 'Short cycles, regular demos: you watch the product progress and adjust at any time.',
+    'm4.title': 'Quality &amp; testing',
+    'm4.text': 'Automated tests, code reviews, staging validation: every delivery is production-ready.',
+    'm5.title': 'Deployment &amp; follow-up',
+    'm5.text': 'Production rollout (CI/CD, cloud), monitoring, documentation — I stay available after delivery.',
+    'temo.title': 'Testimonials',
+    'temo.subtitle': "What the people I've worked with say — names withheld for privacy.",
+    'temo.q1': '“Immediately effective on our high-volume platforms: reliable code, rigorous testing, genuinely senior level.”',
+    'temo.q2': '“Antoine single-handedly carried our whole technical chain, from code to cloud infrastructure. A single, autonomous, reliable point of contact — exactly what we needed.”',
+    'temo.q3': '“Rigorous and professional in a demanding, regulated environment. Smooth collaboration, well-kept documentation.”',
+    'temo.q4': '“Two years of serious, productive collaboration on our markets applications. Always mindful of security and banking standards.”',
+    'temo.note': 'Detailed references and introductions available on request — <a href="#contact">contact me</a>.',
+    'contact.title': "Let's talk about your project",
+    'contact.subtitle': "Have a project in mind? Write to me and let's discuss the best way to make it happen.",
+    'form.tel': 'Phone',
+    'form.rgpd': 'I agree that my personal data may be used to contact me back regarding my request. *',
+    'form.send': 'Send the message',
+    'form.sending': '<i class="fas fa-spinner fa-spin"></i> Sending...',
+    'footer.tagline': 'Freelance full-stack &amp; cloud developer. Designing, deploying and operating your applications.',
+    'footer.location': 'Paris, France · available remotely',
+    'footer.rights': '&copy; 2026 Consaltia. All rights reserved.',
+    'footer.legal1': 'Legal notice',
+    'footer.legal2': 'Privacy policy',
+    'footer.legal3': 'Terms of sale'
+};
+
+// Messages du formulaire (utilisés par le handler EmailJS plus bas)
+const FORM_MSG = {
+    fr: {
+        required: 'Veuillez remplir tous les champs obligatoires.',
+        rgpd: 'Veuillez accepter la politique de confidentialité.',
+        email: 'Veuillez entrer une adresse email valide.',
+        success: '✓ Merci pour votre message ! Je vous répondrai dans les plus brefs délais.',
+        error: "Une erreur est survenue lors de l'envoi. Veuillez réessayer ou me contacter directement."
+    },
+    en: {
+        required: 'Please fill in all required fields.',
+        rgpd: 'Please accept the privacy policy.',
+        email: 'Please enter a valid email address.',
+        success: '✓ Thank you for your message! I will get back to you shortly.',
+        error: 'Something went wrong while sending. Please try again or contact me directly.'
+    }
+};
+
+function getLang() {
+    return document.documentElement.lang === 'en' ? 'en' : 'fr';
+}
+
+const langToggle = document.getElementById('langToggle');
+const i18nFrCache = new Map();
+
+function applyLang(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (lang === 'en') {
+            if (!i18nFrCache.has(key)) i18nFrCache.set(key, el.innerHTML);
+            if (Object.prototype.hasOwnProperty.call(I18N_EN, key)) el.innerHTML = I18N_EN[key];
+        } else if (i18nFrCache.has(key)) {
+            el.innerHTML = i18nFrCache.get(key);
+        }
+    });
+    document.documentElement.lang = lang;
+    if (langToggle) {
+        langToggle.textContent = lang === 'fr' ? 'EN' : 'FR';
+        langToggle.setAttribute('aria-label', lang === 'fr' ? 'Switch to English' : 'Passer en français');
+    }
+    try { localStorage.setItem('consaltia-lang', lang); } catch (e) { /* stockage indisponible : non bloquant */ }
+}
+
+if (langToggle) {
+    langToggle.addEventListener('click', () => {
+        applyLang(getLang() === 'fr' ? 'en' : 'fr');
+    });
+
+    let savedLang = 'fr';
+    try { savedLang = localStorage.getItem('consaltia-lang') || 'fr'; } catch (e) { /* idem */ }
+    if (savedLang === 'en') applyLang('en');
+}
+
 // IMPORTANT : Remplacez ces valeurs par vos vraies clés EmailJS
 const EMAILJS_CONFIG = {
     publicKey: 'GzOwIG4VnYV5L60O8',      // ← À remplacer
@@ -2473,17 +2642,17 @@ if (contactForm && formMessage) {
         
         // Validation
         if (!data.email || !data.message) {
-            showFormMessage('Veuillez remplir tous les champs obligatoires.', 'error');
+            showFormMessage(FORM_MSG[getLang()].required, 'error');
             return;
         }
         
         if (!data.rgpd) {
-            showFormMessage('Veuillez accepter la politique de confidentialité.', 'error');
+            showFormMessage(FORM_MSG[getLang()].rgpd, 'error');
             return;
         }
         
         if (!isValidEmail(data.email)) {
-            showFormMessage('Veuillez entrer une adresse email valide.', 'error');
+            showFormMessage(FORM_MSG[getLang()].email, 'error');
             return;
         }
         
@@ -2514,7 +2683,7 @@ if (contactForm && formMessage) {
             );
             
             console.log('✅ Email envoyé avec succès !', response);
-            showFormMessage('✓ Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.', 'success');
+            showFormMessage(FORM_MSG[getLang()].success, 'success');
             contactForm.reset();
             
             setTimeout(() => {
@@ -2523,7 +2692,7 @@ if (contactForm && formMessage) {
             
         } catch (error) {
             console.error('❌ Erreur EmailJS:', error);
-            showFormMessage('Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou nous contacter directement.', 'error');
+            showFormMessage(FORM_MSG[getLang()].error, 'error');
         } finally {
             btnText.style.display = 'inline';
             btnLoading.style.display = 'none';
