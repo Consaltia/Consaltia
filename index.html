@@ -1204,32 +1204,6 @@ button {
     margin-top: -0.35rem;
 }
 
-/* Badge disponibilité (pastille verte : --color-success existant) */
-.profile-dispo {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-primary);
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    background: rgba(16, 185, 129, 0.08);
-    border: 1px solid rgba(16, 185, 129, 0.35);
-    border-radius: var(--radius-full);
-    padding: 0.4rem 0.9rem;
-    align-self: flex-start;
-}
-
-.profile-dispo::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: var(--radius-full);
-    background: var(--color-success);
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-    flex-shrink: 0;
-}
-
 .profile-badges {
     display: flex;
     flex-wrap: wrap;
@@ -1882,7 +1856,6 @@ section[id] {
                     </div>
                     <div class="apropos-name">Eng. Antoine</div>
                     <p class="apropos-role">Développeur full-stack &amp; cloud · Freelance</p>
-                    <span class="profile-dispo">Disponible en freelance</span>
                     <div class="profile-badges">
                         <span class="pill">6+ ans d'expérience</span>
                         <span class="pill">Full-Stack &amp; Cloud</span>
