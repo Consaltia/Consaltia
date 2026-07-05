@@ -605,7 +605,7 @@ button {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s var(--ease-smooth);
+    transition: transform 0.6s var(--ease-smooth);
 }
 
 .service-image::after {
@@ -617,7 +617,7 @@ button {
 }
 
 .service-card:hover .service-image img {
-    transform: scale(1.06);
+    transform: scale(1.05);
 }
 
 .service-body {
@@ -956,7 +956,8 @@ button {
 
 @media (min-width: 992px) {
     .footer-content {
-        grid-template-columns: 2fr 1fr 1fr 1fr;
+        grid-template-columns: 2fr 1fr 1.2fr;
+        gap: var(--spacing-xl);
     }
 }
 
@@ -974,21 +975,23 @@ button {
     width: auto;
 }
 
-.footer-description {
-    opacity: 0.9;
-    line-height: 1.6;
+.footer-tagline {
+    opacity: 0.85;
+    line-height: 1.65;
     margin-bottom: var(--spacing-md);
+    max-width: 340px;
 }
 
 .footer-social {
     display: flex;
-    gap: var(--spacing-sm);
+    gap: 0.75rem;
 }
 
 .footer-social a {
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: var(--radius-full);
     display: flex;
     align-items: center;
@@ -1143,52 +1146,134 @@ button {
 
 @media (min-width: 992px) {
     .apropos-content {
-        grid-template-columns: 5fr 4fr;
+        grid-template-columns: minmax(300px, 360px) 1fr;
+        gap: var(--spacing-xl);
     }
 }
 
-.apropos-profile {
+/* Carte profil : photo, disponibilité, badges de mise en avant */
+.profile-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 8px 28px rgba(0, 22, 86, 0.08);
+    padding: var(--spacing-md);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: var(--spacing-sm);
+    gap: 0.75rem;
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+    .profile-card {
+        margin: 0;
+        position: sticky;
+        top: 100px;
+    }
 }
 
 .apropos-photo {
-    width: 160px;
-    height: 160px;
-    border-radius: var(--radius-full);
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-lg);
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-md);
     overflow: hidden;
-}
-
-.apropos-photo i {
-    font-size: 4rem;
-    color: var(--color-white);
-    opacity: 0.85;
+    box-shadow: var(--shadow-sm);
 }
 
 .apropos-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .apropos-name {
     font-family: var(--font-primary);
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
     color: var(--color-primary);
+    margin-top: 0.25rem;
 }
 
 .apropos-role {
     color: var(--color-text-light);
     font-size: 0.95rem;
+    margin-top: -0.35rem;
+}
+
+/* Badge disponibilité (pastille verte : --color-success existant) */
+.profile-dispo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    border-radius: var(--radius-full);
+    padding: 0.4rem 0.9rem;
+    align-self: flex-start;
+}
+
+.profile-dispo::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--color-success);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    flex-shrink: 0;
+}
+
+.profile-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+}
+
+/* Pills réutilisables (profil + stack technique) */
+.pill {
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    padding: 0.35rem 0.8rem;
+    white-space: nowrap;
+    transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.pill:hover {
+    border-color: var(--color-secondary);
+    transform: translateY(-1px);
+}
+
+/* Stack technique */
+.techstack {
+    margin-top: var(--spacing-md);
+}
+
+.techstack h3 {
+    font-family: var(--font-primary);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.techstack-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .apropos-text p {
@@ -1278,16 +1363,17 @@ button {
     gap: var(--spacing-sm);
 }
 
-.temoignage-quote {
-    color: var(--color-secondary);
-    font-size: 1.5rem;
-    opacity: 0.55;
-    line-height: 1;
+.temoignage-stars {
+    display: flex;
+    gap: 0.25rem;
+    color: #FFC107;
+    font-size: 0.95rem;
 }
 
 .temoignage-text {
     color: var(--color-text);
-    line-height: 1.7;
+    line-height: 1.75;
+    font-size: 1.02rem;
     flex: 1;
 }
 
@@ -1344,8 +1430,8 @@ button {
    =================================== */
 .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(22px);
+    transition: opacity 0.65s var(--ease-smooth, ease), transform 0.65s var(--ease-smooth, ease);
     will-change: opacity, transform;
 }
 
@@ -1830,12 +1916,19 @@ section[id] {
             </div>
 
             <div class="apropos-content">
-                <div class="apropos-profile reveal">
+                <div class="profile-card reveal">
                     <div class="apropos-photo">
-                        <img src="personalpic.png" alt="Portrait de Eng. Antoine" loading="lazy" decoding="async" width="160" height="160">
+                        <img src="personalpic.png" alt="Portrait de Eng. Antoine" loading="lazy" decoding="async">
                     </div>
                     <div class="apropos-name">Eng. Antoine</div>
                     <p class="apropos-role">Développeur full-stack &amp; cloud · Freelance</p>
+                    <span class="profile-dispo">Disponible en freelance</span>
+                    <div class="profile-badges">
+                        <span class="pill">6+ ans d'expérience</span>
+                        <span class="pill">Full-Stack &amp; Cloud</span>
+                        <span class="pill">AWS &amp; Azure</span>
+                        <span class="pill">React / Spring Boot</span>
+                    </div>
                 </div>
 
                 <div class="apropos-text reveal">
@@ -1856,6 +1949,26 @@ section[id] {
                     <li><i class="fas fa-check"></i><span><strong>DevOps &amp; Cloud:</strong> Docker, Kubernetes, Terraform, CI/CD (GitLab, GitHub Actions), AWS &amp; Azure, monitoring (Prometheus/Grafana)</span></li>
                     <li><i class="fas fa-check"></i><span><strong>Quality-first:</strong> automated testing, code reviews, production-grade delivery</span></li>
                 </ul>
+            </div>
+
+            <div class="techstack reveal">
+                <h3>Stack technique</h3>
+                <div class="techstack-badges">
+                    <span class="pill">Java / Spring Boot</span>
+                    <span class="pill">Python</span>
+                    <span class="pill">Node.js</span>
+                    <span class="pill">React / Next.js</span>
+                    <span class="pill">Angular</span>
+                    <span class="pill">REST / GraphQL</span>
+                    <span class="pill">Kafka / RabbitMQ</span>
+                    <span class="pill">Docker</span>
+                    <span class="pill">Kubernetes</span>
+                    <span class="pill">Terraform</span>
+                    <span class="pill">GitLab CI / GitHub Actions</span>
+                    <span class="pill">AWS</span>
+                    <span class="pill">Azure</span>
+                    <span class="pill">Prometheus / Grafana</span>
+                </div>
             </div>
         </div>
     </section>
@@ -2074,7 +2187,9 @@ section[id] {
                  ce ne sont pas des avis publiés sur une plateforme tierce. -->
             <div class="temoignages-grid">
                 <article class="temoignage-card reveal">
-                    <div class="temoignage-quote"><i class="fas fa-quote-left" aria-hidden="true"></i></div>
+                    <div class="temoignage-stars" role="img" aria-label="Note : 5 sur 5">
+                        <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
                     <p class="temoignage-text">« Immédiatement opérationnel sur nos plateformes à fort volume : du code fiable, des tests rigoureux, un vrai niveau senior. »</p>
                     <footer class="temoignage-footer">
                         <div class="temoignage-logo">
@@ -2085,7 +2200,9 @@ section[id] {
                 </article>
 
                 <article class="temoignage-card reveal">
-                    <div class="temoignage-quote"><i class="fas fa-quote-left" aria-hidden="true"></i></div>
+                    <div class="temoignage-stars" role="img" aria-label="Note : 5 sur 5">
+                        <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
                     <p class="temoignage-text">« Antoine a porté seul toute notre chaîne technique, du code à l'infrastructure cloud. Un interlocuteur unique, autonome et fiable — exactement ce qu'il nous fallait. »</p>
                     <footer class="temoignage-footer">
                         <div class="temoignage-logo">
@@ -2096,7 +2213,9 @@ section[id] {
                 </article>
 
                 <article class="temoignage-card reveal">
-                    <div class="temoignage-quote"><i class="fas fa-quote-left" aria-hidden="true"></i></div>
+                    <div class="temoignage-stars" role="img" aria-label="Note : 5 sur 5">
+                        <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
                     <p class="temoignage-text">« Rigoureux et professionnel dans un environnement exigeant et régulé. Collaboration fluide, documentation soignée. »</p>
                     <footer class="temoignage-footer">
                         <div class="temoignage-logo">
@@ -2107,7 +2226,9 @@ section[id] {
                 </article>
 
                 <article class="temoignage-card reveal">
-                    <div class="temoignage-quote"><i class="fas fa-quote-left" aria-hidden="true"></i></div>
+                    <div class="temoignage-stars" role="img" aria-label="Note : 5 sur 5">
+                        <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
                     <p class="temoignage-text">« Deux ans de collaboration sérieuse et productive sur nos applications de marchés. Toujours attentif à la sécurité et aux standards bancaires. »</p>
                     <footer class="temoignage-footer">
                         <div class="temoignage-logo">
@@ -2183,14 +2304,16 @@ section[id] {
                     <div class="footer-brand">
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cellipse cx='100' cy='30' rx='95' ry='25' fill='white'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23001656' font-family='Arial, sans-serif' font-size='24' font-weight='bold'%3ECONSALTIA%3C/text%3E%3C/svg%3E" alt="Logo Consaltia" class="footer-logo">
                     </div>
-                    <p class="footer-description">Consaltia — développeur full-stack &amp; cloud en freelance. Je conçois, déploie et opère vos applications de bout en bout.</p>
+                    <p class="footer-tagline">Développeur full-stack &amp; cloud en freelance — de l'API au cloud, un seul interlocuteur.</p>
                     <div class="footer-social">
-                        <a href="https://www.linkedin.com/in/antoine-laurent-2686b5260/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/antoine-laurent-2686b5260/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Consaltia" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:consaltia@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
 
                 <div class="footer-column">
-                    <h4 class="footer-title">Liens rapides</h4>
+                    <h4 class="footer-title">Navigation</h4>
                     <ul class="footer-links">
                         <li><a href="#apropos">À propos</a></li>
                         <li><a href="#services">Services</a></li>
@@ -2201,20 +2324,11 @@ section[id] {
                 </div>
 
                 <div class="footer-column">
-                    <h4 class="footer-title">Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="#services">Développement full-stack</a></li>
-                        <li><a href="#services">DevOps (CI/CD, conteneurisation)</a></li>
-                        <li><a href="#services">Infrastructure cloud</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
                     <h4 class="footer-title">Contact</h4>
                     <ul class="footer-contact">
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <a href="mailto:consaltia@gmail.com">Consaltia@gmail.com</a>
+                            <a href="mailto:consaltia@gmail.com">consaltia@gmail.com</a>
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
