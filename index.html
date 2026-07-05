@@ -27,7 +27,7 @@
     <!-- Polices Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -71,8 +71,8 @@
     --color-success: #10B981;
     --color-warning: #F59E0B;
     --color-error: #EF4444;
-    --font-primary: 'Montserrat', sans-serif;
-    --font-secondary: 'Open Sans', sans-serif;
+    --font-primary: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-secondary: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
@@ -156,8 +156,9 @@ button {
 
 .section-title {
     font-family: var(--font-primary);
-    font-size: 2rem;
+    font-size: var(--fs-h2, clamp(1.65rem, 1.25rem + 1.6vw, 2.5rem));
     font-weight: 700;
+    letter-spacing: -0.02em;
     color: var(--color-primary);
     margin-bottom: var(--spacing-sm);
     position: relative;
@@ -182,11 +183,6 @@ button {
     margin-top: var(--spacing-md);
 }
 
-@media (min-width: 768px) {
-    .section-title {
-        font-size: 2.5rem;
-    }
-}
 
 .btn {
     display: inline-flex;
@@ -408,67 +404,58 @@ button {
 /* HERO */
 .hero {
     margin-top: 80px;
-    background: linear-gradient(135deg, rgba(0, 22, 86, 0.5) 0%, rgba(67, 90, 135, 0.5) 100%), url('background.png');
+    /* Overlay renforcé (mêmes bleus de la palette) pour garantir le contraste AA
+       du texte blanc quel que soit le fond. background-attachment:fixed supprimé
+       (jank de scroll + repaints). */
+    background: linear-gradient(135deg, rgba(0, 22, 86, 0.72) 0%, rgba(67, 90, 135, 0.62) 100%), url('background.png');
     background-size: cover;
     background-position: center;
-    background-attachment: scroll;  /* ← CHANGÉ : scroll au lieu de fixed */
     color: var(--color-white);
     padding: var(--spacing-xl) 0;
     position: relative;
     overflow: hidden;
-    min-height: 600px;
+    min-height: min(88vh, 780px);
     display: flex;
     align-items: center;
 }
 
-/* Parallax effect sur desktop uniquement (fixed cause des bugs sur mobile) */
-@media (min-width: 992px) {
-    .hero {
-        background-attachment: fixed;  /* ← AJOUTÉ : fixed seulement sur desktop */
-    }
-}
-
+/* Grille technique statique (repère visuel discret, aucun coût d'animation) */
 .hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-    opacity: 0.3;
-    animation: pulseGrid 20s ease-in-out infinite;
+    opacity: 0.35;
 }
 
-@keyframes pulseGrid {
-    0%, 100% {
-        opacity: 0.3;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.5;
-        transform: scale(1.05);
-    }
-}
-
+/* Unique animation d'ambiance : voile de dégradé bleu qui dérive très lentement.
+   Transform/opacity uniquement (compositor-friendly), coupé en reduced-motion. */
 .hero::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    animation: rotate 30s linear infinite;
+    top: -20%;
+    left: -30%;
+    width: 160%;
+    height: 140%;
+    background: linear-gradient(115deg,
+        transparent 30%,
+        rgba(67, 90, 135, 0.28) 46%,
+        rgba(255, 255, 255, 0.07) 52%,
+        rgba(0, 22, 86, 0.25) 60%,
+        transparent 75%);
+    animation: heroSheen 16s var(--ease-smooth, ease-in-out) infinite alternate;
     pointer-events: none;
+    will-change: transform;
 }
 
-@keyframes rotate {
+@keyframes heroSheen {
     0% {
-        transform: rotate(0deg);
+        transform: translate3d(-6%, 0, 0);
+        opacity: 0.7;
     }
     100% {
-        transform: rotate(360deg);
+        transform: translate3d(6%, 2%, 0);
+        opacity: 1;
     }
 }
 
@@ -483,23 +470,32 @@ button {
     text-align: center;
 }
 
+/* Entrée du hero : cascade fade + translation (titre → sous-titre → CTA → stats) */
+.hero-title,
+.hero-subtitle,
+.hero-cta,
+.hero-stats {
+    animation: fadeInUp 0.6s var(--ease-smooth, ease-out) both;
+}
+
 .hero-title {
     font-family: var(--font-primary);
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: var(--fs-h1, clamp(2rem, 1.1rem + 3.4vw, 3.25rem));
+    font-weight: 800;
+    letter-spacing: -0.025em;
     margin-bottom: var(--spacing-md);
-    line-height: 1.2;
-    animation: fadeIn 1s ease-out, float 6s ease-in-out infinite;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    line-height: 1.15;
+    text-wrap: balance;
+    text-shadow: 0 2px 10px rgba(0, 22, 86, 0.35);
 }
 
 .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
     margin-bottom: var(--spacing-lg);
     opacity: 0.95;
-    line-height: 1.6;
-    animation: fadeIn 1.2s ease-out;
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    line-height: 1.65;
+    animation-delay: 120ms;
+    text-shadow: 0 1px 5px rgba(0, 22, 86, 0.35);
 }
 
 .hero-cta {
@@ -507,31 +503,34 @@ button {
     flex-direction: column;
     gap: var(--spacing-sm);
     align-items: center;
-    animation: fadeIn 1.5s ease-out;
+    animation-delay: 240ms;
 }
 
-.hero-cta .btn {
-    transition: all 0.3s ease;
+.hero-stats {
+    animation-delay: 360ms;
 }
 
 .hero-cta .btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 22, 86, 0.35);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (min-width: 768px) {
     .hero {
         padding: 6rem 0;
     }
-    
-    .hero-title {
-        font-size: 3rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.25rem;
-    }
-    
+
     .hero-cta {
         flex-direction: row;
         justify-content: center;
@@ -542,104 +541,6 @@ button {
 .realisations {
     padding: var(--spacing-xl) 0;
     background: var(--color-white);
-}
-
-.realisations-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
-}
-
-@media (min-width: 768px) {
-    .realisations-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
-    .realisations-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-.realisation-card {
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: all var(--transition-normal);
-    cursor: pointer;
-}
-
-.realisation-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
-}
-
-.realisation-image {
-    position: relative;
-    height: 240px;
-    overflow: hidden;
-}
-
-.realisation-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-slow);
-}
-
-.realisation-card:hover .realisation-image img {
-    transform: scale(1.1);
-}
-
-.realisation-overlay {
-    position: absolute;
-    top: var(--spacing-sm);
-    left: var(--spacing-sm);
-}
-
-.realisation-category {
-    background: var(--color-primary);
-    color: var(--color-white);
-    padding: 0.375rem 0.875rem;
-    border-radius: var(--radius-md);
-    font-size: 0.875rem;
-    font-weight: 600;
-}
-
-.realisation-content {
-    padding: var(--spacing-md);
-}
-
-.realisation-title {
-    font-family: var(--font-primary);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-sm);
-}
-
-.realisation-description {
-    color: var(--color-text-light);
-    font-size: 0.95rem;
-    margin-bottom: var(--spacing-md);
-    line-height: 1.6;
-}
-
-.realisation-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.tag {
-    background: var(--color-background);
-    color: var(--color-secondary);
-    padding: 0.25rem 0.75rem;
-    border-radius: var(--radius-sm);
-    font-size: 0.813rem;
-    font-weight: 500;
 }
 
 /* SERVICES */
@@ -812,203 +713,6 @@ button {
 .valeur-description {
     color: var(--color-text-light);
     line-height: 1.6;
-}
-
-/* AVIS */
-.avis {
-    padding: var(--spacing-xl) 0;
-    background: var(--color-white);
-}
-
-.avis-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
-}
-
-@media (min-width: 768px) {
-    .avis-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
-    .avis-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-.avis-card {
-    background: var(--color-white);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    border: 2px solid var(--color-border);
-    transition: all var(--transition-normal);
-    position: relative;
-}
-
-.avis-card:hover {
-    border-color: var(--color-primary);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-4px);
-}
-
-.avis-google-logo {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 24px;
-    height: 24px;
-    opacity: 0.8;
-    transition: opacity var(--transition-normal);
-}
-
-.avis-card:hover .avis-google-logo {
-    opacity: 1;
-}
-
-.avis-header {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-sm);
-}
-
-.avis-avatar {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    border-radius: var(--radius-full);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.avis-avatar i {
-    font-size: 1.5rem;
-    color: var(--color-white);
-}
-
-.avis-info {
-    flex: 1;
-}
-
-.avis-name {
-    font-family: var(--font-primary);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: 0.25rem;
-}
-
-.avis-company {
-    font-size: 0.875rem;
-    color: var(--color-text-light);
-}
-
-.avis-rating {
-    display: flex;
-    gap: 0.25rem;
-    margin-bottom: var(--spacing-sm);
-}
-
-.avis-rating i {
-    color: #FFC107;
-    font-size: 1rem;
-}
-
-.avis-text {
-    color: var(--color-text);
-    line-height: 1.6;
-    margin-bottom: var(--spacing-sm);
-    font-size: 0.95rem;
-}
-
-.avis-date {
-    font-size: 0.813rem;
-    color: var(--color-text-light);
-}
-
-.avis-cta {
-    text-align: center;
-}
-
-/* CONFIANCE - CARROUSEL */
-.confiance {
-    padding: var(--spacing-xl) 0;
-    background: var(--color-background);
-    overflow: hidden;
-}
-
-.clients-carousel-wrapper {
-    position: relative;
-    overflow: hidden;
-    padding: var(--spacing-md) 0;
-}
-
-.clients-carousel {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-    animation: scroll 40s linear infinite;
-    width: max-content;
-}
-
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-.clients-carousel:hover {
-    animation-play-state: paused;
-}
-
-.client-logo {
-    background: var(--color-white);
-    padding: 1.5rem 2rem;
-    border-radius: var(--radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 200px;
-    height: 100px;
-    transition: all var(--transition-normal);
-    box-shadow: var(--shadow-sm);
-    flex-shrink: 0;
-}
-
-.client-logo:hover {
-    transform: scale(1.05) translateY(-4px);
-    box-shadow: var(--shadow-md);
-}
-
-.client-logo img {
-    max-width: 180px;
-    max-height: 70px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    filter: grayscale(100%) opacity(0.7);
-    transition: all var(--transition-normal);
-}
-
-.client-logo:hover img {
-    filter: grayscale(0%) opacity(1);
-}
-
-.client-logo span {
-    font-family: var(--font-primary);
-    font-weight: 600;
-    color: var(--color-primary);
-    font-size: 1.1rem;
-    white-space: nowrap;
 }
 
 /* CONTACT */
@@ -1321,35 +1025,6 @@ button {
     opacity: 0.5;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: -1000px 0;
-    }
-    100% {
-        background-position: 1000px 0;
-    }
-}
-
 /* ===================================
    HERO STATS STRIP
    =================================== */
@@ -1360,7 +1035,6 @@ button {
     align-items: center;
     gap: 0.75rem 1.5rem;
     margin-top: var(--spacing-lg);
-    animation: fadeIn 1.8s ease-out;
 }
 
 .hero-stat {
@@ -1557,28 +1231,6 @@ button {
     margin: 0 auto var(--spacing-md);
 }
 
-/* PORTFOLIO PLACEHOLDER STATES */
-.realisation-image.is-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, rgba(0, 22, 86, 0.06), rgba(67, 90, 135, 0.06));
-    color: var(--color-secondary);
-}
-
-.realisation-image.is-placeholder i {
-    font-size: 3rem;
-    opacity: 0.5;
-}
-
-.realisation-todo {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--color-warning);
-    font-style: italic;
-    margin-top: 0.5rem;
-}
-
 /* ===================================
    SCROLL REVEAL (progressive enhancement)
    =================================== */
@@ -1647,14 +1299,6 @@ button {
     .footer-legal a {
         min-height: auto;
         padding: 0.35rem 0;
-    }
-
-    .section-title {
-        font-size: 1.6rem;
-    }
-
-    .hero-title {
-        font-size: 1.75rem;
     }
 }
 
@@ -1847,9 +1491,194 @@ button {
         padding: var(--spacing-sm);
     }
 }
+
+/* ===================================
+   DESIGN SYSTEM — COUCHE DE RAFFINEMENT
+   (audit UI : tokens, focus, élévation, micro-interactions)
+   Palette bleu/blanc existante inchangée : toutes les ombres et
+   tous les dégradés dérivent de --color-primary / --color-secondary.
+   =================================== */
+
+:root {
+    /* Échelle typographique fluide */
+    --fs-h1: clamp(2rem, 1.1rem + 3.4vw, 3.25rem);
+    --fs-h2: clamp(1.65rem, 1.25rem + 1.6vw, 2.5rem);
+    --fs-h3: clamp(1.15rem, 1.05rem + 0.4vw, 1.3rem);
+    --fs-body: 1rem;
+    --fs-sm: 0.9rem;
+    /* Courbes de mouvement */
+    --ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --ease-press: cubic-bezier(0.34, 1.3, 0.64, 1);
+    /* Focus ring dérivé du bleu secondaire */
+    --focus-ring: 3px solid rgba(67, 90, 135, 0.65);
+}
+
+body {
+    line-height: 1.65;
+    font-size: var(--fs-body);
+}
+
+/* --- Accessibilité : focus clavier visible partout --- */
+:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+.btn:focus-visible,
+.nav-link:focus-visible {
+    outline-offset: 2px;
+}
+
+/* Lien d'évitement */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 2000;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.75rem 1.25rem;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    font-family: var(--font-primary);
+    font-weight: 600;
+    transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Ancres : ne pas passer sous la navbar fixe */
+section[id] {
+    scroll-margin-top: 96px;
+}
+
+/* --- Tap targets --- */
+.nav-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Boutons : press feedback + transitions courtes --- */
+.btn {
+    transition: transform 200ms var(--ease-smooth),
+                box-shadow 200ms var(--ease-smooth),
+                background-color 200ms var(--ease-smooth),
+                color 200ms var(--ease-smooth),
+                border-color 200ms var(--ease-smooth);
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.97);
+    transition-duration: 90ms;
+}
+
+/* --- Système d'élévation unifié (bordure au repos → ombre au survol) --- */
+.service-card,
+.valeur-card,
+.timeline-card,
+.references-card,
+.contact-form {
+    border: 1px solid var(--color-border);
+    box-shadow: 0 1px 2px rgba(0, 22, 86, 0.04);
+    transition: transform 250ms var(--ease-smooth),
+                box-shadow 250ms var(--ease-smooth),
+                border-color 250ms var(--ease-smooth);
+}
+
+.service-card:hover,
+.valeur-card:hover,
+.timeline-card:hover,
+.references-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 22, 86, 0.10),
+                0 2px 8px rgba(0, 22, 86, 0.06);
+    border-color: rgba(67, 90, 135, 0.45);
+}
+
+/* Cartes services : contenu aligné quelle que soit la hauteur */
+.service-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card .service-features {
+    margin-top: auto;
+}
+
+/* Icône de valeur : scale subtil (remplace la rotation 360° gadget) */
+.valeur-card:hover .valeur-icon {
+    transform: scale(1.08);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.06);
+}
+
+/* --- Stats hero : chiffres tabulaires (pas de layout shift au count-up) --- */
+.hero-stat {
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-num {
+    display: inline-block;
+    min-width: 1ch;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+/* --- Liens footer : soulignement animé --- */
+.footer-links a,
+.footer-legal a {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 250ms var(--ease-smooth), opacity var(--transition-fast);
+}
+
+.footer-links a:hover,
+.footer-legal a:hover {
+    background-size: 100% 1px;
+    padding-left: 0;
+}
+
+/* --- Timeline : confort de lecture --- */
+.timeline-card {
+    max-width: 68ch;
+}
+
+/* --- Grand écran : respiration supplémentaire --- */
+@media (min-width: 1400px) {
+    .section-header {
+        margin-bottom: calc(var(--spacing-xl) + 1rem);
+    }
+}
+
+/* --- Reduced motion : compléments (le bloc global coupe déjà animations/transitions) --- */
+@media (prefers-reduced-motion: reduce) {
+    .hero::after {
+        animation: none !important;
+        opacity: 0.6;
+    }
+
+    .hero-title,
+    .hero-subtitle,
+    .hero-cta,
+    .hero-stats {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
+    }
+}
     </style>
 </head>
 <body>
+    <a href="#main" class="skip-link">Aller au contenu</a>
+
     <!-- Navbar fixe -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
@@ -1858,7 +1687,7 @@ button {
             </div>
             
             <!-- Bouton burger pour mobile -->
-            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1874,6 +1703,8 @@ button {
         </div>
     </nav>
 
+    <main id="main">
+
     <!-- Section Hero -->
     <section class="hero">
         <div class="container hero-container">
@@ -1885,8 +1716,8 @@ button {
                     <a href="#services" class="btn btn-secondary">See what I do</a>
                 </div>
                 <div class="hero-stats">
-                    <span class="hero-stat">6+ years experience</span>
-                    <span class="hero-stat">5 sectors</span>
+                    <span class="hero-stat"><span class="stat-num" data-count="6">6</span>+ years experience</span>
+                    <span class="hero-stat"><span class="stat-num" data-count="5">5</span> sectors</span>
                     <span class="hero-stat">Full-chain delivery (API → cloud)</span>
                 </div>
             </div>
@@ -1904,7 +1735,7 @@ button {
             <div class="apropos-content">
                 <div class="apropos-profile reveal">
                     <div class="apropos-photo">
-                        <img src="personalpic.png" alt="Portrait de Eng. Antoine">
+                        <img src="personalpic.png" alt="Portrait de Eng. Antoine" loading="lazy" decoding="async" width="160" height="160">
                     </div>
                     <div class="apropos-name">Eng. Antoine</div>
                     <p class="apropos-role">Développeur full-stack &amp; cloud · Freelance</p>
@@ -2161,7 +1992,7 @@ button {
                         <i class="fas fa-envelope"></i>
                         <div>
                             <strong>Email</strong>
-                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e0838f8e94818394a0838f8e93818c948981ce8692">consaltia@gmail.com</a></p>
+                            <p><a href="mailto:consaltia@gmail.com">consaltia@gmail.com</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -2244,6 +2075,8 @@ button {
         </div>
     </section>
 
+    </main>
+
      <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -2283,7 +2116,7 @@ button {
                     <ul class="footer-contact">
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <a href="/cdn-cgi/l/email-protection#b7d4d8d9c3d6d4c3f7d4d8d9c4d6dbc3ded699d1c5"><span class="__cf_email__" data-cfemail="20434f4e5441435460434f4e53414c5449410e4652">Consaltia@gmail.com</span></a>
+                            <a href="mailto:consaltia@gmail.com">Consaltia@gmail.com</a>
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
@@ -2312,7 +2145,7 @@ button {
 
 
     <!-- JavaScript intégré -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
 'use strict';
 
 console.log('🚀 Script Consaltia chargé !');
@@ -2330,8 +2163,10 @@ if (navToggle && navMenu) {
     navToggle.addEventListener('click', () => {
         navToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
-        // Bloquer le scroll quand le menu est ouvert
-        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        // Bloquer le scroll quand le menu est ouvert + état exposé aux lecteurs d'écran
+        const isOpen = navMenu.classList.contains('active');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+        navToggle.setAttribute('aria-expanded', String(isOpen));
     });
 
     // Fermer le menu au clic sur un lien
@@ -2340,6 +2175,7 @@ if (navToggle && navMenu) {
             navToggle.classList.remove('active');
             navMenu.classList.remove('active');
             document.body.style.overflow = '';
+            navToggle.setAttribute('aria-expanded', 'false');
         });
     });
 
@@ -2349,6 +2185,7 @@ if (navToggle && navMenu) {
             navToggle.classList.remove('active');
             navMenu.classList.remove('active');
             document.body.style.overflow = '';
+            navToggle.setAttribute('aria-expanded', 'false');
         }
     });
 }
@@ -2420,6 +2257,40 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
         revealObserver.observe(el);
     });
 }
+
+// ===================================
+// STATS COUNT-UP (hero)
+// ===================================
+
+const statNums = document.querySelectorAll('.stat-num');
+
+if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window) {
+    const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            countObserver.unobserve(entry.target);
+
+            const el = entry.target;
+            const target = parseInt(el.dataset.count, 10);
+            if (isNaN(target)) return;
+
+            const duration = 900;
+            const start = performance.now();
+
+            const tick = (now) => {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+                el.textContent = Math.round(eased * target);
+                if (progress < 1) requestAnimationFrame(tick);
+            };
+
+            requestAnimationFrame(tick);
+        });
+    }, { threshold: 0.6 });
+
+    statNums.forEach(el => countObserver.observe(el));
+}
+// (reduced-motion ou pas d'IO : les chiffres restent dans leur état final, déjà présent dans le HTML)
 
 // IMPORTANT : Remplacez ces valeurs par vos vraies clés EmailJS
 const EMAILJS_CONFIG = {
