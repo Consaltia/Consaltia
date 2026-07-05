@@ -648,82 +648,122 @@ button {
     flex-shrink: 0;
 }
 
-/* VALEURS */
-.valeurs {
+/* MÉTHODE DE TRAVAIL — frise d'étapes numérotées.
+   Mobile : frise verticale (ligne à gauche). Desktop : stepper horizontal
+   dont la ligne traverse les marqueurs. Icônes + numéros, palette inchangée. */
+.methode {
     padding: var(--spacing-xl) 0;
     background: linear-gradient(135deg, rgba(0, 22, 86, 0.03) 0%, rgba(67, 90, 135, 0.03) 100%);
 }
 
-.valeurs-grid {
+.methode-steps {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
+    max-width: 640px;
+    margin: 0 auto;
 }
 
-@media (min-width: 768px) {
-    .valeurs-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* Ligne de la frise (verticale sur mobile) */
+.methode-steps::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 27px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+    opacity: 0.25;
 }
 
-@media (min-width: 1024px) {
-    .valeurs-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
+.methode-step {
+    position: relative;
+    padding-left: 4.75rem;
 }
 
-.valeur-card {
-    background: var(--color-white);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    text-align: center;
-    transition: all var(--transition-normal);
-}
-
-.valeur-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-}
-
-.valeur-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--color-background);
+.methode-marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 56px;
+    height: 56px;
     border-radius: var(--radius-full);
+    background: var(--color-white);
+    border: 2px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto var(--spacing-md);
-    transition: all var(--transition-normal);
+    transition: transform 250ms var(--ease-smooth),
+                border-color 250ms var(--ease-smooth),
+                box-shadow 250ms var(--ease-smooth);
 }
 
-.valeur-card:hover .valeur-icon {
+.methode-marker i {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+}
+
+.methode-num {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    width: 22px;
+    height: 22px;
+    border-radius: var(--radius-full);
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    transform: rotate(360deg);
-}
-
-.valeur-icon i {
-    font-size: 2rem;
-    color: var(--color-primary);
-    transition: color var(--transition-normal);
-}
-
-.valeur-card:hover .valeur-icon i {
     color: var(--color-white);
-}
-
-.valeur-title {
     font-family: var(--font-primary);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-sm);
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.valeur-description {
+.methode-step:hover .methode-marker {
+    transform: scale(1.08);
+    border-color: rgba(67, 90, 135, 0.55);
+    box-shadow: var(--shadow-md);
+}
+
+.methode-title {
+    font-family: var(--font-primary);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0.35rem 0 0.5rem;
+}
+
+.methode-text {
     color: var(--color-text-light);
-    line-height: 1.6;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+/* Desktop : stepper horizontal, ligne traversant les marqueurs */
+@media (min-width: 992px) {
+    .methode-steps {
+        grid-template-columns: repeat(5, 1fr);
+        gap: var(--spacing-md);
+        max-width: none;
+    }
+
+    .methode-steps::before {
+        top: 27px;
+        bottom: auto;
+        left: 28px;
+        right: 28px;
+        width: auto;
+        height: 2px;
+        background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    }
+
+    .methode-step {
+        padding-left: 0;
+        padding-top: 4.5rem;
+    }
 }
 
 /* CONTACT */
@@ -1589,7 +1629,6 @@ section[id] {
 
 /* --- Système d'élévation unifié (bordure au repos → ombre au survol) --- */
 .service-card,
-.valeur-card,
 .timeline-card,
 .references-card,
 .contact-form {
@@ -1601,7 +1640,6 @@ section[id] {
 }
 
 .service-card:hover,
-.valeur-card:hover,
 .timeline-card:hover,
 .references-card:hover {
     transform: translateY(-4px);
@@ -1618,11 +1656,6 @@ section[id] {
 
 .service-card .service-features {
     margin-top: auto;
-}
-
-/* Icône de valeur : scale subtil (remplace la rotation 360° gadget) */
-.valeur-card:hover .valeur-icon {
-    transform: scale(1.08);
 }
 
 .service-card:hover .service-icon {
@@ -1929,45 +1962,58 @@ section[id] {
         </div>
     </section>
 
-    <!-- Section Nos valeurs -->
-    <section class="valeurs" id="valeurs">
+    <!-- Section Méthode de travail — frise d'étapes -->
+    <section class="methode" id="methode">
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title">Ma façon de travailler</h2>
-                <p class="section-subtitle">Les principes qui guident mon approche au quotidien.</p>
+                <p class="section-subtitle">De l'idée à la production, chaque mission suit un déroulé clair — transparent, itératif et engagé.</p>
             </div>
 
-            <div class="valeurs-grid">
-                <article class="valeur-card reveal">
-                    <div class="valeur-icon">
-                        <i class="fas fa-eye"></i>
+            <div class="methode-steps">
+                <article class="methode-step reveal">
+                    <div class="methode-marker">
+                        <i class="fas fa-comments" aria-hidden="true"></i>
+                        <span class="methode-num">1</span>
                     </div>
-                    <h3 class="valeur-title">Transparence</h3>
-                    <p class="valeur-description">Je communique clairement et honnêtement à chaque étape. Vous êtes informé en temps réel de l'avancement et des décisions importantes.</p>
+                    <h3 class="methode-title">Échange &amp; cadrage</h3>
+                    <p class="methode-text">Un premier échange pour comprendre votre besoin. Nous définissons ensemble le périmètre, les priorités et un objectif clair : vous savez ce qui sera livré, quand, et à quel prix.</p>
                 </article>
 
-                <article class="valeur-card reveal">
-                    <div class="valeur-icon">
-                        <i class="fas fa-award"></i>
+                <article class="methode-step reveal">
+                    <div class="methode-marker">
+                        <i class="fas fa-diagram-project" aria-hidden="true"></i>
+                        <span class="methode-num">2</span>
                     </div>
-                    <h3 class="valeur-title">Qualité</h3>
-                    <p class="valeur-description">Tests automatisés, revues de code et livraison en conditions de production : je m'appuie sur les bonnes pratiques pour des solutions fiables et pérennes.</p>
+                    <h3 class="methode-title">Conception</h3>
+                    <p class="methode-text">Architecture, modèle de données et choix techniques, validés avec vous avant la première ligne de code — pas de mauvaise surprise en cours de route.</p>
                 </article>
 
-                <article class="valeur-card reveal">
-                    <div class="valeur-icon">
-                        <i class="fas fa-handshake"></i>
+                <article class="methode-step reveal">
+                    <div class="methode-marker">
+                        <i class="fas fa-code" aria-hidden="true"></i>
+                        <span class="methode-num">3</span>
                     </div>
-                    <h3 class="valeur-title">Engagement</h3>
-                    <p class="valeur-description">Je m'investis pleinement dans chaque projet comme s'il était le mien. Votre réussite est ma priorité et je mets tout en œuvre pour l'atteindre.</p>
+                    <h3 class="methode-title">Développement itératif</h3>
+                    <p class="methode-text">Des cycles courts avec des démos régulières : vous voyez le produit avancer en temps réel et pouvez ajuster à tout moment. Transparence totale sur l'avancement.</p>
                 </article>
 
-                <article class="valeur-card reveal">
-                    <div class="valeur-icon">
-                        <i class="fas fa-user-check"></i>
+                <article class="methode-step reveal">
+                    <div class="methode-marker">
+                        <i class="fas fa-check-double" aria-hidden="true"></i>
+                        <span class="methode-num">4</span>
                     </div>
-                    <h3 class="valeur-title">Un seul interlocuteur</h3>
-                    <p class="valeur-description">Vous échangez directement avec le développeur qui conçoit et livre votre projet — de bout en bout, sans intermédiaire.</p>
+                    <h3 class="methode-title">Qualité &amp; tests</h3>
+                    <p class="methode-text">Tests automatisés, revues de code et validation en environnement de staging : chaque livraison est prête pour la production.</p>
+                </article>
+
+                <article class="methode-step reveal">
+                    <div class="methode-marker">
+                        <i class="fas fa-rocket" aria-hidden="true"></i>
+                        <span class="methode-num">5</span>
+                    </div>
+                    <h3 class="methode-title">Déploiement &amp; suivi</h3>
+                    <p class="methode-text">Mise en production (CI/CD, cloud), monitoring et documentation — et je reste disponible après la livraison. Un seul interlocuteur, de bout en bout.</p>
                 </article>
             </div>
         </div>
