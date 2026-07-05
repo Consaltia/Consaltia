@@ -2626,9 +2626,11 @@ if (langToggle) {
         applyLang(getLang() === 'fr' ? 'en' : 'fr');
     });
 
-    let savedLang = 'fr';
-    try { savedLang = localStorage.getItem('consaltia-lang') || 'fr'; } catch (e) { /* idem */ }
-    if (savedLang === 'en') applyLang('en');
+    // Anglais par défaut (desktop et mobile) ; le choix de l'utilisateur est
+    // ensuite mémorisé et prime sur le défaut.
+    let savedLang = 'en';
+    try { savedLang = localStorage.getItem('consaltia-lang') || 'en'; } catch (e) { /* idem */ }
+    applyLang(savedLang);
 }
 
 // IMPORTANT : Remplacez ces valeurs par vos vraies clés EmailJS
