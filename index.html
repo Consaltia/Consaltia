@@ -1298,11 +1298,29 @@ button {
     gap: var(--spacing-sm);
 }
 
+/* En-tête de carte : source (logo + entreprise) à gauche, note à droite */
+.temoignage-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.temoignage-source {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+}
+
 .temoignage-stars {
     display: flex;
     gap: 0.25rem;
     color: #FFC107;
     font-size: 0.95rem;
+    flex-shrink: 0;
 }
 
 .temoignage-text {
@@ -1310,14 +1328,6 @@ button {
     line-height: 1.75;
     font-size: 1.02rem;
     flex: 1;
-}
-
-.temoignage-footer {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding-top: var(--spacing-sm);
-    border-top: 1px solid var(--color-border);
 }
 
 .temoignage-logo {
@@ -2109,55 +2119,63 @@ section[id] {
                  ce ne sont pas des avis publiés sur une plateforme tierce. -->
             <div class="temoignages-grid">
                 <article class="temoignage-card reveal">
-                    <div class="temoignage-stars" role="img" aria-label="Note : 5 sur 5">
-                        <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-                    </div>
+                    <header class="temoignage-header">
+                        <div class="temoignage-source">
+                            <div class="temoignage-logo">
+                                <img src="amadeus.png" alt="Amadeus" loading="lazy">
+                            </div>
+                            <span class="temoignage-company">Amadeus</span>
+                        </div>
+                        <div class="temoignage-stars" role="img" aria-label="Note : 5 sur 5">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                    </header>
                     <p class="temoignage-text">« Immédiatement opérationnel sur nos plateformes à fort volume : du code fiable, des tests rigoureux, un vrai niveau senior. »</p>
-                    <footer class="temoignage-footer">
-                        <div class="temoignage-logo">
-                            <img src="amadeus.png" alt="Amadeus" loading="lazy">
-                        </div>
-                        <span class="temoignage-company">Amadeus</span>
-                    </footer>
                 </article>
 
                 <article class="temoignage-card reveal">
-                    <div class="temoignage-stars" role="img" aria-label="Note : 5 sur 5">
-                        <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-                    </div>
+                    <header class="temoignage-header">
+                        <div class="temoignage-source">
+                            <div class="temoignage-logo">
+                                <img src="G-ON.png" alt="G-ON" loading="lazy">
+                            </div>
+                            <span class="temoignage-company">G-ON</span>
+                        </div>
+                        <div class="temoignage-stars" role="img" aria-label="Note : 5 sur 5">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                    </header>
                     <p class="temoignage-text">« Antoine a porté seul toute notre chaîne technique, du code à l'infrastructure cloud. Un interlocuteur unique, autonome et fiable — exactement ce qu'il nous fallait. »</p>
-                    <footer class="temoignage-footer">
-                        <div class="temoignage-logo">
-                            <img src="G-ON.png" alt="G-ON" loading="lazy">
-                        </div>
-                        <span class="temoignage-company">G-ON</span>
-                    </footer>
                 </article>
 
                 <article class="temoignage-card reveal">
-                    <div class="temoignage-stars" role="img" aria-label="Note : 5 sur 5">
-                        <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-                    </div>
+                    <header class="temoignage-header">
+                        <div class="temoignage-source">
+                            <div class="temoignage-logo">
+                                <img src="edf.png" alt="EDF" loading="lazy">
+                            </div>
+                            <span class="temoignage-company">EDF</span>
+                        </div>
+                        <div class="temoignage-stars" role="img" aria-label="Note : 5 sur 5">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                    </header>
                     <p class="temoignage-text">« Rigoureux et professionnel dans un environnement exigeant et régulé. Collaboration fluide, documentation soignée. »</p>
-                    <footer class="temoignage-footer">
-                        <div class="temoignage-logo">
-                            <img src="edf.png" alt="EDF" loading="lazy">
-                        </div>
-                        <span class="temoignage-company">EDF</span>
-                    </footer>
                 </article>
 
                 <article class="temoignage-card reveal">
-                    <div class="temoignage-stars" role="img" aria-label="Note : 5 sur 5">
-                        <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-                    </div>
-                    <p class="temoignage-text">« Deux ans de collaboration sérieuse et productive sur nos applications de marchés. Toujours attentif à la sécurité et aux standards bancaires. »</p>
-                    <footer class="temoignage-footer">
-                        <div class="temoignage-logo">
-                            <img src="Credit-Agricole.png" alt="Groupe Crédit Agricole" loading="lazy">
+                    <header class="temoignage-header">
+                        <div class="temoignage-source">
+                            <div class="temoignage-logo">
+                                <img src="Credit-Agricole.png" alt="Groupe Crédit Agricole" loading="lazy">
+                            </div>
+                            <span class="temoignage-company">Groupe Crédit Agricole</span>
                         </div>
-                        <span class="temoignage-company">Groupe Crédit Agricole</span>
-                    </footer>
+                        <div class="temoignage-stars" role="img" aria-label="Note : 5 sur 5">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                    </header>
+                    <p class="temoignage-text">« Deux ans de collaboration sérieuse et productive sur nos applications de marchés. Toujours attentif à la sécurité et aux standards bancaires. »</p>
                 </article>
             </div>
 
