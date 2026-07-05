@@ -3,24 +3,24 @@
 <head>     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Consaltia - Services IT professionnels : création de sites web, assistance technique, automatisation, cloud, cybersécurité et conseil digital.">
-    <meta name="keywords" content="services IT, création site web, assistance technique, automatisation, cloud, cybersécurité, conseil digital">
-    <title>Consaltia - Services IT Professionnels | Solutions Numériques Modernes</title>
+    <meta name="description" content="Consaltia - Développeur full-stack & cloud en freelance. Je conçois, déploie et opère vos applications de bout en bout : développement full-stack, DevOps (CI/CD, conteneurisation) et infrastructure cloud (AWS/Azure, Kubernetes, IaC).">
+    <meta name="keywords" content="développeur freelance, full-stack, devops, cloud, kubernetes, terraform, ci/cd, aws, azure, react, spring boot">
+    <title>Consaltia - Développeur Full-stack & Cloud Freelance</title>
    
      <!-- Canonical -->
     <link rel="canonical" href="https://consaltia.github.io/Consaltia/">
     
     <!-- Open Graph (LinkedIn, Facebook, etc.) -->
-    <meta property="og:title" content="Consaltia - Services IT Professionnels">
-    <meta property="og:description" content="Création de sites web, assistance technique, cybersécurité, automatisation et conseil digital pour étudiants et professionnels.">
+    <meta property="og:title" content="Consaltia - Développeur Full-stack & Cloud Freelance">
+    <meta property="og:description" content="Je conçois, déploie et opère vos applications de bout en bout : développement full-stack, DevOps et infrastructure cloud.">
     <meta property="og:url" content="https://consaltia.github.io/Consaltia/">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://consaltia.github.io/Consaltia/assets/consaltia-cover.jpg"> <!-- mets ton image -->
-    
+    <meta property="og:image" content="https://consaltia.github.io/Consaltia/assets/consaltia-cover.jpg"> <!-- TODO: add real cover image at /assets/consaltia-cover.jpg -->
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Consaltia - Services IT Professionnels">
-    <meta name="twitter:description" content="Votre expert en services informatiques modernes.">
+    <meta name="twitter:title" content="Consaltia - Développeur Full-stack & Cloud Freelance">
+    <meta name="twitter:description" content="Développeur full-stack & cloud en freelance — de l'API au déploiement cloud.">
     <meta name="twitter:image" content="https://consaltia.github.io/Consaltia/assets/consaltia-cover.jpg">
 
     
@@ -38,22 +38,19 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "ProfessionalService",
       "name": "Consaltia",
-      "description": "Services informatiques modernisés : développement web, cybersécurité, assistance technique, formation numérique et accompagnement étudiant.",
+      "description": "Développeur full-stack & cloud en freelance. Conception, déploiement et exploitation d'applications de bout en bout.",
       "url": "https://consaltia.github.io/Consaltia/",
       "logo": "https://consaltia.github.io/Consaltia/assets/logo.png",
+      "founder": {
+        "@type": "Person",
+        "name": "TODO: add name"
+      },
       "serviceType": [
-        "Développement web",
-        "Assistance informatique",
-        "Dépannage IT",
-        "Sécurité informatique",
-        "Automatisation numérique",
-        "Accompagnement projet étudiant",
-        "Formation IT personnalisée",
-        "Support technique",
-        "Conseil informatique",
-        "Cloud & Infrastructure"
+        "Développement full-stack",
+        "DevOps (CI/CD, conteneurisation)",
+        "Infrastructure cloud (AWS, Azure, Kubernetes, IaC)"
       ]
     }
     </script>
@@ -1352,6 +1349,321 @@ button {
         background-position: 1000px 0;
     }
 }
+
+/* ===================================
+   HERO STATS STRIP
+   =================================== */
+.hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+    margin-top: var(--spacing-lg);
+    animation: fadeIn 1.8s ease-out;
+}
+
+.hero-stat {
+    font-family: var(--font-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    opacity: 0.95;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+}
+
+.hero-stat + .hero-stat {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.hero-stat + .hero-stat::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+    .hero-stat + .hero-stat {
+        padding-left: 0;
+    }
+    .hero-stat + .hero-stat::before {
+        content: none;
+    }
+}
+
+/* ===================================
+   À PROPOS / BACKGROUND
+   =================================== */
+.apropos {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-white);
+}
+
+.apropos-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+}
+
+@media (min-width: 992px) {
+    .apropos-content {
+        grid-template-columns: 5fr 4fr;
+    }
+}
+
+.apropos-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-sm);
+}
+
+.apropos-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.apropos-photo i {
+    font-size: 4rem;
+    color: var(--color-white);
+    opacity: 0.85;
+}
+
+.apropos-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.apropos-name {
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.apropos-role {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+}
+
+.apropos-text p {
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-sm);
+}
+
+.apropos-text p:first-child {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 1.1rem;
+}
+
+/* WHAT I BRING */
+.apport {
+    margin-top: var(--spacing-lg);
+    background: var(--color-background);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+}
+
+.apport h3 {
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.apport-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+}
+
+.apport-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+.apport-list i {
+    color: var(--color-success);
+    margin-top: 0.3rem;
+    flex-shrink: 0;
+}
+
+.apport-list strong {
+    color: var(--color-primary);
+}
+
+/* ===================================
+   RÉFÉRENCES
+   =================================== */
+.references {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-white);
+}
+
+.references-card {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    background: var(--color-background);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-normal);
+}
+
+.references-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.references-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.references-icon i {
+    font-size: 1.75rem;
+    color: var(--color-white);
+}
+
+.references-card p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    max-width: 540px;
+    margin: 0 auto var(--spacing-md);
+}
+
+/* PORTFOLIO PLACEHOLDER STATES */
+.realisation-image.is-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 22, 86, 0.06), rgba(67, 90, 135, 0.06));
+    color: var(--color-secondary);
+}
+
+.realisation-image.is-placeholder i {
+    font-size: 3rem;
+    opacity: 0.5;
+}
+
+.realisation-todo {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-warning);
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* ===================================
+   SCROLL REVEAL (progressive enhancement)
+   =================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===================================
+   ACCESSIBILITY: REDUCED MOTION
+   =================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .hero-title,
+    .hero-subtitle,
+    .hero-cta,
+    .hero-stats {
+        animation: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ===================================
+   RESPONSIVE / OVERFLOW HARDENING
+   =================================== */
+/* Prevent long tokens (tech tags, emails) from causing horizontal overflow */
+.tag,
+.apport-list li,
+.footer-contact a,
+.contact-item p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Ensure comfortable tap targets on touch devices */
+@media (max-width: 767px) {
+    .nav-link,
+    .btn,
+    .footer-links a,
+    .footer-legal a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .footer-links a,
+    .footer-legal a {
+        min-height: auto;
+        padding: 0.35rem 0;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Fluid typography for very small phones */
+@media (max-width: 360px) {
+    html {
+        font-size: 15px;
+    }
+}
     </style>
 </head>
 <body>
@@ -1370,10 +1682,10 @@ button {
             </button>
             
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#realisations" class="nav-link">Nos réalisations</a></li>
-                <li><a href="#services" class="nav-link">Nos services</a></li>
-                <li><a href="#valeurs" class="nav-link">Nos valeurs</a></li>
-                <li><a href="#avis" class="nav-link">Avis clients</a></li>
+                <li><a href="#apropos" class="nav-link">À propos</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#realisations" class="nav-link">Portfolio</a></li>
+                <li><a href="#references" class="nav-link">Références</a></li>
                 <li><a href="#contact" class="nav-link nav-link-cta">Contact</a></li>
             </ul>
         </div>
@@ -1383,130 +1695,166 @@ button {
     <section class="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">Transformez vos idées en solutions digitales</h1>
-                <p class="hero-subtitle">Consaltia vous accompagne dans votre transformation numérique avec des services IT sur mesure et innovants</p>
+                <h1 class="hero-title">Full-stack &amp; cloud developer — I design, deploy, and operate your applications end to end.</h1>
+                <p class="hero-subtitle">Consaltia is the freelance practice of a single developer — one point of contact, from the API to the cloud.</p>
                 <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">Parlez-nous de votre projet</a>
-                    <a href="#services" class="btn btn-secondary">Découvrir nos services</a>
+                    <a href="#contact" class="btn btn-primary">Get in touch</a>
+                    <a href="#services" class="btn btn-secondary">See what I do</a>
+                </div>
+                <div class="hero-stats">
+                    <span class="hero-stat">6+ years experience</span>
+                    <span class="hero-stat">5 sectors</span>
+                    <span class="hero-stat">Full-chain delivery (API → cloud)</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Mes réalisations -->
+    <!-- Section À propos / Parcours -->
+    <section class="apropos" id="apropos">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">À propos</h2>
+                <p class="section-subtitle">Consaltia, c'est un développeur freelance — un seul interlocuteur, de bout en bout.</p>
+            </div>
+
+            <div class="apropos-content">
+                <div class="apropos-profile reveal">
+                    <div class="apropos-photo">
+                        <!-- TODO: add photo at /assets/profile.jpg -->
+                        <!-- Replace the icon below with: <img src="/assets/profile.jpg" alt="Portrait"> -->
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="apropos-name"><!-- TODO: add name -->Consaltia</div>
+                    <p class="apropos-role">Développeur full-stack &amp; cloud · Freelance</p>
+                </div>
+
+                <div class="apropos-text reveal">
+                    <p>Développeur full-stack &amp; cloud, en freelance.</p>
+                    <p>Après 6 ans à concevoir et déployer des applications web en tant que développeur — dans la banque, l'énergie, la logistique, l'ingénierie et le voyage — je suis désormais disponible en freelance sous la marque Consaltia.</p>
+                    <p>Au fil de ces années, j'ai couvert toute la chaîne : conception d'API et de microservices, développement backend et frontend, modélisation de bases de données, pipelines CI/CD, conteneurisation et déploiement cloud sur AWS et Azure. J'ai travaillé en équipe Agile, animé des revues de code, encadré des développeurs juniors et livré en production dans des environnements exigeants et régulés.</p>
+                    <p>Aujourd'hui, je mets cette expérience directement au service de vos projets — un seul interlocuteur, de bout en bout.</p>
+                    <!-- TODO: decide whether to list named former employers publicly — check NDA/confidentiality first -->
+                </div>
+            </div>
+
+            <div class="apport reveal">
+                <h3>Ce que j'apporte</h3>
+                <ul class="apport-list">
+                    <li><i class="fas fa-check"></i><span>6 years of full-stack development across 5 companies in regulated, high-volume sectors</span></li>
+                    <li><i class="fas fa-check"></i><span><strong>Backend &amp; APIs:</strong> Java/Spring Boot, Python, Node.js, REST/GraphQL, microservices, messaging (Kafka, RabbitMQ)</span></li>
+                    <li><i class="fas fa-check"></i><span><strong>Frontend:</strong> React/Next.js, Angular, responsive SPA/SSR</span></li>
+                    <li><i class="fas fa-check"></i><span><strong>DevOps &amp; Cloud:</strong> Docker, Kubernetes, Terraform, CI/CD (GitLab, GitHub Actions), AWS &amp; Azure, monitoring (Prometheus/Grafana)</span></li>
+                    <li><i class="fas fa-check"></i><span><strong>Quality-first:</strong> automated testing, code reviews, production-grade delivery</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Portfolio -->
     <section class="realisations" id="realisations">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Nos réalisations</h2>
-                <p class="section-subtitle">Découvrez quelques projets qui illustrent notre expertise et notre engagement envers l'excellence</p>
+            <div class="section-header reveal">
+                <h2 class="section-title">Portfolio</h2>
+                <p class="section-subtitle">Une sélection de projets réels sera publiée ici. Les cartes ci-dessous sont des gabarits à compléter — aucun visuel générique n'est présenté comme un projet réel.</p>
             </div>
-            
+
+            <!--
+                TODO: Replace each placeholder card below with a real project.
+                For every project, fill in:
+                  - title            (project name)
+                  - description       (what it does / your role / outcome — no invented metrics)
+                  - tech stack tags   (real technologies used)
+                  - link / GitHub     (href on the "Voir le projet" link)
+                  - screenshot path   (replace the placeholder icon with <img src="/assets/portfolio/<name>.jpg" alt="...">)
+                Do NOT use stock images as if they were real projects. Delete any card you don't fill in.
+            -->
             <div class="realisations-grid">
-                <article class="realisation-card">
-                    <div class="realisation-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Dashboard Analytics">
+                <article class="realisation-card reveal">
+                    <div class="realisation-image is-placeholder">
+                        <!-- TODO: add screenshot at /assets/portfolio/project-1.jpg -->
+                        <i class="fas fa-image"></i>
                         <div class="realisation-overlay">
-                            <span class="realisation-category">Web Application</span>
+                            <span class="realisation-category"><!-- TODO: category -->Projet</span>
                         </div>
                     </div>
                     <div class="realisation-content">
-                        <h3 class="realisation-title">Plateforme Analytics B2B</h3>
-                        <p class="realisation-description">Développement d'une plateforme d'analyse de données en temps réel pour optimiser les performances commerciales</p>
+                        <h3 class="realisation-title"><!-- TODO: project title -->Projet 1 — à compléter</h3>
+                        <p class="realisation-description"><!-- TODO: description --> Décrivez le projet, votre rôle et le résultat livré.</p>
                         <div class="realisation-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">AWS</span>
+                            <!-- TODO: real tech stack -->
+                            <span class="tag">Tech</span>
+                            <span class="tag">Stack</span>
+                            <span class="tag">TODO</span>
                         </div>
+                        <!-- TODO: add real link/GitHub URL -->
+                        <a href="#" class="realisation-todo" aria-disabled="true">Lien / GitHub — à ajouter</a>
                     </div>
                 </article>
 
-                <article class="realisation-card">
-                    <div class="realisation-image">
-                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop" alt="Site E-commerce">
+                <article class="realisation-card reveal">
+                    <div class="realisation-image is-placeholder">
+                        <!-- TODO: add screenshot at /assets/portfolio/project-2.jpg -->
+                        <i class="fas fa-image"></i>
                         <div class="realisation-overlay">
-                            <span class="realisation-category">E-commerce</span>
+                            <span class="realisation-category"><!-- TODO: category -->Projet</span>
                         </div>
                     </div>
                     <div class="realisation-content">
-                        <h3 class="realisation-title">Boutique en ligne premium</h3>
-                        <p class="realisation-description">Création d'un site e-commerce responsive avec système de paiement sécurisé et gestion des stocks</p>
+                        <h3 class="realisation-title"><!-- TODO: project title -->Projet 2 — à compléter</h3>
+                        <p class="realisation-description"><!-- TODO: description --> Décrivez le projet, votre rôle et le résultat livré.</p>
                         <div class="realisation-tags">
-                            <span class="tag">Shopify</span>
-                            <span class="tag">UX/UI</span>
-                            <span class="tag">SEO</span>
+                            <!-- TODO: real tech stack -->
+                            <span class="tag">Tech</span>
+                            <span class="tag">Stack</span>
+                            <span class="tag">TODO</span>
                         </div>
+                        <!-- TODO: add real link/GitHub URL -->
+                        <a href="#" class="realisation-todo" aria-disabled="true">Lien / GitHub — à ajouter</a>
                     </div>
                 </article>
 
-                <article class="realisation-card">
-                    <div class="realisation-image">
-                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop" alt="Application Mobile">
+                <article class="realisation-card reveal">
+                    <div class="realisation-image is-placeholder">
+                        <!-- TODO: add screenshot at /assets/portfolio/project-3.jpg -->
+                        <i class="fas fa-image"></i>
                         <div class="realisation-overlay">
-                            <span class="realisation-category">Mobile App</span>
+                            <span class="realisation-category"><!-- TODO: category -->Projet</span>
                         </div>
                     </div>
                     <div class="realisation-content">
-                        <h3 class="realisation-title">Application de gestion RH</h3>
-                        <p class="realisation-description">Application mobile pour la gestion des ressources humaines et le suivi des performances</p>
+                        <h3 class="realisation-title"><!-- TODO: project title -->Projet 3 — à compléter</h3>
+                        <p class="realisation-description"><!-- TODO: description --> Décrivez le projet, votre rôle et le résultat livré.</p>
                         <div class="realisation-tags">
-                            <span class="tag">Flutter</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">API REST</span>
+                            <!-- TODO: real tech stack -->
+                            <span class="tag">Tech</span>
+                            <span class="tag">Stack</span>
+                            <span class="tag">TODO</span>
                         </div>
+                        <!-- TODO: add real link/GitHub URL -->
+                        <a href="#" class="realisation-todo" aria-disabled="true">Lien / GitHub — à ajouter</a>
                     </div>
                 </article>
 
-                <article class="realisation-card">
-                    <div class="realisation-image">
-                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop" alt="Infrastructure Cloud">
+                <article class="realisation-card reveal">
+                    <div class="realisation-image is-placeholder">
+                        <!-- TODO: add screenshot at /assets/portfolio/project-4.jpg -->
+                        <i class="fas fa-image"></i>
                         <div class="realisation-overlay">
-                            <span class="realisation-category">Infrastructure</span>
+                            <span class="realisation-category"><!-- TODO: category -->Projet</span>
                         </div>
                     </div>
                     <div class="realisation-content">
-                        <h3 class="realisation-title">Migration Cloud complète</h3>
-                        <p class="realisation-description">Migration d'infrastructure on-premise vers AWS avec haute disponibilité et sécurité renforcée</p>
+                        <h3 class="realisation-title"><!-- TODO: project title -->Projet 4 — à compléter</h3>
+                        <p class="realisation-description"><!-- TODO: description --> Décrivez le projet, votre rôle et le résultat livré.</p>
                         <div class="realisation-tags">
-                            <span class="tag">AWS</span>
-                            <span class="tag">DevOps</span>
-                            <span class="tag">Kubernetes</span>
+                            <!-- TODO: real tech stack -->
+                            <span class="tag">Tech</span>
+                            <span class="tag">Stack</span>
+                            <span class="tag">TODO</span>
                         </div>
-                    </div>
-                </article>
-
-                <article class="realisation-card">
-                    <div class="realisation-image">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop" alt="Automatisation">
-                        <div class="realisation-overlay">
-                            <span class="realisation-category">Automatisation</span>
-                        </div>
-                    </div>
-                    <div class="realisation-content">
-                        <h3 class="realisation-title">Automatisation comptable</h3>
-                        <p class="realisation-description">Solution d'automatisation des processus comptables réduisant le temps de traitement de 70%</p>
-                        <div class="realisation-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">RPA</span>
-                            <span class="tag">OCR</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="realisation-card">
-                    <div class="realisation-image">
-                        <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=600&h=400&fit=crop" alt="Site Vitrine">
-                        <div class="realisation-overlay">
-                            <span class="realisation-category">Site Vitrine</span>
-                        </div>
-                    </div>
-                    <div class="realisation-content">
-                        <h3 class="realisation-title">Site corporate moderne</h3>
-                        <p class="realisation-description">Refonte complète du site corporate avec design moderne et optimisation SEO</p>
-                        <div class="realisation-tags">
-                            <span class="tag">WordPress</span>
-                            <span class="tag">Design</span>
-                            <span class="tag">Performance</span>
-                        </div>
+                        <!-- TODO: add real link/GitHub URL -->
+                        <a href="#" class="realisation-todo" aria-disabled="true">Lien / GitHub — à ajouter</a>
                     </div>
                 </article>
             </div>
@@ -1516,100 +1864,48 @@ button {
     <!-- Section Mes services -->
     <section class="services" id="services">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Nos services</h2>
-                <p class="section-subtitle">Consaltia apporte des solutions numériques modernes et efficaces adaptées à vos besoins spécifiques</p>
+            <div class="section-header reveal">
+                <h2 class="section-title">Services</h2>
+                <p class="section-subtitle">Je me concentre sur trois compétences complémentaires — de la conception applicative à l'exploitation en production.</p>
             </div>
-            
+
             <div class="services-grid">
-                <article class="service-card">
+                <article class="service-card reveal">
                     <div class="service-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3 class="service-title">Création ou refonte de site web</h3>
-                    <p class="service-description">Sites vitrines élégants, plateformes e-commerce performantes, design UX/UI moderne et optimisation SEO pour maximiser votre visibilité en ligne.</p>
+                    <h3 class="service-title">Développement full-stack</h3>
+                    <p class="service-description">Je conçois et développe vos applications web de bout en bout, du frontend à l'API et à la base de données.</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Design responsive et moderne</li>
-                        <li><i class="fas fa-check"></i> Optimisation SEO avancée</li>
-                        <li><i class="fas fa-check"></i> Performance et rapidité</li>
+                        <li><i class="fas fa-check"></i> Frontend : React/Next.js, Angular</li>
+                        <li><i class="fas fa-check"></i> Backend &amp; API : Java/Spring Boot, Python, Node.js</li>
+                        <li><i class="fas fa-check"></i> Microservices, REST/GraphQL, bases de données</li>
                     </ul>
                 </article>
 
-                <article class="service-card">
+                <article class="service-card reveal">
                     <div class="service-icon">
-                        <i class="fas fa-headset"></i>
+                        <i class="fas fa-code-branch"></i>
                     </div>
-                    <h3 class="service-title">Assistance technique</h3>
-                    <p class="service-description">Dépannage informatique, optimisation des systèmes, installation de logiciels et support digital pour assurer la continuité de votre activité.</p>
+                    <h3 class="service-title">DevOps</h3>
+                    <p class="service-description">J'automatise vos livraisons et fiabilise vos déploiements grâce à des pipelines CI/CD et à la conteneurisation.</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Support réactif 7j/7</li>
-                        <li><i class="fas fa-check"></i> Résolution rapide des incidents</li>
-                        <li><i class="fas fa-check"></i> Maintenance préventive</li>
+                        <li><i class="fas fa-check"></i> CI/CD : GitLab CI, GitHub Actions</li>
+                        <li><i class="fas fa-check"></i> Conteneurisation : Docker</li>
+                        <li><i class="fas fa-check"></i> Monitoring : Prometheus/Grafana</li>
                     </ul>
                 </article>
 
-                <article class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3 class="service-title">Automatisation de métier</h3>
-                    <p class="service-description">Développement de scripts personnalisés, automatisation des tâches répétitives et optimisation des workflows pour gagner en productivité.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Gain de temps considérable</li>
-                        <li><i class="fas fa-check"></i> Réduction des erreurs</li>
-                        <li><i class="fas fa-check"></i> Solutions sur mesure</li>
-                    </ul>
-                </article>
-
-                <article class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="service-title">Aide aux étudiants et PFE</h3>
-                    <p class="service-description">Encadrement professionnel par des professeurs certifiés, correction de projets, mentorat personnalisé et support technique pour la réussite académique.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Professeurs certifiés</li>
-                        <li><i class="fas fa-check"></i> Suivi personnalisé</li>
-                        <li><i class="fas fa-check"></i> Expertise méthodologique</li>
-                    </ul>
-                </article>
-
-                <article class="service-card">
+                <article class="service-card reveal">
                     <div class="service-icon">
                         <i class="fas fa-cloud"></i>
                     </div>
-                    <h3 class="service-title">Cloud</h3>
-                    <p class="service-description">Hébergement cloud sécurisé, migration d'infrastructures, déploiement de solutions cloud et maintenance continue pour une disponibilité optimale.</p>
+                    <h3 class="service-title">Infrastructure cloud</h3>
+                    <p class="service-description">Je déploie et opère vos applications sur le cloud, avec une infrastructure reproductible et scalable.</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Infrastructure scalable</li>
-                        <li><i class="fas fa-check"></i> Haute disponibilité</li>
-                        <li><i class="fas fa-check"></i> Sécurité renforcée</li>
-                    </ul>
-                </article>
-
-                <article class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="service-title">Cybersécurité</h3>
-                    <p class="service-description">Audits de sécurité complets, sécurisation des systèmes, mise en place des bonnes pratiques et protection efficace de vos données sensibles.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Audit de sécurité complet</li>
-                        <li><i class="fas fa-check"></i> Protection des données</li>
-                        <li><i class="fas fa-check"></i> Conformité RGPD</li>
-                    </ul>
-                </article>
-
-                <article class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h3 class="service-title">Rédaction de cahier des charges</h3>
-                    <p class="service-description">Analyse approfondie des besoins, cadrage précis du projet, documentation technique détaillée pour garantir le succès de vos initiatives digitales.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Analyse des besoins</li>
-                        <li><i class="fas fa-check"></i> Spécifications détaillées</li>
-                        <li><i class="fas fa-check"></i> Documentation complète</li>
+                        <li><i class="fas fa-check"></i> Cloud : AWS &amp; Azure</li>
+                        <li><i class="fas fa-check"></i> Orchestration : Kubernetes</li>
+                        <li><i class="fas fa-check"></i> Infrastructure as Code : Terraform</li>
                     </ul>
                 </article>
             </div>
@@ -1619,209 +1915,62 @@ button {
     <!-- Section Nos valeurs -->
     <section class="valeurs" id="valeurs">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Nos valeurs</h2>
-                <p class="section-subtitle">Les principes qui guident notre approche et forgent notre excellence au quotidien</p>
+            <div class="section-header reveal">
+                <h2 class="section-title">Ma façon de travailler</h2>
+                <p class="section-subtitle">Les principes qui guident mon approche au quotidien.</p>
             </div>
-            
+
             <div class="valeurs-grid">
-                <article class="valeur-card">
+                <article class="valeur-card reveal">
                     <div class="valeur-icon">
                         <i class="fas fa-eye"></i>
                     </div>
                     <h3 class="valeur-title">Transparence</h3>
-                    <p class="valeur-description">Nous croyons en une communication claire et honnête à chaque étape de nos projets. Nos clients sont informés en temps réel de l'avancement et des décisions importantes.</p>
+                    <p class="valeur-description">Je communique clairement et honnêtement à chaque étape. Vous êtes informé en temps réel de l'avancement et des décisions importantes.</p>
                 </article>
 
-                <article class="valeur-card">
+                <article class="valeur-card reveal">
                     <div class="valeur-icon">
                         <i class="fas fa-award"></i>
                     </div>
-                    <h3 class="valeur-title">Expertise</h3>
-                    <p class="valeur-description">Notre équipe de professionnels certifiés maîtrise les dernières technologies et meilleures pratiques pour vous offrir des solutions de pointe et pérennes.</p>
+                    <h3 class="valeur-title">Qualité</h3>
+                    <p class="valeur-description">Tests automatisés, revues de code et livraison en conditions de production : je m'appuie sur les bonnes pratiques pour des solutions fiables et pérennes.</p>
                 </article>
 
-                <article class="valeur-card">
+                <article class="valeur-card reveal">
                     <div class="valeur-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
                     <h3 class="valeur-title">Engagement</h3>
-                    <p class="valeur-description">Nous nous investissons pleinement dans chaque projet comme s'il était le nôtre. Votre réussite est notre priorité et nous mettons tout en œuvre pour l'atteindre.</p>
+                    <p class="valeur-description">Je m'investis pleinement dans chaque projet comme s'il était le mien. Votre réussite est ma priorité et je mets tout en œuvre pour l'atteindre.</p>
                 </article>
 
-                <article class="valeur-card">
+                <article class="valeur-card reveal">
                     <div class="valeur-icon">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-user-check"></i>
                     </div>
-                    <h3 class="valeur-title">Proximité client</h3>
-                    <p class="valeur-description">Nous cultivons une relation de confiance basée sur l'écoute et la disponibilité. Chaque client bénéficie d'un accompagnement personnalisé et d'un suivi attentif.</p>
+                    <h3 class="valeur-title">Un seul interlocuteur</h3>
+                    <p class="valeur-description">Vous échangez directement avec le développeur qui conçoit et livre votre projet — de bout en bout, sans intermédiaire.</p>
                 </article>
             </div>
         </div>
     </section>
 
-    <!-- Section Avis clients -->
-    <section class="avis" id="avis">
+    <!-- Section Références -->
+    <section class="references" id="references">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Avis clients</h2>
-                <p class="section-subtitle">Découvrez ce que nos clients disent de nos services et de notre accompagnement</p>
-            </div>
-            
-            <div class="avis-grid">
-                <article class="avis-card">
-                    <img src="google-logo.png" alt="Google" class="avis-google-logo">
-                    <div class="avis-header">
-                        <div class="avis-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="avis-info">
-                            <h4 class="avis-name">Sophie Martin</h4>
-                            <p class="avis-company">Directrice Marketing, TechVision</p>
-                        </div>
-                    </div>
-                    <div class="avis-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="avis-text">"Consaltia a transformé notre présence en ligne avec un site moderne et performant. L'équipe est professionnelle, réactive et a parfaitement compris nos besoins. Je recommande vivement leurs services !"</p>
-                    <div class="avis-date">Il y a 2 semaines</div>
-                </article>
-
-                <article class="avis-card">
-                    <img src="google-logo.png" alt="Google" class="avis-google-logo">
-                    <div class="avis-header">
-                        <div class="avis-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="avis-info">
-                            <h4 class="avis-name">Marc Dubois</h4>
-                            <p class="avis-company">CEO, InnovatePlus</p>
-                        </div>
-                    </div>
-                    <div class="avis-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="avis-text">"Excellente prestation sur notre migration cloud. L'équipe technique est très compétente et a géré le projet avec professionnalisme. Aucune interruption de service pendant la transition. Bravo !"</p>
-                    <div class="avis-date">Il y a 1 mois</div>
-                </article>
-
-                <article class="avis-card">
-                    <img src="google-logo.png" alt="Google" class="avis-google-logo">
-                    <div class="avis-header">
-                        <div class="avis-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="avis-info">
-                            <h4 class="avis-name">Amélie Rousseau</h4>
-                            <p class="avis-company">Fondatrice, EcoShop</p>
-                        </div>
-                    </div>
-                    <div class="avis-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="avis-text">"Notre boutique en ligne a dépassé toutes nos attentes ! Design magnifique, navigation fluide et optimisation SEO qui nous apporte de nombreux clients. Un grand merci à toute l'équipe Consaltia."</p>
-                    <div class="avis-date">Il y a 3 semaines</div>
-                </article>
-
-                <article class="avis-card">
-                    <img src="google-logo.png" alt="Google" class="avis-google-logo">
-                    <div class="avis-header">
-                        <div class="avis-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="avis-info">
-                            <h4 class="avis-name">Thomas Bernard</h4>
-                            <p class="avis-company">Responsable IT, FinanceGroup</p>
-                        </div>
-                    </div>
-                    <div class="avis-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="avis-text">"L'audit de sécurité réalisé par Consaltia nous a permis d'identifier et corriger plusieurs vulnérabilités critiques. Leur expertise en cybersécurité est indéniable. Service impeccable !"</p>
-                    <div class="avis-date">Il y a 1 semaine</div>
-                </article>
-
-                <article class="avis-card">
-                    <img src="google-logo.png" alt="Google" class="avis-google-logo">
-                    <div class="avis-header">
-                        <div class="avis-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="avis-info">
-                            <h4 class="avis-name">Laura Petit</h4>
-                            <p class="avis-company">Gérante, ConseilPro</p>
-                        </div>
-                    </div>
-                    <div class="avis-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="avis-text">"Leur solution d'automatisation nous fait gagner un temps précieux chaque jour. L'accompagnement a été excellent du début à la fin. Je recommande sans hésitation pour tout projet IT."</p>
-                    <div class="avis-date">Il y a 2 mois</div>
-                </article>
-
-                <article class="avis-card">
-                    <img src="google-logo.png" alt="Google" class="avis-google-logo">
-                    <div class="avis-header">
-                        <div class="avis-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="avis-info">
-                            <h4 class="avis-name">Alexandre Leroy</h4>
-                            <p class="avis-company">Étudiant Master 2, Université Paris</p>
-                        </div>
-                    </div>
-                    <div class="avis-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="avis-text">"L'encadrement pour mon PFE a été exceptionnel. Les professeurs certifiés m'ont guidé avec pédagogie et expertise. J'ai obtenu une excellente note grâce à leur accompagnement. Merci !"</p>
-                    <div class="avis-date">Il y a 3 semaines</div>
-                </article>
+            <div class="section-header reveal">
+                <h2 class="section-title">Références</h2>
+                <p class="section-subtitle">Des références professionnelles sont disponibles sur demande.</p>
             </div>
 
-            <div class="avis-cta">
-                <a href="https://www.google.com/search?q=consaltia+avis" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                    <i class="fab fa-google"></i> Voir tous les avis sur Google
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Ils nous font confiance - CARROUSEL -->
-    <section class="confiance" id="confiance">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Ils nous font confiance</h2>
-                <p class="section-subtitle">Des entreprises de tous secteurs nous font confiance pour leurs projets digitaux</p>
-            </div>
-            
-            <div class="clients-carousel-wrapper">
-                <div class="clients-carousel" id="clientsCarousel">
-                    <!-- Les logos seront chargés dynamiquement par JavaScript -->
+            <div class="references-card reveal">
+                <div class="references-icon">
+                    <i class="fas fa-user-shield"></i>
                 </div>
+                <p>Je peux fournir des références professionnelles aux prospects sérieux, sur demande. Par respect de la vie privée, aucun nom ni coordonnée n'est publié sur ce site.</p>
+                <!-- TODO: keep reference contacts private; share only with serious prospects after confirming each person consents to be contacted -->
+                <a href="#contact" class="btn btn-primary">Demander des références</a>
             </div>
         </div>
     </section>
@@ -1829,14 +1978,15 @@ button {
       <!-- Section Contact -->
     <section class="contact" id="contact">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Parlez-nous de votre projet</h2>
-                <p class="section-subtitle">Vous avez un projet en tête ? Contactez-nous et discutons de la meilleure façon de le concrétiser ensemble</p>
+            <div class="section-header reveal">
+                <h2 class="section-title">Parlons de votre projet</h2>
+                <p class="section-subtitle">Vous avez un projet en tête ? Écrivez-moi et discutons de la meilleure façon de le concrétiser.</p>
             </div>
-            
+
             <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Coordonnées</h3>
+                <div class="contact-info reveal">
+                    <h3>Me contacter</h3>
+                    <!-- TODO: verify these contact details are correct before publishing -->
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
@@ -1854,15 +2004,15 @@ button {
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <strong>Adresse</strong>
-                            <p>Rue Saint Martin<br>75003 Paris, France</p>
+                            <strong>Localisation</strong>
+                            <p>Paris, France · disponible à distance</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-briefcase"></i>
                         <div>
-                            <strong>Horaires</strong>
-                            <p>Lundi - Vendredi : 9h00 - 18h00</p>
+                            <strong>Disponibilité</strong>
+                            <p>Freelance — missions à distance ou sur site</p>
                         </div>
                     </div>
                 </div>
@@ -1894,13 +2044,9 @@ button {
                         <label for="sujet">Sujet *</label>
                         <select id="sujet" name="sujet" required>
                             <option value="">Sélectionnez un sujet</option>
-                            <option value="site-web">Création / Refonte de site web</option>
-                            <option value="assistance">Assistance technique</option>
-                            <option value="automatisation">Automatisation de métier</option>
-                            <option value="pfe">Aide PFE / Étudiants</option>
-                            <option value="cloud">Services Cloud</option>
-                            <option value="cybersecurite">Cybersécurité</option>
-                            <option value="cahier-charges">Cahier des charges</option>
+                            <option value="full-stack">Développement full-stack</option>
+                            <option value="devops">DevOps (CI/CD, conteneurisation)</option>
+                            <option value="cloud">Infrastructure cloud (AWS/Azure, Kubernetes, IaC)</option>
                             <option value="autre">Autre demande</option>
                         </select>
                     </div>
@@ -1936,22 +2082,21 @@ button {
                     <div class="footer-brand">
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cellipse cx='100' cy='30' rx='95' ry='25' fill='white'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23001656' font-family='Arial, sans-serif' font-size='24' font-weight='bold'%3ECONSALTIA%3C/text%3E%3C/svg%3E" alt="Logo Consaltia" class="footer-logo">
                     </div>
-                    <p class="footer-description">Consaltia - Votre partenaire de confiance pour tous vos projets digitaux et services IT professionnels.</p>
+                    <p class="footer-description">Consaltia — développeur full-stack &amp; cloud en freelance. Je conçois, déploie et opère vos applications de bout en bout.</p>
                     <div class="footer-social">
+                        <!-- TODO: add real profile URLs (or remove unused icons) -->
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
 
                 <div class="footer-column">
                     <h4 class="footer-title">Liens rapides</h4>
                     <ul class="footer-links">
-                        <li><a href="#realisations">Nos réalisations</a></li>
-                        <li><a href="#services">Nos services</a></li>
-                        <li><a href="#valeurs">Nos valeurs</a></li>
-                        <li><a href="#avis">Avis clients</a></li>
+                        <li><a href="#apropos">À propos</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#realisations">Portfolio</a></li>
+                        <li><a href="#references">Références</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -1959,11 +2104,9 @@ button {
                 <div class="footer-column">
                     <h4 class="footer-title">Services</h4>
                     <ul class="footer-links">
-                        <li><a href="#services">Création de sites web</a></li>
-                        <li><a href="#services">Assistance technique</a></li>
-                        <li><a href="#services">Automatisation</a></li>
-                        <li><a href="#services">Cloud & Hébergement</a></li>
-                        <li><a href="#services">Cybersécurité</a></li>
+                        <li><a href="#services">Développement full-stack</a></li>
+                        <li><a href="#services">DevOps (CI/CD, conteneurisation)</a></li>
+                        <li><a href="#services">Infrastructure cloud</a></li>
                     </ul>
                 </div>
 
@@ -1980,14 +2123,14 @@ button {
                         </li>
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Rue Saint Martin<br>75003 Paris, France</span>
+                            <span>Paris, France · disponible à distance</span>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2012 Consaltia. Tous droits réservés.</p>
+                <p>&copy; 2026 Consaltia. Tous droits réservés.</p>
                 <div class="footer-legal">
                     <a href="mentions-legales.html">Mentions légales</a>
                     <span>|</span>
@@ -2043,71 +2186,6 @@ if (navToggle && navMenu) {
 }
 
 // ===================================
-// CARROUSEL DE LOGOS - PRIORITÉ
-// ===================================
-
-const frenchCompanies = [
-    { name: 'Orange', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/200px-Orange_logo.svg.png' },
-    { name: 'Carrefour', logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/3/3b/Logo_Carrefour.svg/200px-Logo_Carrefour.svg.png' },
-    { name: 'Renault', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Renault_2021.svg/200px-Renault_2021.svg.png' },
-    { name: 'Peugeot', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/Peugeot_logo.svg/200px-Peugeot_logo.svg.png' },
-    { name: 'Michelin', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Michelin_logo.svg/200px-Michelin_logo.svg.png' },
-    { name: 'Danone', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Danone_logo.svg/200px-Danone_logo.svg.png' },
-    { name: 'SNCF', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/SNCF.svg/200px-SNCF.svg.png' },
-    { name: 'Airbus', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Airbus_logo.svg/200px-Airbus_logo.svg.png' },
-    { name: 'Decathlon', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Decathlon_Logo.svg/200px-Decathlon_Logo.svg.png' },
-    { name: 'Auchan', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Auchan_Logo.svg/200px-Auchan_Logo.svg.png' },
-    { name: 'La Poste', logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/0/03/La_Poste_2021_logo.svg/200px-La_Poste_2021_logo.svg.png' },
-    { name: 'Bouygues', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Bouygues_logo.svg/200px-Bouygues_logo.svg.png' }
-];
-
-function createClientLogo(company, index) {
-    const logoDiv = document.createElement('div');
-    logoDiv.className = 'client-logo';
-    
-    const img = document.createElement('img');
-    img.src = company.logo;
-    img.alt = company.name;
-    img.loading = index < 6 ? 'eager' : 'lazy';
-    
-    img.onerror = function() {
-        this.style.display = 'none';
-        const fallback = document.createElement('span');
-        fallback.textContent = company.name;
-        logoDiv.appendChild(fallback);
-    };
-    
-    logoDiv.appendChild(img);
-    return logoDiv;
-}
-
-function initClientsCarousel() {
-    console.log('🎪 Initialisation du carrousel...');
-    const carousel = document.getElementById('clientsCarousel');
-    
-    if (!carousel) {
-        console.error('❌ Carrousel non trouvé !');
-        return;
-    }
-    
-    const allCompanies = [...frenchCompanies, ...frenchCompanies, ...frenchCompanies];
-    
-    allCompanies.forEach((company, index) => {
-        const logoElement = createClientLogo(company, index);
-        carousel.appendChild(logoElement);
-    });
-    
-    console.log(`✅ Carrousel initialisé avec ${allCompanies.length} logos !`);
-}
-
-// Initialiser immédiatement
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initClientsCarousel);
-} else {
-    initClientsCarousel();
-}
-
-// ===================================
 // NAVBAR SCROLL
 // ===================================
 
@@ -2146,30 +2224,34 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ===================================
-// ANIMATIONS AU SCROLL
+// SCROLL REVEAL (progressive enhancement)
 // ===================================
 
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const revealElements = document.querySelectorAll('.reveal');
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animation = 'fadeIn 0.6s ease forwards';
-            observer.unobserve(entry.target);
-        }
+if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    // No animation: show everything immediately.
+    revealElements.forEach(el => el.classList.add('is-visible'));
+} else {
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
     });
-}, observerOptions);
 
-const animatedElements = document.querySelectorAll('.realisation-card, .service-card, .valeur-card, .avis-card');
-
-animatedElements.forEach((el, index) => {
-    el.style.opacity = '0';
-    el.style.animationDelay = `${index * 0.05}s`;
-    observer.observe(el);
-});
+    revealElements.forEach((el, index) => {
+        // Subtle stagger within the same viewport batch.
+        el.style.transitionDelay = `${Math.min(index % 4, 3) * 60}ms`;
+        revealObserver.observe(el);
+    });
+}
 
 // IMPORTANT : Remplacez ces valeurs par vos vraies clés EmailJS
 const EMAILJS_CONFIG = {
