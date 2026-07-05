@@ -580,11 +580,10 @@ button {
 
 .service-card {
     background: var(--color-white);
-    padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
+    overflow: hidden;
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-normal);
-    border: 2px solid transparent;
 }
 
 .service-card:hover {
@@ -593,25 +592,39 @@ button {
     border-color: var(--color-primary);
 }
 
-.service-icon {
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    border-radius: var(--radius-lg);
+/* En-tête photo : illustration du service, voile bleu subtil pour
+   rester dans la palette, léger zoom au survol. */
+.service-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s var(--ease-smooth);
+}
+
+.service-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 22, 86, 0.28) 0%, rgba(0, 22, 86, 0.05) 60%);
+    pointer-events: none;
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.06);
+}
+
+.service-body {
+    padding: var(--spacing-lg);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--spacing-md);
-    transition: transform var(--transition-normal);
-}
-
-.service-card:hover .service-icon {
-    transform: scale(1.1) rotate(5deg);
-}
-
-.service-icon i {
-    font-size: 2rem;
-    color: var(--color-white);
+    flex-direction: column;
+    flex: 1;
 }
 
 .service-title {
@@ -740,6 +753,16 @@ button {
     color: var(--color-text-light);
     font-size: 0.95rem;
     line-height: 1.65;
+}
+
+/* Apparition progressive gauche → droite : glissement horizontal
+   (le délai séquentiel est appliqué par le JS de reveal). */
+.methode-step.reveal {
+    transform: translateX(-28px);
+}
+
+.methode-step.reveal.is-visible {
+    transform: translateX(0);
 }
 
 /* Desktop : stepper horizontal, ligne traversant les marqueurs */
@@ -1658,9 +1681,6 @@ section[id] {
     margin-top: auto;
 }
 
-.service-card:hover .service-icon {
-    transform: scale(1.06);
-}
 
 /* --- Stats hero : chiffres tabulaires (pas de layout shift au count-up) --- */
 .hero-stat {
@@ -1920,43 +1940,51 @@ section[id] {
             </div>
 
             <div class="services-grid">
+                <!-- Photos d'illustration des services (libres de droits, Unsplash) —
+                     illustrent la catégorie, ne sont pas présentées comme des projets réels. -->
                 <article class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=500&fit=crop&auto=format" alt="Écran affichant du code — illustration développement full-stack" loading="lazy" width="800" height="500">
                     </div>
-                    <h3 class="service-title">Développement full-stack</h3>
-                    <p class="service-description">Je conçois et développe vos applications web de bout en bout, du frontend à l'API et à la base de données.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Frontend : React/Next.js, Angular</li>
-                        <li><i class="fas fa-check"></i> Backend &amp; API : Java/Spring Boot, Python, Node.js</li>
-                        <li><i class="fas fa-check"></i> Microservices, REST/GraphQL, bases de données</li>
-                    </ul>
+                    <div class="service-body">
+                        <h3 class="service-title">Développement full-stack</h3>
+                        <p class="service-description">Je conçois et développe vos applications web de bout en bout, du frontend à l'API et à la base de données.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Frontend : React/Next.js, Angular</li>
+                            <li><i class="fas fa-check"></i> Backend &amp; API : Java/Spring Boot, Python, Node.js</li>
+                            <li><i class="fas fa-check"></i> Microservices, REST/GraphQL, bases de données</li>
+                        </ul>
+                    </div>
                 </article>
 
                 <article class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-code-branch"></i>
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=500&fit=crop&auto=format" alt="Terminal de commandes — illustration DevOps et CI/CD" loading="lazy" width="800" height="500">
                     </div>
-                    <h3 class="service-title">DevOps</h3>
-                    <p class="service-description">J'automatise vos livraisons et fiabilise vos déploiements grâce à des pipelines CI/CD et à la conteneurisation.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> CI/CD : GitLab CI, GitHub Actions</li>
-                        <li><i class="fas fa-check"></i> Conteneurisation : Docker</li>
-                        <li><i class="fas fa-check"></i> Monitoring : Prometheus/Grafana</li>
-                    </ul>
+                    <div class="service-body">
+                        <h3 class="service-title">DevOps</h3>
+                        <p class="service-description">J'automatise vos livraisons et fiabilise vos déploiements grâce à des pipelines CI/CD et à la conteneurisation.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> CI/CD : GitLab CI, GitHub Actions</li>
+                            <li><i class="fas fa-check"></i> Conteneurisation : Docker</li>
+                            <li><i class="fas fa-check"></i> Monitoring : Prometheus/Grafana</li>
+                        </ul>
+                    </div>
                 </article>
 
                 <article class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-cloud"></i>
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop&auto=format" alt="Baies de serveurs — illustration infrastructure cloud" loading="lazy" width="800" height="500">
                     </div>
-                    <h3 class="service-title">Infrastructure cloud</h3>
-                    <p class="service-description">Je déploie et opère vos applications sur le cloud, avec une infrastructure reproductible et scalable.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Cloud : AWS &amp; Azure</li>
-                        <li><i class="fas fa-check"></i> Orchestration : Kubernetes</li>
-                        <li><i class="fas fa-check"></i> Infrastructure as Code : Terraform</li>
-                    </ul>
+                    <div class="service-body">
+                        <h3 class="service-title">Infrastructure cloud</h3>
+                        <p class="service-description">Je déploie et opère vos applications sur le cloud, avec une infrastructure reproductible et scalable.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Cloud : AWS &amp; Azure</li>
+                            <li><i class="fas fa-check"></i> Orchestration : Kubernetes</li>
+                            <li><i class="fas fa-check"></i> Infrastructure as Code : Terraform</li>
+                        </ul>
+                    </div>
                 </article>
             </div>
         </div>
@@ -2314,8 +2342,15 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     });
 
     revealElements.forEach((el, index) => {
-        // Subtle stagger within the same viewport batch.
-        el.style.transitionDelay = `${Math.min(index % 4, 3) * 60}ms`;
+        if (el.classList.contains('methode-step')) {
+            // Frise de méthode : apparition progressive gauche → droite,
+            // délai proportionnel à la position de l'étape (1 → 5).
+            const stepIndex = Array.prototype.indexOf.call(el.parentElement.children, el);
+            el.style.transitionDelay = `${stepIndex * 160}ms`;
+        } else {
+            // Subtle stagger within the same viewport batch.
+            el.style.transitionDelay = `${Math.min(index % 4, 3) * 60}ms`;
+        }
         revealObserver.observe(el);
     });
 }
