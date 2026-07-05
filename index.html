@@ -1289,45 +1289,6 @@ button {
     font-size: 1.1rem;
 }
 
-/* WHAT I BRING */
-.apport {
-    margin-top: var(--spacing-lg);
-    background: var(--color-background);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-}
-
-.apport h3 {
-    font-family: var(--font-primary);
-    font-size: 1.25rem;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
-}
-
-.apport-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.875rem;
-}
-
-.apport-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    line-height: 1.6;
-    color: var(--color-text);
-}
-
-.apport-list i {
-    color: var(--color-success);
-    margin-top: 0.3rem;
-    flex-shrink: 0;
-}
-
-.apport-list strong {
-    color: var(--color-primary);
-}
-
 /* ===================================
    RÉFÉRENCES
    =================================== */
@@ -1470,7 +1431,6 @@ button {
    RESPONSIVE / OVERFLOW HARDENING
    =================================== */
 /* Prevent long tokens (tech terms, emails) from causing horizontal overflow */
-.apport-list li,
 .footer-contact a {
     overflow-wrap: anywhere;
     word-break: break-word;
@@ -1912,7 +1872,7 @@ section[id] {
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title">À propos</h2>
-                <p class="section-subtitle">Consaltia, c'est un développeur freelance — un seul interlocuteur, de bout en bout.</p>
+                <p class="section-subtitle">Le développeur derrière Consaltia.</p>
             </div>
 
             <div class="apropos-content">
@@ -1938,17 +1898,6 @@ section[id] {
                     <p>Aujourd'hui, je mets cette expérience directement au service de vos projets — un seul interlocuteur, de bout en bout.</p>
                     <!-- TODO: decide whether to list named former employers publicly — check NDA/confidentiality first -->
                 </div>
-            </div>
-
-            <div class="apport reveal">
-                <h3>Ce que j'apporte</h3>
-                <ul class="apport-list">
-                    <li><i class="fas fa-check"></i><span>6 years of full-stack development across 5 companies in regulated, high-volume sectors</span></li>
-                    <li><i class="fas fa-check"></i><span><strong>Backend &amp; APIs:</strong> Java/Spring Boot, Python, Node.js, REST/GraphQL, microservices, messaging (Kafka, RabbitMQ)</span></li>
-                    <li><i class="fas fa-check"></i><span><strong>Frontend:</strong> React/Next.js, Angular, responsive SPA/SSR</span></li>
-                    <li><i class="fas fa-check"></i><span><strong>DevOps &amp; Cloud:</strong> Docker, Kubernetes, Terraform, CI/CD (GitLab, GitHub Actions), AWS &amp; Azure, monitoring (Prometheus/Grafana)</span></li>
-                    <li><i class="fas fa-check"></i><span><strong>Quality-first:</strong> automated testing, code reviews, production-grade delivery</span></li>
-                </ul>
             </div>
 
             <div class="techstack reveal">
@@ -1978,7 +1927,7 @@ section[id] {
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title">Parcours</h2>
-                <p class="section-subtitle">Mon expérience de développeur salarié, avant de me lancer en freelance sous la marque Consaltia. Chaque poste retrace le contexte et mes contributions clés.</p>
+                <p class="section-subtitle">Six ans d'expérience salariée — cinq entreprises, cinq secteurs.</p>
             </div>
 
             <!-- Company logos live in the project root; filenames are case-sensitive on
@@ -2178,7 +2127,7 @@ section[id] {
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title">Témoignages</h2>
-                <p class="section-subtitle">Ce qu'en disent celles et ceux avec qui j'ai travaillé. Textes validés par chaque personne — noms non publiés par respect de la vie privée.</p>
+                <p class="section-subtitle">Ce qu'en disent celles et ceux avec qui j'ai travaillé — noms non publiés par respect de la vie privée.</p>
             </div>
 
             <!-- Témoignages recueillis auprès d'anciens managers/collègues et validés
@@ -2304,7 +2253,7 @@ section[id] {
                     <div class="footer-brand">
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cellipse cx='100' cy='30' rx='95' ry='25' fill='white'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23001656' font-family='Arial, sans-serif' font-size='24' font-weight='bold'%3ECONSALTIA%3C/text%3E%3C/svg%3E" alt="Logo Consaltia" class="footer-logo">
                     </div>
-                    <p class="footer-tagline">Développeur full-stack &amp; cloud en freelance — de l'API au cloud, un seul interlocuteur.</p>
+                    <p class="footer-tagline">Développeur full-stack &amp; cloud en freelance. Conception, déploiement et exploitation de vos applications.</p>
                     <div class="footer-social">
                         <a href="https://www.linkedin.com/in/antoine-laurent-2686b5260/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://github.com/Consaltia" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
