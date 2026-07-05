@@ -330,7 +330,8 @@ button {
     background: var(--color-secondary);
 }
 
-/* Bouton de langue FR/EN (affiche la langue cible) */
+/* Bouton de langue FR/EN — ancré tout à droite de la navbar
+   (enfant direct de .nav-container, après le menu) */
 .lang-toggle {
     font-family: var(--font-primary);
     font-size: 0.85rem;
@@ -341,7 +342,9 @@ button {
     border: 2px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: 0.45rem 0.9rem;
-    margin-left: 0.75rem;
+    margin-left: 1rem;
+    flex-shrink: 0;
+    min-height: 44px;
     cursor: pointer;
     transition: all var(--transition-fast);
 }
@@ -351,12 +354,17 @@ button {
     background: var(--color-background);
 }
 
+/* Mobile : le menu est en overlay (hors flux) — le bouton reste dans la
+   barre, poussé à droite juste avant le burger (ordre : logo … langue, burger) */
 @media (max-width: 991px) {
     .lang-toggle {
-        margin: 1rem auto 0;
-        display: block;
-        padding: 0.6rem 1.6rem;
-        font-size: 1rem;
+        order: 2;
+        margin-left: auto;
+        margin-right: 0.75rem;
+    }
+
+    .nav-toggle {
+        order: 3;
     }
 }
 
@@ -1852,8 +1860,9 @@ section[id] {
                 <li><a href="#parcours" class="nav-link" data-i18n="nav.parcours">Parcours</a></li>
                 <li><a href="#references" class="nav-link" data-i18n="nav.temoignages">Témoignages</a></li>
                 <li><a href="#contact" class="nav-link nav-link-cta">Contact</a></li>
-                <li><button type="button" class="lang-toggle" id="langToggle" aria-label="Switch to English">EN</button></li>
             </ul>
+
+            <button type="button" class="lang-toggle" id="langToggle" aria-label="Switch to English">EN</button>
         </div>
     </nav>
 
