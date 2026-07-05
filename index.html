@@ -781,10 +781,12 @@ button {
     gap: var(--spacing-lg);
 }
 
-@media (min-width: 992px) {
+/* Photo et formulaire côte à côte au même niveau (jamais l'un au-dessus
+   de l'autre dès qu'il y a la place), sommets alignés. */
+@media (min-width: 768px) {
     .contact-content {
         grid-template-columns: 2fr 3fr;
-        align-items: center;
+        align-items: start;
     }
 }
 
@@ -807,10 +809,10 @@ button {
     z-index: 0;
 }
 
+/* Cadre sans recadrage : l'image garde ses proportions naturelles */
 .contact-photo-frame {
     position: relative;
     z-index: 1;
-    aspect-ratio: 4 / 5;
     border-radius: var(--radius-xl);
     overflow: hidden;
     border: 1px solid rgba(0, 22, 86, 0.10);
@@ -820,12 +822,11 @@ button {
 
 .contact-photo-frame img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
     .contact-photo {
         margin: 0;
     }
@@ -2048,17 +2049,6 @@ section[id] {
                 <form class="contact-form" id="contactForm">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="nom">Nom / Prénom *</label>
-                            <input type="text" id="nom" name="nom" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="societe">Société</label>
-                            <input type="text" id="societe" name="societe">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
                             <label for="email">Email *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
@@ -2066,17 +2056,6 @@ section[id] {
                             <label for="telephone">Téléphone</label>
                             <input type="tel" id="telephone" name="telephone">
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="sujet">Sujet *</label>
-                        <select id="sujet" name="sujet" required>
-                            <option value="">Sélectionnez un sujet</option>
-                            <option value="full-stack">Développement full-stack</option>
-                            <option value="devops">DevOps (CI/CD, conteneurisation)</option>
-                            <option value="cloud">Infrastructure cloud (AWS/Azure, Kubernetes, IaC)</option>
-                            <option value="autre">Autre demande</option>
-                        </select>
                     </div>
 
                     <div class="form-group">
@@ -2347,7 +2326,7 @@ if (contactForm && formMessage) {
         const data = Object.fromEntries(formData);
         
         // Validation
-        if (!data.nom || !data.email || !data.sujet || !data.message) {
+        if (!data.email || !data.message) {
             showFormMessage('Veuillez remplir tous les champs obligatoires.', 'error');
             return;
         }
@@ -2377,11 +2356,13 @@ if (contactForm && formMessage) {
                 EMAILJS_CONFIG.serviceId,
                 EMAILJS_CONFIG.templateId,
                 {
-                    nom: data.nom,
-                    societe: data.societe || 'Non renseignée',
+                    // Formulaire simplifié (email / téléphone / message) :
+                    // valeurs par défaut pour rester compatible avec le template EmailJS.
+                    nom: data.email,
+                    societe: 'Non renseignée',
                     email: data.email,
                     telephone: data.telephone || 'Non renseigné',
-                    sujet: data.sujet,
+                    sujet: 'Message via le formulaire de contact',
                     message: data.message
                 }
             );
