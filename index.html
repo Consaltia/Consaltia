@@ -472,6 +472,24 @@ button {
     max-width: 640px;
 }
 
+/* Mobile/tablette (une colonne) : contenu du hero centré.
+   Le desktop split (≥ 992px) reste aligné à gauche. */
+@media (max-width: 991px) {
+    .hero-content {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-cta {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+}
+
 /* Entrée : cascade fade + translation (titre → sous-titre → CTA → photo → stats) */
 .hero-title,
 .hero-subtitle,
