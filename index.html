@@ -696,10 +696,11 @@ button {
     line-height: 1.6;
 }
 
-/* RÉALISATIONS — carrousel de projets.
-   Le défilement repose sur scroll-snap : sans JS, la piste reste
-   parcourable au doigt/à la molette et les 10 cartes restent
-   accessibles. Le JS n'ajoute que la pagination et la rotation auto. */
+/* RÉALISATIONS — carrousel de projets, un projet à la fois.
+   Les 10 diapositives sont empilées dans une seule cellule de grille :
+   la hauteur suit la plus haute, et le fondu enchaîné (l'entrante paraît
+   pendant que la sortante s'efface) se fait sans saut de mise en page.
+   Sans JS, le <noscript> de la section les déplie les unes sous les autres. */
 .projets {
     padding: var(--spacing-xl) 0;
     background: var(--color-white);
@@ -709,44 +710,28 @@ button {
     position: relative;
 }
 
-.carousel-viewport {
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+.carousel-stage {
+    display: grid;
+    list-style: none;
+    margin: 0;
     /* Marge pour que l'ombre des cartes ne soit pas rognée */
     padding: 6px 0 var(--spacing-sm);
 }
 
-.carousel-viewport::-webkit-scrollbar {
-    display: none;
-}
-
-.carousel-track {
-    display: flex;
-    gap: var(--spacing-md);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
 .carousel-slide {
-    flex: 0 0 100%;
-    scroll-snap-align: start;
+    grid-area: 1 / 1;
     display: flex;
+    opacity: 0;
+    /* visibility retire aussi la diapositive de l'arbre d'accessibilité et
+       du parcours de tabulation ; le délai la maintient le temps du fondu. */
+    visibility: hidden;
+    transition: opacity 0.7s var(--ease-smooth, ease), visibility 0s linear 0.7s;
 }
 
-@media (min-width: 768px) {
-    .carousel-slide {
-        flex-basis: calc((100% - var(--spacing-md)) / 2);
-    }
-}
-
-@media (min-width: 1024px) {
-    .carousel-slide {
-        flex-basis: calc((100% - 2 * var(--spacing-md)) / 3);
-    }
+.carousel-slide.is-current {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.7s var(--ease-smooth, ease), visibility 0s;
 }
 
 .projet-card {
@@ -761,9 +746,13 @@ button {
     width: 100%;
 }
 
-.projet-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lg);
+/* Une seule carte à l'écran : sur desktop elle passe en deux colonnes
+   (visuel à gauche, texte à droite) pour ne pas s'étirer en bandeau. */
+@media (min-width: 768px) {
+    .projet-card {
+        flex-direction: row;
+        min-height: 340px;
+    }
 }
 
 /* Visuel : le dégradé vit en CSS, le SVG ne dessine que les formes en
@@ -789,6 +778,29 @@ button {
     display: flex;
     flex-direction: column;
     flex: 1;
+}
+
+@media (min-width: 768px) {
+    /* Moitié de la carte : à 340 px de haut, le cadre fait très exactement
+       du 5/3 — une image 1500x900 s'y pose sans être rognée par object-fit. */
+    .projet-visual {
+        flex: 0 0 50%;
+        aspect-ratio: auto;
+    }
+
+    .projet-body {
+        padding: var(--spacing-lg);
+        justify-content: center;
+    }
+
+    .projet-title {
+        font-size: 1.4rem;
+    }
+
+    .projet-desc {
+        font-size: 1rem;
+        flex: 0 1 auto;
+    }
 }
 
 .projet-tag {
@@ -835,7 +847,8 @@ button {
 .carousel-btn {
     display: none;
     position: absolute;
-    top: 33%;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 2;
     width: 44px;
     height: 44px;
@@ -2333,9 +2346,17 @@ section[id] {
                     <i class="fas fa-chevron-right" aria-hidden="true"></i>
                 </button>
 
-                <div class="carousel-viewport">
-                    <ul class="carousel-track">
-                        <li class="carousel-slide">
+                <!-- Sans JS, aucune diapositive ne serait révélée : on les déplie
+                     alors verticalement et on masque les commandes inutiles. -->
+                <noscript>
+                    <style>
+                        .carousel-slide { grid-area: auto; opacity: 1; visibility: visible; margin-bottom: var(--spacing-md); }
+                        .carousel-btn, .carousel-controls { display: none !important; }
+                    </style>
+                </noscript>
+
+                <ul class="carousel-stage">
+                        <li class="carousel-slide is-current">
                             <article class="projet-card">
                                 <div class="projet-visual">
                                     <svg viewBox="0 0 400 240" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice">
@@ -2652,8 +2673,7 @@ section[id] {
                                 </div>
                             </article>
                         </li>
-                    </ul>
-                </div>
+                </ul>
 
                 <div class="carousel-controls">
                     <div class="carousel-dots" aria-label="Pagination du carrousel"></div>
@@ -3057,8 +3077,10 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
 
 // ===================================
 // CARROUSEL RÉALISATIONS
-// Défilement natif (scroll-snap) piloté par scrollTo : sans JS la piste
-// reste parcourable, le JS n'ajoute que pagination + rotation automatique.
+// Un projet affiché à la fois : la diapositive entrante paraît pendant que
+// la sortante s'efface (fondu enchaîné), puis retour au premier après le
+// dixième. Le JS ne fait que déplacer la classe .is-current — l'animation
+// est portée par le CSS.
 // Conformité WCAG 2.2.2 : bouton pause explicite, arrêt au survol et au
 // focus clavier, aucune rotation si prefers-reduced-motion est actif.
 // ===================================
@@ -3067,38 +3089,34 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
     const carousel = document.getElementById('projCarousel');
     if (!carousel) return;
 
-    const viewport = carousel.querySelector('.carousel-viewport');
+    const stage = carousel.querySelector('.carousel-stage');
+    const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
     const dotsWrap = carousel.querySelector('.carousel-dots');
     const prevBtn = carousel.querySelector('.carousel-prev');
     const nextBtn = carousel.querySelector('.carousel-next');
     const playBtn = carousel.querySelector('.carousel-play');
     const playIcon = playBtn.querySelector('i');
 
-    const DELAY = 5000;
+    // Durée d'affichage d'un projet, en millisecondes.
+    const DELAY = 3000;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Libellés des commandes : hors [data-i18n], car ce sont des aria-label
     // (applyLang ne touche qu'au innerHTML). Resynchronisés sur <html lang>.
     const LABELS = {
-        fr: { prev: 'Projets précédents', next: 'Projets suivants', play: 'Lancer le défilement automatique', pause: 'Mettre le carrousel en pause', dot: n => `Aller au groupe de projets ${n}` },
-        en: { prev: 'Previous projects', next: 'Next projects', play: 'Start automatic rotation', pause: 'Pause the carousel', dot: n => `Go to project group ${n}` }
+        fr: { prev: 'Projet précédent', next: 'Projet suivant', play: 'Lancer le défilement automatique', pause: 'Mettre le carrousel en pause', dot: n => `Aller au projet ${n}`, slide: (n, total) => `${n} sur ${total}`, roledesc: 'diapositive' },
+        en: { prev: 'Previous project', next: 'Next project', play: 'Start automatic rotation', pause: 'Pause the carousel', dot: n => `Go to project ${n}`, slide: (n, total) => `${n} of ${total}`, roledesc: 'slide' }
     };
     const t = () => LABELS[document.documentElement.lang === 'en' ? 'en' : 'fr'];
 
-    let pages = 1;
     let current = 0;
     let timer = null;
     let userPaused = reduced; // en reduced-motion, on démarre à l'arrêt
     let inView = true;
 
-    const pageCount = () => Math.max(1, Math.round(viewport.scrollWidth / viewport.clientWidth));
-
-    function goTo(index, smooth = true) {
-        current = (index + pages) % pages;
-        viewport.scrollTo({
-            left: current * viewport.clientWidth,
-            behavior: smooth && !reduced ? 'smooth' : 'auto'
-        });
+    function goTo(index) {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => slide.classList.toggle('is-current', i === current));
         syncDots();
     }
 
@@ -3111,17 +3129,15 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
     }
 
     function buildDots() {
-        pages = pageCount();
-        current = Math.min(current, pages - 1);
         dotsWrap.textContent = '';
-        for (let i = 0; i < pages; i++) {
+        slides.forEach((_, i) => {
             const dot = document.createElement('button');
             dot.type = 'button';
             dot.className = 'carousel-dot';
             dot.setAttribute('aria-label', t().dot(i + 1));
             dot.addEventListener('click', () => { goTo(i); restart(); });
             dotsWrap.appendChild(dot);
-        }
+        });
         syncDots();
     }
 
@@ -3131,7 +3147,7 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
 
     function play() {
         stop();
-        if (userPaused || !inView || pages < 2 || document.hidden) return;
+        if (userPaused || !inView || slides.length < 2 || document.hidden) return;
         timer = setInterval(() => goTo(current + 1), DELAY);
     }
 
@@ -3145,15 +3161,20 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
         playIcon.className = userPaused ? 'fas fa-play' : 'fas fa-pause';
         playBtn.setAttribute('aria-label', userPaused ? t().play : t().pause);
         // Pattern carrousel du W3C : en rotation automatique, aria-live reste
-        // à "off" (sinon le lecteur d'écran annonce un projet toutes les 5 s) ;
+        // à "off" (sinon le lecteur d'écran annonce un projet toutes les 3 s) ;
         // à l'arrêt, les changements manuels sont annoncés poliment.
-        viewport.setAttribute('aria-live', userPaused ? 'polite' : 'off');
+        stage.setAttribute('aria-live', userPaused ? 'polite' : 'off');
     }
 
     function syncLabels() {
         prevBtn.setAttribute('aria-label', t().prev);
         nextBtn.setAttribute('aria-label', t().next);
         Array.from(dotsWrap.children).forEach((dot, i) => dot.setAttribute('aria-label', t().dot(i + 1)));
+        slides.forEach((slide, i) => {
+            slide.setAttribute('role', 'group');
+            slide.setAttribute('aria-roledescription', t().roledesc);
+            slide.setAttribute('aria-label', t().slide(i + 1, slides.length));
+        });
         syncPlayButton();
     }
 
@@ -3180,21 +3201,18 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
         if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); restart(); }
     });
 
-    // Défilement manuel (doigt, molette) : on resynchronise la puce active.
-    let scrollDebounce;
-    viewport.addEventListener('scroll', () => {
-        clearTimeout(scrollDebounce);
-        scrollDebounce = setTimeout(() => {
-            const at = Math.round(viewport.scrollLeft / viewport.clientWidth);
-            if (at !== current) { current = Math.min(at, pages - 1); syncDots(); }
-        }, 120);
+    // Balayage tactile : le fondu remplace le défilement natif, on gère donc
+    // le geste à la main pour garder la navigation au doigt sur mobile.
+    let touchX = null;
+    stage.addEventListener('touchstart', (e) => { touchX = e.changedTouches[0].clientX; }, { passive: true });
+    stage.addEventListener('touchend', (e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        touchX = null;
+        if (Math.abs(dx) < 40) return;
+        goTo(current + (dx < 0 ? 1 : -1));
+        restart();
     }, { passive: true });
-
-    let resizeDebounce;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeDebounce);
-        resizeDebounce = setTimeout(() => { buildDots(); goTo(current, false); play(); }, 200);
-    });
 
     // Ne tourne que si la section est à l'écran et l'onglet actif.
     if ('IntersectionObserver' in window) {
