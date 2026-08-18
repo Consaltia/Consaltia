@@ -1754,27 +1754,21 @@ button {
     white-space: nowrap;
 }
 
-.hero-stat + .hero-stat {
-    position: relative;
-    padding-left: 1.5rem;
+/* Chaque statistique porte son icone : le separateur en point median
+   ferait doublon, on ne le garde pas. */
+.hero-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
 }
 
-.hero-stat + .hero-stat::before {
-    content: '·';
-    position: absolute;
-    left: 0;
+.hero-stat i {
     color: var(--color-secondary);
-    opacity: 0.8;
+    font-size: 0.9em;
+    opacity: 0.85;
 }
 
-@media (max-width: 480px) {
-    .hero-stat + .hero-stat {
-        padding-left: 0;
-    }
-    .hero-stat + .hero-stat::before {
-        content: none;
-    }
-}
+
 
 /* ===================================
    À PROPOS / BACKGROUND
@@ -2482,16 +2476,25 @@ section[id] {
         <div class="container hero-container">
             <div class="hero-grid">
                 <div class="hero-content">
-                    <h1 class="hero-title" data-i18n="hero.title">Développeur full-stack &amp; cloud freelance à Paris. Je conçois, déploie et opère vos applications de bout en bout.</h1>
-                    <p class="hero-subtitle" data-i18n="hero.subtitle">Consaltia, la pratique freelance d'un développeur unique : un seul interlocuteur, de l'API au cloud.</p>
+                    <h1 class="hero-title" data-i18n="hero.title">Développeur full-stack &amp; cloud freelance à Paris.</h1>
+                    <p class="hero-subtitle" data-i18n="hero.subtitle">Je conçois, déploie et opère vos applications, de l'API au cloud.</p>
                     <div class="hero-cta">
                         <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Me contacter</a>
-                        <a href="#services" class="btn btn-secondary" data-i18n="hero.cta2">Découvrir mes services</a>
+                        <a href="services/" class="btn btn-secondary" data-i18n="hero.cta2">Voir mon expertise</a>
                     </div>
                     <div class="hero-stats">
-                        <span class="hero-stat"><span class="stat-num" data-count="6">6</span><span data-i18n="hero.stat1">+ ans d'expérience</span></span>
-                        <span class="hero-stat"><span class="stat-num" data-count="3">3</span><span data-i18n="hero.stat2"> secteurs</span></span>
-                        <span class="hero-stat" data-i18n="hero.stat3">Livraison de bout en bout (API → cloud)</span>
+                        <span class="hero-stat">
+                            <i class="fas fa-briefcase" aria-hidden="true"></i>
+                            <span class="stat-num" data-count="6">6</span><span data-i18n="hero.stat1">+ ans d'expérience</span>
+                        </span>
+                        <span class="hero-stat">
+                            <i class="fas fa-industry" aria-hidden="true"></i>
+                            <span class="stat-num" data-count="10">10</span><span data-i18n="hero.stat2"> secteurs</span>
+                        </span>
+                        <span class="hero-stat">
+                            <i class="fas fa-rocket" aria-hidden="true"></i>
+                            <span class="stat-num" data-count="20">20</span><span data-i18n="hero.stat3"> projets livrés</span>
+                        </span>
                     </div>
                 </div>
 
@@ -3381,12 +3384,13 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
             const target = parseInt(el.dataset.count, 10);
             if (isNaN(target)) return;
 
-            const duration = 900;
+            // Montee volontairement lente : le chiffre doit se voir grimper
+            const duration = 2000;
             const start = performance.now();
 
             const tick = (now) => {
                 const progress = Math.min((now - start) / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+                const eased = 1 - Math.pow(1 - progress, 4); // ease-out quartique, fin plus douce
                 el.textContent = Math.round(eased * target);
                 if (progress < 1) requestAnimationFrame(tick);
             };
@@ -3575,13 +3579,13 @@ const I18N_EN = {
     'nav.realisations': 'Work',
     'nav.parcours': 'Experience',
     'nav.temoignages': 'Testimonials',
-    'hero.title': 'Full-stack &amp; cloud freelance developer in Paris. I design, deploy, and operate your applications end to end.',
-    'hero.subtitle': 'Consaltia is the freelance practice of a single developer: one point of contact, from the API to the cloud.',
+    'hero.title': 'Full-stack &amp; cloud freelance developer in Paris.',
+    'hero.subtitle': 'I design, deploy and operate your applications, from API to cloud.',
     'hero.cta1': 'Get in touch',
-    'hero.cta2': 'See what I do',
+    'hero.cta2': 'View my expertise',
     'hero.stat1': '+ years experience',
     'hero.stat2': ' sectors',
-    'hero.stat3': 'Full-chain delivery (API → cloud)',
+    'hero.stat3': ' projects delivered',
     'about.title': 'About',
     'about.role': 'Full-stack &amp; cloud developer · Freelance',
     'about.badge1': '6+ years experience',
