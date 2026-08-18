@@ -644,7 +644,9 @@ button {
     width: 100%;
 }
 
-/* Mobile-first : une colonne (texte puis photo) ; deux colonnes ≥ 992px */
+/* Deux colonnes à partir de 992px. En dessous, le hero reste sur deux
+   colonnes mais seulement pour son en-tête : titre à gauche, photo à
+   droite, puis sous-titre, boutons et statistiques sur toute la largeur. */
 .hero-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -654,24 +656,6 @@ button {
 
 .hero-content {
     max-width: 640px;
-}
-
-/* Mobile/tablette (une colonne) : contenu du hero centré.
-   Le desktop split (≥ 992px) reste aligné à gauche. */
-@media (max-width: 991px) {
-    .hero-content {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .hero-cta {
-        justify-content: center;
-    }
-
-    .hero-stats {
-        justify-content: center;
-    }
 }
 
 /* Entrée : cascade fade + translation (titre → sous-titre → CTA → photo → stats) */
@@ -773,6 +757,84 @@ button {
 @media (min-width: 768px) {
     .hero {
         padding: 6rem 0;
+    }
+}
+
+/* Mobile et tablette : en-tête sur deux colonnes.
+   display: contents fait des enfants de .hero-content des éléments de
+   grille de .hero-grid, ce qui permet de placer le titre et la photo sur
+   la même ligne sans modifier le HTML. Le reste passe pleine largeur,
+   pour garder des boutons confortables à toucher. */
+@media (max-width: 991px) {
+    .hero {
+        min-height: 0;
+        padding: var(--spacing-lg) 0;
+    }
+
+    .hero-grid {
+        grid-template-columns: minmax(0, 1fr) clamp(112px, 26vw, 280px);
+        column-gap: var(--spacing-sm);
+        row-gap: var(--spacing-sm);
+        align-items: center;
+    }
+
+    .hero-content {
+        display: contents;
+    }
+
+    .hero-title {
+        grid-column: 1;
+        grid-row: 1;
+        align-self: center;
+        text-align: left;
+        margin-bottom: 0;
+        font-size: clamp(1.5rem, 0.9rem + 2.6vw, 2.6rem);
+        /* A 320px la colonne ne fait que 163px : un mot long doit ceder */
+        overflow-wrap: break-word;
+    }
+
+    .hero-media {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: center;
+        max-width: none;
+        margin: 0;
+    }
+
+    /* La tuile décalée déborderait sur le bord droit à cette taille */
+    .hero-media::before {
+        inset: 10% -8px -8px 10%;
+    }
+
+    .hero-subtitle,
+    .hero-cta,
+    .hero-stats {
+        grid-column: 1 / -1;
+        text-align: left;
+    }
+
+    .hero-subtitle {
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .hero-cta,
+    .hero-stats {
+        justify-content: flex-start;
+    }
+}
+
+/* Petits écrans : les deux boutons prennent toute la largeur, l'un sous
+   l'autre, plutôt que de se serrer sur une ligne. */
+@media (max-width: 479px) {
+    .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
     }
 }
 
