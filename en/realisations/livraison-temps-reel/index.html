@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time delivery platform | Consaltia</title>
+    <meta name="description" content="Three connected applications on one backbone: courier, customer and restaurant see the same order state at the same moment. React, Node.js, WebSocket.">
+    <meta name="author" content="Antoine Laurent, Consaltia">
+    <link rel="canonical" href="https://consaltia.com/en/realisations/livraison-temps-reel/">
+    <link rel="alternate" hreflang="en" href="https://consaltia.com/en/realisations/livraison-temps-reel/">
+    <link rel="alternate" hreflang="fr-FR" href="https://consaltia.com/realisations/livraison-temps-reel/">
+    <link rel="alternate" hreflang="x-default" href="https://consaltia.com/realisations/livraison-temps-reel/">
+
+    <meta property="og:site_name" content="Consaltia">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Real-time delivery platform | Consaltia">
+    <meta property="og:description" content="Three connected applications on one backbone: courier, customer and restaurant see the same order state at the same moment. React, Node.js, WebSocket.">
+    <meta property="og:url" content="https://consaltia.com/en/realisations/livraison-temps-reel/">
+    <meta property="og:image" content="https://consaltia.com/projets/livraison.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Real-time delivery platform | Consaltia">
+    <meta name="twitter:description" content="Three connected applications on one backbone: courier, customer and restaurant see the same order state at the same moment. React, Node.js, WebSocket.">
+    <meta name="twitter:image" content="https://consaltia.com/projets/livraison.webp">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../../assets/pages.css">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://consaltia.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Selected work",
+          "item": "https://consaltia.com/en/realisations/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Real-time delivery platform",
+          "item": "https://consaltia.com/en/realisations/livraison-temps-reel/"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://consaltia.com/en/realisations/livraison-temps-reel/#projet",
+      "name": "Real-time delivery platform",
+      "headline": "Real-time delivery platform",
+      "description": "Three connected applications on one backbone: courier, customer and restaurant see the same order state at the same moment. React, Node.js, WebSocket.",
+      "url": "https://consaltia.com/en/realisations/livraison-temps-reel/",
+      "genre": "Urban logistics",
+      "inLanguage": "en-GB",
+      "creator": {
+        "@id": "https://consaltia.com/#person"
+      },
+      "author": {
+        "@id": "https://consaltia.com/#person"
+      },
+      "provider": {
+        "@id": "https://consaltia.com/#organization"
+      },
+      "keywords": "React, Node.js, PostgreSQL, WebSocket",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "React"
+        },
+        {
+          "@type": "Thing",
+          "name": "Node.js"
+        },
+        {
+          "@type": "Thing",
+          "name": "PostgreSQL"
+        },
+        {
+          "@type": "Thing",
+          "name": "WebSocket"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://consaltia.com/en/realisations/#collection"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://consaltia.com/en/realisations/livraison-temps-reel/#webpage",
+      "url": "https://consaltia.com/en/realisations/livraison-temps-reel/",
+      "name": "Real-time delivery platform | Consaltia",
+      "description": "Three connected applications on one backbone: courier, customer and restaurant see the same order state at the same moment. React, Node.js, WebSocket.",
+      "isPartOf": {
+        "@id": "https://consaltia.com/#website"
+      },
+      "inLanguage": "en-GB",
+      "mainEntity": {
+        "@id": "https://consaltia.com/en/realisations/livraison-temps-reel/#projet"
+      },
+      "author": {
+        "@id": "https://consaltia.com/#person"
+      },
+      "primaryImageOfPage": "https://consaltia.com/projets/livraison.webp"
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../../" aria-label="Consaltia, home">
+                <img src="../../../logo.png" alt="Consaltia logo" class="nav-logo" width="249" height="102">
+            </a>
+            <ul class="nav-menu">
+                    <li><a href="../../#apropos" class="nav-link">About</a></li>
+                    <li><a href="../../services/" class="nav-link">Services</a></li>
+                    <li><a href="../../realisations/" class="nav-link">Work</a></li>
+                    <li><a href="../../#parcours" class="nav-link">Background</a></li>
+                    <li><a href="../../#faq" class="nav-link">FAQ</a></li>
+                <li><a href="../../#contact" class="nav-link nav-link-cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="../../">Home</a></li>
+                <li><a href="../">Selected work</a></li>
+                <li><span aria-current="page">Real-time delivery platform</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <main id="main">
+        <header class="page-hero">
+            <div class="container">
+                <p class="page-eyebrow">Urban logistics</p>
+                <h1>Real-time delivery platform</h1>
+                <p class="page-lead">Three groups of users with opposing needs, one set of data, and the requirement that everyone sees the same thing at the same time.</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <figure class="proj-figure">
+                <img src="../../../projets/livraison.webp" alt="Dispatch console: map with live route, delivery steps and courier details." loading="lazy" decoding="async" width="1500" height="900">
+                <figcaption>Interface illustration, recreated for this presentation. It is not a screenshot of the final deliverable.</figcaption>
+            </figure>
+        </div>
+
+        <div class="page-body">
+            <div class="container">
+                <article class="prose">
+                    <h2>Context</h2>
+                    <p>On-demand delivery involves three groups whose needs have almost nothing in common. The courier works on the move, often one-handed, on an unreliable mobile network. The customer wants to know where the order is without phoning. The restaurant has to accept, prepare and track orders without leaving their station. Making those three uses coexist on one set of data is the heart of the problem, well before any interface question.</p>
+
+                    <h2>The problem</h2>
+                    <p>Without a unified platform, coordination runs on calls and messages. Everyone builds their own version of an order's state, and those versions drift apart.</p>
+                    <ul class="checklist">
+                        <li>The customer calls back because they have no visibility on progress</li>
+                        <li>The restaurant chases the courier, who is driving</li>
+                        <li>A cancelled order keeps being prepared</li>
+                        <li>No usable record once the day is over</li>
+                    </ul>
+
+                    <h2>The solution</h2>
+                    <p>One application backbone, and three interfaces each cut for its own use. A single order model is authoritative, and every state change is pushed to connected clients.</p>
+                    <ul class="checklist">
+                        <li>Courier app: job list, routing, one-gesture status change, proof of delivery</li>
+                        <li>Customer app: ordering, payment, position tracking and estimated arrival time</li>
+                        <li>Restaurant back office: catalogue, stock, order acceptance and tracking</li>
+                        <li>State changes pushed over WebSocket rather than periodic polling</li>
+                        <li>A single order model, with explicit state transitions</li>
+                    </ul>
+
+                    <h2>My role</h2>
+                    <p>I carried the whole chain: the data model and its state transitions, the API, the three interfaces, the database and deployment. The most structuring piece was defining an order's states and the permitted transitions between them, because the three interfaces follow from that.</p>
+
+                    <h2>Constraints</h2>
+                    <ul class="checklist">
+                        <li>Unreliable mobile network: the courier app has to tolerate cuts and resume without losing actions</li>
+                        <li>Position tracking frequent enough to be useful, without draining the phone battery</li>
+                        <li>State consistency across three clients connected at once</li>
+                        <li>Online payment, with the security requirements that come with it</li>
+                        <li>Load spikes concentrated on meal times</li>
+                    </ul>
+
+                    <h2>Outcome</h2>
+                    <p>The platform replaces phone coordination with a shared state. All three parties read the same information at the same moment, and order history becomes usable.</p>
+                    <ul class="checklist">
+                        <li>Customer-side tracking removes the main reason for inbound calls</li>
+                        <li>The restaurant manages its own catalogue and stock, with no technical involvement</li>
+                        <li>Every order leaves a complete trail, from basket to proof of delivery</li>
+                    </ul>
+
+                    <div class="callout">
+                        <p>Outcomes are described by the capability delivered. No commercial performance metric is claimed here: usage figures belong to the client, and I do not publish numbers I cannot substantiate.</p>
+                    </div>
+                </article>
+
+                <aside>
+                    <div class="aside-card">
+                        <h2>Project facts</h2>
+                        <dl class="factbox">
+                            <dt>Domain</dt><dd>Urban logistics</dd>
+                            <dt>Type</dt><dd>Business platform, three interfaces</dd>
+                            <dt>Role</dt><dd>Design and development, end to end</dd>
+                        </dl>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Stack</h2>
+                        <span class="pill">React</span>
+                        <span class="pill">Node.js</span>
+                        <span class="pill">PostgreSQL</span>
+                        <span class="pill">WebSocket</span>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Related services</h2>
+                        <ul class="aside-links">
+                        <li><a href="../../services/developpeur-backend-api/">Freelance backend & API developer</a></li>
+                        <li><a href="../../services/developpement-application-web/">Custom web application development</a></li>
+                        </ul>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Other projects</h2>
+                        <ul class="aside-links">
+                        <li><a href="../carrylb-marketplace/">CarryLB, a marketplace for travellers and senders</a></li>
+                        <li><a href="../gestion-de-projet/">Internal project management tool</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <section class="cta-band">
+            <div class="container">
+                <h2>A project of this kind?</h2>
+                <p>Describe your need in a few lines. I will tell you what is feasible, what is not, and where to start.</p>
+                <a href="../../#contact" class="btn btn-light">Get in touch</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cellipse cx='100' cy='30' rx='95' ry='25' fill='white'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23001656' font-family='Arial, sans-serif' font-size='24' font-weight='bold'%3ECONSALTIA%3C/text%3E%3C/svg%3E" alt="Consaltia logo" class="footer-logo">
+                    <p>Freelance full-stack and cloud developer in Paris. From the API to deployment, a single point of contact.</p>
+                </div>
+                <div>
+                    <h2>Development</h2>
+                    <ul>
+                        <li><a href="../../services/developpeur-react-nextjs-paris/">React & Next.js</a></li>
+                        <li><a href="../../services/developpeur-backend-api/">Backend & API</a></li>
+                        <li><a href="../../services/developpeur-cloud-devops-paris/">Cloud & DevOps</a></li>
+                        <li><a href="../../services/developpement-application-web/">Web application</a></li>
+                        <li><a href="../../services/developpement-mvp/">MVP</a></li>
+                        <li><a href="../../realisations/">Selected work</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Contact</h2>
+                    <ul>
+                        <li><a href="mailto:consaltia@gmail.com">consaltia@gmail.com</a></li>
+                        <li><a href="tel:+33664941229">+33 6 64 94 12 29</a></li>
+                        <li>Paris and Île-de-France, on site or remote</li>
+                        <li><a href="../../">Back to home</a></li>
+                        <li><a href="../../../" hreflang="fr-FR">Version française</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Consaltia. All rights reserved.</span>
+                <span><a href="../../../mentions-legales.html">Legal notice</a></span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
