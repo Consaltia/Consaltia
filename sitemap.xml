@@ -1,35 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Seules les URL indexables et canoniques figurent ici. Les pages
+     keywords-*.html sont passees en noindex : les lister serait contradictoire. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://consaltia.github.io/Consaltia/</loc>
-    <lastmod>2026-01-11</lastmod>
-  </url>
-  <url>
-    <loc>https://consaltia.github.io/Consaltia/keywords-accompagnement-etudiants.html</loc>
-    <lastmod>2026-01-11</lastmod>
-  </url>
-  <url>
-    <loc>https://consaltia.github.io/Consaltia/keywords-cybersecurite.html</loc>
-    <lastmod>2026-01-11</lastmod>
-  </url>
-  <url>
-    <loc>https://consaltia.github.io/Consaltia/keywords-creation-site-web.html</loc>
-    <lastmod>2026-01-11</lastmod>
-  </url>
-  <url>
-    <loc>https://consaltia.github.io/Consaltia/keywords-formation-it.html</loc>
-    <lastmod>2026-01-11</lastmod>
-  </url>
-  <url>
-    <loc>https://consaltia.github.io/Consaltia/keywords-automatisation-cloud.html</loc>
-    <lastmod>2026-01-11</lastmod>
-  </url>
-  <url>
-    <loc>https://consaltia.github.io/Consaltia/keywords-conseil-digital.html</loc>
-    <lastmod>2026-01-11</lastmod>
-  </url>
-  <url>
-    <loc>https://consaltia.github.io/Consaltia/keywords-depannage-informatique.html</loc>
-    <lastmod>2026-01-11</lastmod>
+    <loc>https://consaltia.com/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
   </url>
 </urlset>

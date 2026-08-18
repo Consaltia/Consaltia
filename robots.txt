@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://consaltia.github.io/Consaltia/sitemap.xml
+# Pages de mots-cles heritees : desindexees, voir le rapport SEO
+Sitemap: https://consaltia.com/sitemap.xml
