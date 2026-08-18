@@ -1245,6 +1245,22 @@ button {
     line-height: 1.7;
 }
 
+.projets-cta {
+    text-align: center;
+    margin-top: var(--spacing-md);
+}
+
+.projets-cta a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid rgba(0, 22, 86, 0.25);
+    padding-bottom: 2px;
+}
+
+.projets-cta a:hover,
+.projets-cta a:focus-visible { border-bottom-color: var(--color-primary); }
+
 .projets-note {
     text-align: center;
     color: var(--color-text-light);
@@ -2448,7 +2464,7 @@ section[id] {
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#apropos" class="nav-link" data-i18n="nav.about">À propos</a></li>
                 <li><a href="services/" class="nav-link">Services</a></li>
-                <li><a href="#realisations" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li>
+                <li><a href="realisations/" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li>
                 <li><a href="#parcours" class="nav-link" data-i18n="nav.parcours">Parcours</a></li>
                 <li><a href="#references" class="nav-link" data-i18n="nav.temoignages">Témoignages</a></li>
                 <li><a href="#faq" class="nav-link" data-i18n="nav.faq">FAQ</a></li>
@@ -2949,6 +2965,8 @@ section[id] {
                 </div>
             </div>
 
+            <p class="projets-cta reveal"><a href="realisations/" data-i18n="proj.cta">Voir le détail des onze réalisations : contexte, contraintes et solution</a></p>
+
             <p class="projets-note reveal" data-i18n="proj.note">Interfaces illustratives, reconstituées pour la présentation. Ce ne sont pas des captures des livrables finaux. Démonstrations et détails techniques sur demande.</p>
         </div>
     </section>
@@ -3189,6 +3207,7 @@ section[id] {
                                                 <li><a href="#parcours" data-i18n="nav.parcours">Parcours</a></li>
                         <li><a href="#references" data-i18n="nav.temoignages">Témoignages</a></li>
                         <li><a href="services/">Services</a></li>
+                        <li><a href="realisations/">Réalisations</a></li>
                         <li><a href="prestations/" data-i18n="nav.prestations">Prestations</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -3573,6 +3592,7 @@ const I18N_EN = {
     'about.stack': 'Tech stack',
     'proj.title': 'Selected work',
     'proj.subtitle': 'Eleven projects delivered end to end: web platforms, business applications, data and AI.',
+    'proj.cta': 'See all eleven projects in detail: context, constraints and solution',
     'proj.note': 'Illustrative interfaces, recreated for this presentation. They are not screenshots of the final deliverables. Demos and technical details on request.',
     'p1.tag': 'Logistics',
     'p1.title': 'Real-time delivery tracking',

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plateforme de location de véhicules | Consaltia</title>
+    <meta name="description" content="Recherche par lieu et dates, calendrier de disponibilité, réservation, paiement et génération des contrats. Angular, Spring Boot, PostgreSQL, Stripe.">
+    <meta name="author" content="Antoine Laurent, Consaltia">
+    <link rel="canonical" href="https://consaltia.com/realisations/location-de-vehicules/">
+
+    <meta property="og:site_name" content="Consaltia">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Plateforme de location de véhicules | Consaltia">
+    <meta property="og:description" content="Recherche par lieu et dates, calendrier de disponibilité, réservation, paiement et génération des contrats. Angular, Spring Boot, PostgreSQL, Stripe.">
+    <meta property="og:url" content="https://consaltia.com/realisations/location-de-vehicules/">
+    <meta property="og:image" content="https://consaltia.com/projets/location-voitures.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Plateforme de location de véhicules | Consaltia">
+    <meta name="twitter:description" content="Recherche par lieu et dates, calendrier de disponibilité, réservation, paiement et génération des contrats. Angular, Spring Boot, PostgreSQL, Stripe.">
+    <meta name="twitter:image" content="https://consaltia.com/projets/location-voitures.webp">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/pages.css">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://consaltia.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Réalisations",
+          "item": "https://consaltia.com/realisations/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Plateforme de location de véhicules",
+          "item": "https://consaltia.com/realisations/location-de-vehicules/"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://consaltia.com/realisations/location-de-vehicules/#projet",
+      "name": "Plateforme de location de véhicules",
+      "headline": "Plateforme de location de véhicules",
+      "description": "Recherche par lieu et dates, calendrier de disponibilité, réservation, paiement et génération des contrats. Angular, Spring Boot, PostgreSQL, Stripe.",
+      "url": "https://consaltia.com/realisations/location-de-vehicules/",
+      "genre": "Réservation",
+      "inLanguage": "fr-FR",
+      "creator": {
+        "@id": "https://consaltia.com/#person"
+      },
+      "author": {
+        "@id": "https://consaltia.com/#person"
+      },
+      "provider": {
+        "@id": "https://consaltia.com/#organization"
+      },
+      "keywords": "Angular, Spring Boot, PostgreSQL, Stripe",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Angular"
+        },
+        {
+          "@type": "Thing",
+          "name": "Spring Boot"
+        },
+        {
+          "@type": "Thing",
+          "name": "PostgreSQL"
+        },
+        {
+          "@type": "Thing",
+          "name": "Stripe"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://consaltia.com/realisations/#collection"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://consaltia.com/realisations/location-de-vehicules/#webpage",
+      "url": "https://consaltia.com/realisations/location-de-vehicules/",
+      "name": "Plateforme de location de véhicules | Consaltia",
+      "description": "Recherche par lieu et dates, calendrier de disponibilité, réservation, paiement et génération des contrats. Angular, Spring Boot, PostgreSQL, Stripe.",
+      "isPartOf": {
+        "@id": "https://consaltia.com/#website"
+      },
+      "inLanguage": "fr-FR",
+      "primaryImageOfPage": "https://consaltia.com/projets/location-voitures.webp",
+      "mainEntity": {
+        "@id": "https://consaltia.com/realisations/location-de-vehicules/#projet"
+      },
+      "author": {
+        "@id": "https://consaltia.com/#person"
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">Aller au contenu</a>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../../index.html" aria-label="Consaltia, accueil">
+                <img src="../../logo.png" alt="Logo Consaltia" class="nav-logo" width="249" height="102">
+            </a>
+            <ul class="nav-menu">
+                    <li><a href="../../index.html#apropos" class="nav-link">À propos</a></li>
+                    <li><a href="../../services/" class="nav-link">Services</a></li>
+                    <li><a href="../../realisations/" class="nav-link">Réalisations</a></li>
+                    <li><a href="../../index.html#parcours" class="nav-link">Parcours</a></li>
+                    <li><a href="../../index.html#faq" class="nav-link">FAQ</a></li>
+                <li><a href="../../index.html#contact" class="nav-link nav-link-cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <ol>
+                <li><a href="../../index.html">Accueil</a></li>
+                <li><a href="../">Réalisations</a></li>
+                <li><span aria-current="page">Plateforme de location de véhicules</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <main id="main">
+        <header class="page-hero">
+            <div class="container">
+                <p class="page-eyebrow">Réservation</p>
+                <h1>Plateforme de location de véhicules</h1>
+                <p class="page-lead">Le vrai sujet d'une plateforme de réservation n'est pas le catalogue, c'est l'impossibilité de louer deux fois le même véhicule.</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <figure class="proj-figure">
+                <img src="../../projets/location-voitures.webp" alt="Recherche de location : véhicules disponibles, filtres, calendrier de réservation et récapitulatif du tarif." loading="lazy" decoding="async" width="1500" height="900">
+                <figcaption>Illustration d'interface, reconstituée pour la présentation. Ce n'est pas une capture du livrable final.</figcaption>
+            </figure>
+        </div>
+
+        <div class="page-body">
+            <div class="container">
+                <article class="prose">
+                    <h2>Contexte</h2>
+                    <p>Une agence de location gère un parc limité, des durées qui se chevauchent, des tarifs qui varient selon la saison et la durée, et des documents contractuels obligatoires à chaque sortie de véhicule. Tant que tout cela vit dans un tableur et un classeur, l'agence passe plus de temps à vérifier qu'à louer.</p>
+
+                    <h2>Le problème</h2>
+                    <p>La difficulté est la disponibilité, et elle est plus subtile qu'il n'y paraît.</p>
+                    <ul class="checklist">
+                        <li>Deux clients peuvent réserver le même véhicule au même instant</li>
+                        <li>Un retour tardif décale toutes les réservations suivantes du même véhicule</li>
+                        <li>Le tarif dépend de la durée, de la saison et des options, et le client veut le voir avant de valider</li>
+                        <li>Le contrat et l'état des lieux doivent être produits sans ressaisie</li>
+                    </ul>
+
+                    <h2>La solution</h2>
+                    <p>Une plateforme où la disponibilité est calculée à la demande et verrouillée au moment de la réservation.</p>
+                    <ul class="checklist">
+                        <li>Recherche par lieu et par plage de dates, avec filtres sur la catégorie de véhicule</li>
+                        <li>Calendrier de disponibilité par véhicule, alimenté par les réservations existantes</li>
+                        <li>Calcul du prix en direct pendant que le client ajuste ses dates et ses options</li>
+                        <li>Paiement en ligne, avec verrouillage de la réservation à la confirmation</li>
+                        <li>Génération automatique du contrat et de l'état des lieux</li>
+                        <li>Tableau de bord du parc pour l'agence : sorties, retours, véhicules immobilisés</li>
+                    </ul>
+
+                    <h2>Mon rôle</h2>
+                    <p>Modèle de données du parc et des réservations, règles de disponibilité et de tarification, API, interface de réservation et back-office de l'agence, intégration du paiement et génération documentaire.</p>
+
+
+                    <h2>Contraintes</h2>
+                    <ul class="checklist">
+                        <li>Aucune double réservation possible, y compris en cas de clics simultanés</li>
+                        <li>Le calcul du prix doit être identique côté client et côté serveur, le serveur faisant foi</li>
+                        <li>Documents contractuels conformes et archivés</li>
+                        <li>Retours tardifs et prolongations à gérer sans casser le planning</li>
+                        <li>Paiement en ligne et empreinte de caution</li>
+                    </ul>
+
+                    <h2>Résultat</h2>
+                    <p>L'agence pilote son parc depuis un seul écran, et le client réserve sans échange téléphonique préalable.</p>
+                    <ul class="checklist">
+                        <li>La disponibilité affichée est celle qui sera honorée</li>
+                        <li>Le contrat et l'état des lieux sortent de la réservation, sans ressaisie</li>
+                        <li>Les immobilisations et les retards sont visibles immédiatement sur le planning</li>
+                    </ul>
+
+                    <div class="callout">
+                        <p>Les résultats sont décrits par la capacité livrée. Aucune mesure de performance commerciale n'est avancée ici : les chiffres d'usage appartiennent au client, et je ne publie pas de métriques que je ne peux pas justifier.</p>
+                    </div>
+                </article>
+
+                <aside>
+                    <div class="aside-card">
+                        <h2>Fiche projet</h2>
+                        <dl class="factbox">
+                            <dt>Domaine</dt><dd>Réservation</dd>
+                            <dt>Type</dt><dd>Application de réservation</dd>
+                            <dt>Rôle</dt><dd>Conception et développement de bout en bout</dd>
+                        </dl>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Stack</h2>
+                        <span class="pill">Angular</span>
+                        <span class="pill">Spring Boot</span>
+                        <span class="pill">PostgreSQL</span>
+                        <span class="pill">Stripe</span>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Services associés</h2>
+                        <ul class="aside-links">
+                        <li><a href="../../services/developpement-application-web/">Développement d'application web sur mesure</a></li>
+                        <li><a href="../../services/developpeur-backend-api/">Développeur backend & API</a></li>
+                        </ul>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Autres réalisations</h2>
+                        <ul class="aside-links">
+                        <li><a href="../facturation-devis-chiffrage/">Chiffrage, devis et facturation</a></li>
+                        <li><a href="../parc-et-contrats/">Gestion de parc et de contrats</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <section class="cta-band">
+            <div class="container">
+                <h2>Un projet de cette nature ?</h2>
+                <p>Décrivez votre besoin en quelques lignes. Je vous réponds sur ce qui est faisable, ce qui ne l'est pas, et par où commencer.</p>
+                <a href="../../index.html#contact" class="btn btn-light">Me contacter</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cellipse cx='100' cy='30' rx='95' ry='25' fill='white'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23001656' font-family='Arial, sans-serif' font-size='24' font-weight='bold'%3ECONSALTIA%3C/text%3E%3C/svg%3E" alt="Logo Consaltia" class="footer-logo">
+                    <p>Développeur full-stack et cloud en freelance à Paris. De l'API au déploiement, un seul interlocuteur.</p>
+                </div>
+                <div>
+                    <h2>Développement</h2>
+                    <ul>
+                        <li><a href="../../services/developpeur-react-nextjs-paris/">React & Next.js</a></li>
+                        <li><a href="../../services/developpeur-backend-api/">Backend & API</a></li>
+                        <li><a href="../../services/developpeur-cloud-devops-paris/">Cloud & DevOps</a></li>
+                        <li><a href="../../services/developpement-application-web/">Application web</a></li>
+                        <li><a href="../../services/developpement-mvp/">MVP</a></li>
+                        <li><a href="../../realisations/">Réalisations</a></li>
+                        <li><a href="../../prestations/">Autres prestations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Contact</h2>
+                    <ul>
+                        <li><a href="mailto:consaltia@gmail.com">consaltia@gmail.com</a></li>
+                        <li><a href="tel:+33664941229">+33 6 64 94 12 29</a></li>
+                        <li>Paris et Île-de-France, sur place ou à distance</li>
+                        <li><a href="../../index.html">Retour à l'accueil</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Consaltia. Tous droits réservés.</span>
+                <span><a href="../../mentions-legales.html">Mentions légales</a></span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

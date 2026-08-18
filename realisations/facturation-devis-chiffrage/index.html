@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiffrage, devis et facturation | Consaltia</title>
+    <meta name="description" content="Chiffrer une prestation, construire le devis, calculer sous-total, TVA et total TTC, puis transformer le devis en facture sans ressaisie.">
+    <meta name="author" content="Antoine Laurent, Consaltia">
+    <link rel="canonical" href="https://consaltia.com/realisations/facturation-devis-chiffrage/">
+
+    <meta property="og:site_name" content="Consaltia">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Chiffrage, devis et facturation | Consaltia">
+    <meta property="og:description" content="Chiffrer une prestation, construire le devis, calculer sous-total, TVA et total TTC, puis transformer le devis en facture sans ressaisie.">
+    <meta property="og:url" content="https://consaltia.com/realisations/facturation-devis-chiffrage/">
+    <meta property="og:image" content="https://consaltia.com/projets/facturation-devis.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Chiffrage, devis et facturation | Consaltia">
+    <meta name="twitter:description" content="Chiffrer une prestation, construire le devis, calculer sous-total, TVA et total TTC, puis transformer le devis en facture sans ressaisie.">
+    <meta name="twitter:image" content="https://consaltia.com/projets/facturation-devis.webp">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/pages.css">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://consaltia.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Réalisations",
+          "item": "https://consaltia.com/realisations/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Chiffrage, devis et facturation",
+          "item": "https://consaltia.com/realisations/facturation-devis-chiffrage/"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://consaltia.com/realisations/facturation-devis-chiffrage/#projet",
+      "name": "Chiffrage, devis et facturation",
+      "headline": "Chiffrage, devis et facturation",
+      "description": "Chiffrer une prestation, construire le devis, calculer sous-total, TVA et total TTC, puis transformer le devis en facture sans ressaisie.",
+      "url": "https://consaltia.com/realisations/facturation-devis-chiffrage/",
+      "genre": "Gestion commerciale",
+      "inLanguage": "fr-FR",
+      "creator": {
+        "@id": "https://consaltia.com/#person"
+      },
+      "author": {
+        "@id": "https://consaltia.com/#person"
+      },
+      "provider": {
+        "@id": "https://consaltia.com/#organization"
+      },
+      "keywords": "React, Node.js, PostgreSQL, PDF",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "React"
+        },
+        {
+          "@type": "Thing",
+          "name": "Node.js"
+        },
+        {
+          "@type": "Thing",
+          "name": "PostgreSQL"
+        },
+        {
+          "@type": "Thing",
+          "name": "PDF"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://consaltia.com/realisations/#collection"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://consaltia.com/realisations/facturation-devis-chiffrage/#webpage",
+      "url": "https://consaltia.com/realisations/facturation-devis-chiffrage/",
+      "name": "Chiffrage, devis et facturation | Consaltia",
+      "description": "Chiffrer une prestation, construire le devis, calculer sous-total, TVA et total TTC, puis transformer le devis en facture sans ressaisie.",
+      "isPartOf": {
+        "@id": "https://consaltia.com/#website"
+      },
+      "inLanguage": "fr-FR",
+      "primaryImageOfPage": "https://consaltia.com/projets/facturation-devis.webp",
+      "mainEntity": {
+        "@id": "https://consaltia.com/realisations/facturation-devis-chiffrage/#projet"
+      },
+      "author": {
+        "@id": "https://consaltia.com/#person"
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">Aller au contenu</a>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../../index.html" aria-label="Consaltia, accueil">
+                <img src="../../logo.png" alt="Logo Consaltia" class="nav-logo" width="249" height="102">
+            </a>
+            <ul class="nav-menu">
+                    <li><a href="../../index.html#apropos" class="nav-link">À propos</a></li>
+                    <li><a href="../../services/" class="nav-link">Services</a></li>
+                    <li><a href="../../realisations/" class="nav-link">Réalisations</a></li>
+                    <li><a href="../../index.html#parcours" class="nav-link">Parcours</a></li>
+                    <li><a href="../../index.html#faq" class="nav-link">FAQ</a></li>
+                <li><a href="../../index.html#contact" class="nav-link nav-link-cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <ol>
+                <li><a href="../../index.html">Accueil</a></li>
+                <li><a href="../">Réalisations</a></li>
+                <li><span aria-current="page">Chiffrage, devis et facturation</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <main id="main">
+        <header class="page-hero">
+            <div class="container">
+                <p class="page-eyebrow">Gestion commerciale</p>
+                <h1>Chiffrage, devis et facturation</h1>
+                <p class="page-lead">Entre le devis accepté et la facture émise, la ressaisie est le principal point d'entrée des erreurs.</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <figure class="proj-figure">
+                <img src="../../projets/facturation-devis.webp" alt="Éditeur de devis : paramètres et prestations à gauche, document avec sous-total, TVA et total TTC à droite." loading="lazy" decoding="async" width="1500" height="900">
+                <figcaption>Illustration d'interface, reconstituée pour la présentation. Ce n'est pas une capture du livrable final.</figcaption>
+            </figure>
+        </div>
+
+        <div class="page-body">
+            <div class="container">
+                <article class="prose">
+                    <h2>Contexte</h2>
+                    <p>Beaucoup de structures chiffrent dans un tableur, mettent en forme dans un traitement de texte, puis ressaisissent le tout dans un outil de facturation. Chaque passage d'un support à l'autre est une occasion d'erreur, et les erreurs de facturation coûtent en trésorerie comme en crédibilité.</p>
+
+                    <h2>Le problème</h2>
+                    <p>Le problème n'est pas le calcul, il est la continuité entre les étapes.</p>
+                    <ul class="checklist">
+                        <li>Le devis et la facture vivent dans deux outils, avec deux vérités possibles</li>
+                        <li>Un changement de périmètre en cours de négociation oblige à tout reprendre</li>
+                        <li>Les taux de TVA et les mentions obligatoires sont recopiés à la main</li>
+                        <li>La numérotation des factures doit être continue et sans trou, ce qu'un tableur ne garantit pas</li>
+                    </ul>
+
+                    <h2>La solution</h2>
+                    <p>Un outil unique où le chiffrage produit le devis, et où le devis accepté devient la facture sans ressaisie.</p>
+                    <ul class="checklist">
+                        <li>Paramétrage du devis d'un côté, aperçu du document de l'autre, mis à jour en direct</li>
+                        <li>Lignes de prestations éditables, avec quantités, prix unitaires et remises</li>
+                        <li>Calcul automatique du sous-total, de la TVA par taux et du total TTC</li>
+                        <li>Transformation du devis accepté en facture, en conservant le lien entre les deux</li>
+                        <li>Numérotation continue des factures, garantie par l'application</li>
+                        <li>Génération du document PDF, fidèle à l'aperçu affiché</li>
+                    </ul>
+
+                    <h2>Mon rôle</h2>
+                    <p>Conception du modèle de document et des règles de calcul, développement de l'API et de l'interface d'édition, génération documentaire et gestion de la numérotation.</p>
+
+
+                    <h2>Contraintes</h2>
+                    <ul class="checklist">
+                        <li>Exactitude des calculs, y compris sur les arrondis et les taux de TVA multiples</li>
+                        <li>Numérotation légale continue, sans rupture ni doublon, même en cas d'incident</li>
+                        <li>Mentions obligatoires présentes sur chaque document émis</li>
+                        <li>Le PDF produit doit correspondre exactement à ce qui était affiché</li>
+                        <li>Documents émis à conserver et à retrouver, sans modification rétroactive</li>
+                    </ul>
+
+                    <h2>Résultat</h2>
+                    <p>Une chaîne continue du chiffrage à la facture, où le total affiché pendant la négociation est celui qui sera facturé.</p>
+                    <ul class="checklist">
+                        <li>Plus de ressaisie entre le devis et la facture, donc plus d'écart entre les deux</li>
+                        <li>La numérotation est tenue par l'application, pas par une convention humaine</li>
+                        <li>Le document PDF est fidèle à l'aperçu, ce qui supprime les mauvaises surprises à l'envoi</li>
+                    </ul>
+
+                    <div class="callout">
+                        <p>Les résultats sont décrits par la capacité livrée. Aucune mesure de performance commerciale n'est avancée ici : les chiffres d'usage appartiennent au client, et je ne publie pas de métriques que je ne peux pas justifier.</p>
+                    </div>
+                </article>
+
+                <aside>
+                    <div class="aside-card">
+                        <h2>Fiche projet</h2>
+                        <dl class="factbox">
+                            <dt>Domaine</dt><dd>Gestion commerciale</dd>
+                            <dt>Type</dt><dd>Application de gestion</dd>
+                            <dt>Rôle</dt><dd>Conception et développement de bout en bout</dd>
+                        </dl>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Stack</h2>
+                        <span class="pill">React</span>
+                        <span class="pill">Node.js</span>
+                        <span class="pill">PostgreSQL</span>
+                        <span class="pill">PDF</span>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Services associés</h2>
+                        <ul class="aside-links">
+                        <li><a href="../../services/developpement-application-web/">Développement d'application web sur mesure</a></li>
+                        <li><a href="../../services/developpeur-react-nextjs-paris/">Développeur React & Next.js à Paris</a></li>
+                        </ul>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Autres réalisations</h2>
+                        <ul class="aside-links">
+                        <li><a href="../location-de-vehicules/">Plateforme de location de véhicules</a></li>
+                        <li><a href="../parc-et-contrats/">Gestion de parc et de contrats</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <section class="cta-band">
+            <div class="container">
+                <h2>Un projet de cette nature ?</h2>
+                <p>Décrivez votre besoin en quelques lignes. Je vous réponds sur ce qui est faisable, ce qui ne l'est pas, et par où commencer.</p>
+                <a href="../../index.html#contact" class="btn btn-light">Me contacter</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cellipse cx='100' cy='30' rx='95' ry='25' fill='white'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23001656' font-family='Arial, sans-serif' font-size='24' font-weight='bold'%3ECONSALTIA%3C/text%3E%3C/svg%3E" alt="Logo Consaltia" class="footer-logo">
+                    <p>Développeur full-stack et cloud en freelance à Paris. De l'API au déploiement, un seul interlocuteur.</p>
+                </div>
+                <div>
+                    <h2>Développement</h2>
+                    <ul>
+                        <li><a href="../../services/developpeur-react-nextjs-paris/">React & Next.js</a></li>
+                        <li><a href="../../services/developpeur-backend-api/">Backend & API</a></li>
+                        <li><a href="../../services/developpeur-cloud-devops-paris/">Cloud & DevOps</a></li>
+                        <li><a href="../../services/developpement-application-web/">Application web</a></li>
+                        <li><a href="../../services/developpement-mvp/">MVP</a></li>
+                        <li><a href="../../realisations/">Réalisations</a></li>
+                        <li><a href="../../prestations/">Autres prestations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Contact</h2>
+                    <ul>
+                        <li><a href="mailto:consaltia@gmail.com">consaltia@gmail.com</a></li>
+                        <li><a href="tel:+33664941229">+33 6 64 94 12 29</a></li>
+                        <li>Paris et Île-de-France, sur place ou à distance</li>
+                        <li><a href="../../index.html">Retour à l'accueil</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Consaltia. Tous droits réservés.</span>
+                <span><a href="../../mentions-legales.html">Mentions légales</a></span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

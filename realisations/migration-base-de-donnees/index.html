@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Migration de base de données sans interruption | Consaltia</title>
+    <meta name="description" content="Reprise d'un patrimoine de données vers un nouveau schéma : cartographie, scripts rejouables, réconciliation, contrôles d'intégrité et bascule sans coupure de service.">
+    <meta name="author" content="Antoine Laurent, Consaltia">
+    <link rel="canonical" href="https://consaltia.com/realisations/migration-base-de-donnees/">
+
+    <meta property="og:site_name" content="Consaltia">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Migration de base de données sans interruption | Consaltia">
+    <meta property="og:description" content="Reprise d'un patrimoine de données vers un nouveau schéma : cartographie, scripts rejouables, réconciliation, contrôles d'intégrité et bascule sans coupure de service.">
+    <meta property="og:url" content="https://consaltia.com/realisations/migration-base-de-donnees/">
+    <meta property="og:image" content="https://consaltia.com/og-cover.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Migration de base de données sans interruption | Consaltia">
+    <meta name="twitter:description" content="Reprise d'un patrimoine de données vers un nouveau schéma : cartographie, scripts rejouables, réconciliation, contrôles d'intégrité et bascule sans coupure de service.">
+    <meta name="twitter:image" content="https://consaltia.com/og-cover.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/pages.css">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://consaltia.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Réalisations",
+          "item": "https://consaltia.com/realisations/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Migration de base de données sans interruption",
+          "item": "https://consaltia.com/realisations/migration-base-de-donnees/"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://consaltia.com/realisations/migration-base-de-donnees/#projet",
+      "name": "Migration de base de données sans interruption",
+      "headline": "Migration de base de données sans interruption",
+      "description": "Reprise d'un patrimoine de données vers un nouveau schéma : cartographie, scripts rejouables, réconciliation, contrôles d'intégrité et bascule sans coupure de service.",
+      "url": "https://consaltia.com/realisations/migration-base-de-donnees/",
+      "genre": "Données",
+      "inLanguage": "fr-FR",
+      "creator": {
+        "@id": "https://consaltia.com/#person"
+      },
+      "author": {
+        "@id": "https://consaltia.com/#person"
+      },
+      "provider": {
+        "@id": "https://consaltia.com/#organization"
+      },
+      "keywords": "PostgreSQL, Python, Docker, CI/CD",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "PostgreSQL"
+        },
+        {
+          "@type": "Thing",
+          "name": "Python"
+        },
+        {
+          "@type": "Thing",
+          "name": "Docker"
+        },
+        {
+          "@type": "Thing",
+          "name": "CI/CD"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://consaltia.com/realisations/#collection"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://consaltia.com/realisations/migration-base-de-donnees/#webpage",
+      "url": "https://consaltia.com/realisations/migration-base-de-donnees/",
+      "name": "Migration de base de données sans interruption | Consaltia",
+      "description": "Reprise d'un patrimoine de données vers un nouveau schéma : cartographie, scripts rejouables, réconciliation, contrôles d'intégrité et bascule sans coupure de service.",
+      "isPartOf": {
+        "@id": "https://consaltia.com/#website"
+      },
+      "inLanguage": "fr-FR",
+      "mainEntity": {
+        "@id": "https://consaltia.com/realisations/migration-base-de-donnees/#projet"
+      },
+      "author": {
+        "@id": "https://consaltia.com/#person"
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">Aller au contenu</a>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../../index.html" aria-label="Consaltia, accueil">
+                <img src="../../logo.png" alt="Logo Consaltia" class="nav-logo" width="249" height="102">
+            </a>
+            <ul class="nav-menu">
+                    <li><a href="../../index.html#apropos" class="nav-link">À propos</a></li>
+                    <li><a href="../../services/" class="nav-link">Services</a></li>
+                    <li><a href="../../realisations/" class="nav-link">Réalisations</a></li>
+                    <li><a href="../../index.html#parcours" class="nav-link">Parcours</a></li>
+                    <li><a href="../../index.html#faq" class="nav-link">FAQ</a></li>
+                <li><a href="../../index.html#contact" class="nav-link nav-link-cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <ol>
+                <li><a href="../../index.html">Accueil</a></li>
+                <li><a href="../">Réalisations</a></li>
+                <li><span aria-current="page">Migration de base de données sans interruption</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <main id="main">
+        <header class="page-hero">
+            <div class="container">
+                <p class="page-eyebrow">Données</p>
+                <h1>Migration de base de données sans interruption</h1>
+                <p class="page-lead">Une migration réussie est une migration dont les utilisateurs n'ont rien remarqué.</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <figure class="proj-figure">
+                <svg viewBox="0 0 400 240" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice">
+                                        <g fill="#fff" fill-opacity=".45">
+                                            <ellipse cx="98" cy="76" rx="52" ry="18"/>
+                                            <path d="M46 76 v88 a52 18 0 0 0 104 0 v-88z"/>
+                                        </g>
+                                        <g stroke="#001656" stroke-opacity=".25" stroke-width="3" fill="none">
+                                            <path d="M46 106 a52 18 0 0 0 104 0"/>
+                                            <path d="M46 136 a52 18 0 0 0 104 0"/>
+                                        </g>
+                                        <g fill="#fff">
+                                            <ellipse cx="302" cy="76" rx="52" ry="18"/>
+                                            <path d="M250 76 v88 a52 18 0 0 0 104 0 v-88z"/>
+                                        </g>
+                                        <g stroke="#001656" stroke-opacity=".25" stroke-width="3" fill="none">
+                                            <path d="M250 106 a52 18 0 0 0 104 0"/>
+                                            <path d="M250 136 a52 18 0 0 0 104 0"/>
+                                        </g>
+                                        <path d="M166 120 h64" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+                                        <path d="M218 104 l24 16 -24 16z" fill="#fff"/>
+                                    </svg>
+                <figcaption>Illustration d'interface, reconstituée pour la présentation. Ce n'est pas une capture du livrable final.</figcaption>
+            </figure>
+        </div>
+
+        <div class="page-body">
+            <div class="container">
+                <article class="prose">
+                    <h2>Contexte</h2>
+                    <p>Une application qui a vécu accumule un patrimoine de données que son schéma d'origine ne sait plus porter : colonnes détournées de leur usage, valeurs libres là où il faudrait des références, doublons apparus au fil des imports. Refondre l'application impose de reprendre ces données, et c'est presque toujours la partie la plus risquée du projet.</p>
+
+                    <h2>Le problème</h2>
+                    <p>Le risque n'est pas technique au sens strict, il est opérationnel.</p>
+                    <ul class="checklist">
+                        <li>Une migration qui échoue à mi-parcours laisse un système dans un état incohérent</li>
+                        <li>Les données existantes contiennent des cas que personne n'avait documentés</li>
+                        <li>L'activité ne peut pas s'arrêter le temps de la reprise</li>
+                        <li>Sans contrôle de réconciliation, personne ne peut affirmer que rien n'a été perdu</li>
+                    </ul>
+
+                    <h2>La solution</h2>
+                    <p>Une migration traitée comme un logiciel : versionnée, testée, rejouable autant de fois que nécessaire.</p>
+                    <ul class="checklist">
+                        <li>Cartographie de l'existant, y compris les cas non documentés découverts en route</li>
+                        <li>Nettoyage et normalisation avant transformation, pas pendant</li>
+                        <li>Scripts de migration rejouables, produisant le même résultat à chaque exécution</li>
+                        <li>Réconciliation systématique : comptages, totaux et contrôles d'intégrité entre source et cible</li>
+                        <li>Répétitions complètes sur copie avant toute exécution réelle</li>
+                        <li>Procédure de retour arrière définie et testée avant la bascule</li>
+                    </ul>
+
+                    <h2>Mon rôle</h2>
+                    <p>Analyse du schéma existant, conception du schéma cible, écriture des scripts et des contrôles, exécution des répétitions et pilotage de la bascule. J'ai également mis en place l'automatisation qui permet de rejouer l'ensemble sur un environnement neuf.</p>
+
+
+                    <h2>Contraintes</h2>
+                    <ul class="checklist">
+                        <li>Aucune interruption de service acceptable pendant la reprise</li>
+                        <li>Intégrité vérifiable, et non simplement supposée</li>
+                        <li>Scripts rejouables : une exécution partielle ne doit jamais laisser d'état intermédiaire</li>
+                        <li>Retour arrière possible jusqu'au dernier moment</li>
+                        <li>Volume de données imposant de traiter par lots plutôt qu'en une passe</li>
+                    </ul>
+
+                    <h2>Résultat</h2>
+                    <p>La bascule s'est faite sans coupure, et les contrôles de réconciliation permettent d'affirmer, chiffres à l'appui, que rien n'a été perdu.</p>
+                    <ul class="checklist">
+                        <li>Les scripts sont rejouables, donc réutilisables pour les environnements de test</li>
+                        <li>Les écarts découverts dans les données historiques ont été traités explicitement, pas silencieusement</li>
+                        <li>Le nouveau schéma porte les règles que l'ancien laissait à la charge de l'application</li>
+                    </ul>
+
+                    <div class="callout">
+                        <p>Les résultats sont décrits par la capacité livrée. Aucune mesure de performance commerciale n'est avancée ici : les chiffres d'usage appartiennent au client, et je ne publie pas de métriques que je ne peux pas justifier.</p>
+                    </div>
+                </article>
+
+                <aside>
+                    <div class="aside-card">
+                        <h2>Fiche projet</h2>
+                        <dl class="factbox">
+                            <dt>Domaine</dt><dd>Données</dd>
+                            <dt>Type</dt><dd>Projet données et exploitation</dd>
+                            <dt>Rôle</dt><dd>Conception et développement de bout en bout</dd>
+                        </dl>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Stack</h2>
+                        <span class="pill">PostgreSQL</span>
+                        <span class="pill">Python</span>
+                        <span class="pill">Docker</span>
+                        <span class="pill">CI/CD</span>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Services associés</h2>
+                        <ul class="aside-links">
+                        <li><a href="../../services/developpeur-cloud-devops-paris/">Développeur cloud & DevOps à Paris</a></li>
+                        <li><a href="../../services/developpeur-backend-api/">Développeur backend & API</a></li>
+                        </ul>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Autres réalisations</h2>
+                        <ul class="aside-links">
+                        <li><a href="../parc-et-contrats/">Gestion de parc et de contrats</a></li>
+                        <li><a href="../assistant-ia-documentaire/">Assistant IA sur base documentaire</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <section class="cta-band">
+            <div class="container">
+                <h2>Un projet de cette nature ?</h2>
+                <p>Décrivez votre besoin en quelques lignes. Je vous réponds sur ce qui est faisable, ce qui ne l'est pas, et par où commencer.</p>
+                <a href="../../index.html#contact" class="btn btn-light">Me contacter</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cellipse cx='100' cy='30' rx='95' ry='25' fill='white'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23001656' font-family='Arial, sans-serif' font-size='24' font-weight='bold'%3ECONSALTIA%3C/text%3E%3C/svg%3E" alt="Logo Consaltia" class="footer-logo">
+                    <p>Développeur full-stack et cloud en freelance à Paris. De l'API au déploiement, un seul interlocuteur.</p>
+                </div>
+                <div>
+                    <h2>Développement</h2>
+                    <ul>
+                        <li><a href="../../services/developpeur-react-nextjs-paris/">React & Next.js</a></li>
+                        <li><a href="../../services/developpeur-backend-api/">Backend & API</a></li>
+                        <li><a href="../../services/developpeur-cloud-devops-paris/">Cloud & DevOps</a></li>
+                        <li><a href="../../services/developpement-application-web/">Application web</a></li>
+                        <li><a href="../../services/developpement-mvp/">MVP</a></li>
+                        <li><a href="../../realisations/">Réalisations</a></li>
+                        <li><a href="../../prestations/">Autres prestations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Contact</h2>
+                    <ul>
+                        <li><a href="mailto:consaltia@gmail.com">consaltia@gmail.com</a></li>
+                        <li><a href="tel:+33664941229">+33 6 64 94 12 29</a></li>
+                        <li>Paris et Île-de-France, sur place ou à distance</li>
+                        <li><a href="../../index.html">Retour à l'accueil</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Consaltia. Tous droits réservés.</span>
+                <span><a href="../../mentions-legales.html">Mentions légales</a></span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
