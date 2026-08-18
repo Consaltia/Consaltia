@@ -3,8 +3,8 @@
 <head>     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Développeur full-stack et cloud freelance à Paris : je conçois, déploie et opère vos applications de bout en bout — API, front, CI/CD, AWS et Azure.">
-    <meta name="author" content="Eng. Antoine — Consaltia">
+    <meta name="description" content="Développeur full-stack et cloud freelance à Paris. Je conçois, déploie et opère vos applications de bout en bout : API, front, CI/CD, AWS et Azure.">
+    <meta name="author" content="Antoine Laurent, Consaltia">
     <title>Développeur full-stack &amp; cloud freelance à Paris | Consaltia</title>
    
      <!-- Canonical -->
@@ -14,18 +14,18 @@
     <meta property="og:site_name" content="Consaltia">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:title" content="Développeur full-stack &amp; cloud freelance à Paris | Consaltia">
-    <meta property="og:description" content="Je conçois, déploie et opère vos applications de bout en bout — API, front, CI/CD, AWS et Azure. Un seul interlocuteur.">
+    <meta property="og:description" content="Je conçois, déploie et opère vos applications de bout en bout : API, front, CI/CD, AWS et Azure. Un seul interlocuteur.">
     <meta property="og:url" content="https://consaltia.com/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://consaltia.com/og-cover.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Consaltia — développeur full-stack et cloud freelance à Paris">
+    <meta property="og:image:alt" content="Consaltia, développeur full-stack et cloud freelance à Paris">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Développeur full-stack &amp; cloud freelance à Paris | Consaltia">
-    <meta name="twitter:description" content="De l'API au déploiement cloud — un seul interlocuteur, de bout en bout.">
+    <meta name="twitter:description" content="De l'API au déploiement cloud : un seul interlocuteur, de bout en bout.">
     <meta name="twitter:image" content="https://consaltia.com/og-cover.jpg">
 
     
@@ -74,7 +74,7 @@
     {
       "@type": "Person",
       "@id": "https://consaltia.com/#person",
-      "name": "Eng. Antoine",
+      "name": "Antoine Laurent",
       "jobTitle": "Développeur full-stack & cloud freelance",
       "description": "Développeur full-stack et cloud indépendant. Six ans d'expérience salariée (Olinn, G-ON, Amadeus) avant de fonder Consaltia.",
       "url": "https://consaltia.com/",
@@ -124,6 +124,9 @@
           "@type": "Organization",
           "name": "Olinn"
         }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/antoine-laurent-2686b5260/"
       ]
     },
     {
@@ -227,7 +230,7 @@
           "name": "Quelle est votre expérience ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Six ans en tant que développeur salarié — Olinn, G-ON puis Amadeus — sur des applications métier, des plateformes à fort volume et des chaînes de déploiement cloud, avant de fonder Consaltia."
+            "text": "Six ans en tant que développeur salarié chez Olinn, G-ON puis Amadeus, sur des applications métier, des plateformes à fort volume et des chaînes de déploiement cloud, avant de fonder Consaltia."
           }
         }
       ]
@@ -511,7 +514,7 @@ button {
     background: var(--color-secondary);
 }
 
-/* Bouton de langue FR/EN — ancré tout à droite de la navbar
+/* Bouton de langue FR/EN, ancré tout à droite de la navbar
    (enfant direct de .nav-container, après le menu) */
 .lang-toggle {
     font-family: var(--font-primary);
@@ -535,7 +538,7 @@ button {
     background: var(--color-background);
 }
 
-/* Mobile : le menu est en overlay (hors flux) — le bouton reste dans la
+/* Mobile : le menu est en overlay (hors flux), le bouton reste dans la
    barre, poussé à droite juste avant le burger (ordre : logo … langue, burger) */
 @media (max-width: 991px) {
     .lang-toggle {
@@ -620,7 +623,7 @@ button {
     }
 }
 
-/* HERO — split layout : contenu à gauche, photo à droite.
+/* HERO, split layout : contenu à gauche, photo à droite.
    Fond clair (blanc → bleu très pâle de la palette), accents bleus.
    Remplace l'ancien thème spatial (canvas Terre/étoiles supprimé). */
 .hero {
@@ -877,7 +880,7 @@ button {
     line-height: 1.6;
 }
 
-/* RÉALISATIONS — carrousel de projets, un projet à la fois.
+/* RÉALISATIONS : carrousel de projets, un projet à la fois.
    Les 10 diapositives sont empilées dans une seule cellule de grille :
    la hauteur suit la plus haute, et le fondu enchaîné (l'entrante paraît
    pendant que la sortante s'efface) se fait sans saut de mise en page.
@@ -937,7 +940,7 @@ button {
 }
 
 /* Visuel : le dégradé vit en CSS, le SVG ne dessine que les formes en
-   blanc translucide — d'où une cohérence garantie entre les 10 cartes.
+   blanc translucide, d'où une cohérence garantie entre les 10 cartes.
    Pour passer à une image générée, voir le commentaire dans le HTML. */
 .projet-visual {
     position: relative;
@@ -963,7 +966,7 @@ button {
 
 @media (min-width: 768px) {
     /* Moitié de la carte : à 340 px de haut, le cadre fait très exactement
-       du 5/3 — une image 1500x900 s'y pose sans être rognée par object-fit. */
+       du 5/3 : une image 1500x900 s'y pose sans être rognée par object-fit. */
     .projet-visual {
         flex: 0 0 50%;
         aspect-ratio: auto;
@@ -1119,7 +1122,7 @@ button {
     outline-offset: 2px;
 }
 
-/* FAQ — accordeon natif <details>/<summary>, sans JavaScript.
+/* FAQ : accordeon natif <details>/<summary>, sans JavaScript.
    Le contenu reste dans le DOM, donc lisible par les moteurs meme replie. */
 .faq {
     padding: var(--spacing-xl) 0;
@@ -1187,7 +1190,7 @@ button {
     margin-top: var(--spacing-sm);
 }
 
-/* MÉTHODE DE TRAVAIL — frise d'étapes numérotées.
+/* MÉTHODE DE TRAVAIL : frise d'étapes numérotées.
    Mobile : frise verticale (ligne à gauche). Desktop : stepper horizontal
    dont la ligne traverse les marqueurs. Icônes + numéros, palette inchangée. */
 .methode {
@@ -2055,7 +2058,7 @@ button {
     background: var(--color-white);
 }
 
-/* This logo is wide/tightly framed, so cover over-zooms it —
+/* This logo is wide/tightly framed, so cover over-zooms it,
    show it fully instead. */
 .timeline-logo img[alt="Olinn"] {
     object-fit: contain;
@@ -2178,7 +2181,7 @@ button {
 }
 
 /* ===================================
-   DESIGN SYSTEM — COUCHE DE RAFFINEMENT
+   DESIGN SYSTEM : COUCHE DE RAFFINEMENT
    (audit UI : tokens, focus, élévation, micro-interactions)
    Palette bleu/blanc existante inchangée : toutes les ombres et
    tous les dégradés dérivent de --color-primary / --color-secondary.
@@ -2377,13 +2380,13 @@ section[id] {
 
     <main id="main">
 
-    <!-- Section Hero — split layout : contenu + photo -->
+    <!-- Section Hero : split layout, contenu + photo -->
     <section class="hero">
         <div class="container hero-container">
             <div class="hero-grid">
                 <div class="hero-content">
-                    <h1 class="hero-title" data-i18n="hero.title">Développeur full-stack &amp; cloud freelance à Paris — je conçois, déploie et opère vos applications de bout en bout.</h1>
-                    <p class="hero-subtitle" data-i18n="hero.subtitle">Consaltia, la pratique freelance d'un développeur unique — un seul interlocuteur, de l'API au cloud.</p>
+                    <h1 class="hero-title" data-i18n="hero.title">Développeur full-stack &amp; cloud freelance à Paris. Je conçois, déploie et opère vos applications de bout en bout.</h1>
+                    <p class="hero-subtitle" data-i18n="hero.subtitle">Consaltia, la pratique freelance d'un développeur unique : un seul interlocuteur, de l'API au cloud.</p>
                     <div class="hero-cta">
                         <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Me contacter</a>
                         <a href="#services" class="btn btn-secondary" data-i18n="hero.cta2">Découvrir mes services</a>
@@ -2397,7 +2400,7 @@ section[id] {
 
                 <div class="hero-media">
                     <div class="hero-photo">
-                        <img src="mypic.webp" alt="Eng. Antoine, développeur full-stack et cloud freelance à Paris"
+                        <img src="mypic.webp" alt="Antoine Laurent, développeur full-stack et cloud freelance à Paris"
                              width="760" height="950" decoding="async" fetchpriority="high">
                     </div>
                 </div>
@@ -2415,10 +2418,10 @@ section[id] {
             <div class="apropos-content">
                 <div class="profile-card reveal">
                     <div class="apropos-photo">
-                        <img src="personalpic.webp" alt="Eng. Antoine au travail sur un projet client"
+                        <img src="personalpic.webp" alt="Antoine Laurent au travail sur un projet client"
                              width="560" height="560" loading="lazy" decoding="async">
                     </div>
-                    <div class="apropos-name">Eng. Antoine</div>
+                    <div class="apropos-name">Antoine Laurent</div>
                     <p class="apropos-role" data-i18n="about.role">Développeur full-stack &amp; cloud · Freelance</p>
                     <div class="profile-badges">
                         <span class="pill" data-i18n="about.badge1">6+ ans d'expérience</span>
@@ -2430,10 +2433,10 @@ section[id] {
 
                 <div class="apropos-text reveal">
                     <p data-i18n="about.p1">Développeur full-stack &amp; cloud, en freelance.</p>
-                    <p data-i18n="about.p2">Après 6 ans à concevoir et déployer des applications web en tant que développeur — dans les services aux équipements, l'ingénierie durable et le voyage — je suis désormais disponible en freelance sous la marque Consaltia.</p>
+                    <p data-i18n="about.p2">Après 6 ans à concevoir et déployer des applications web en tant que développeur, dans les services aux équipements, l'ingénierie durable et le voyage, je suis désormais disponible en freelance sous la marque Consaltia.</p>
                     <p data-i18n="about.p3">Au fil de ces années, j'ai couvert toute la chaîne : conception d'API et de microservices, développement backend et frontend, modélisation de bases de données, pipelines CI/CD, conteneurisation et déploiement cloud sur AWS et Azure. J'ai travaillé en équipe Agile, animé des revues de code, encadré des développeurs juniors et livré en production dans des environnements exigeants et régulés.</p>
-                    <p data-i18n="about.p4">Aujourd'hui, je mets cette expérience directement au service de vos projets — un seul interlocuteur, de bout en bout.</p>
-                    <!-- TODO: decide whether to list named former employers publicly — check NDA/confidentiality first -->
+                    <p data-i18n="about.p4">Aujourd'hui, je mets cette expérience directement au service de vos projets : un seul interlocuteur, de bout en bout.</p>
+                    <!-- TODO: decide whether to list named former employers publicly, check NDA/confidentiality first -->
 
                     <div class="techstack">
                         <h3 data-i18n="about.stack">Stack technique</h3>
@@ -2464,7 +2467,7 @@ section[id] {
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title" data-i18n="parcours.title">Parcours</h2>
-                <p class="section-subtitle" data-i18n="parcours.subtitle">Six ans d'expérience salariée — trois entreprises, trois secteurs.</p>
+                <p class="section-subtitle" data-i18n="parcours.subtitle">Six ans d'expérience salariée, trois entreprises, trois secteurs.</p>
             </div>
 
             <!-- Company logos live in the project root; filenames are case-sensitive on
@@ -2479,7 +2482,7 @@ section[id] {
                         <h3 class="timeline-company">Amadeus</h3>
                         <span class="timeline-role">Senior Software Developer</span>
                         <div class="timeline-meta">
-                            <span data-i18n="dt.amadeus"><i class="fas fa-calendar-alt"></i> Juillet 2024 – Juin 2026</span>
+                            <span data-i18n="dt.amadeus"><i class="fas fa-calendar-alt"></i> Juillet 2024 - Juin 2026</span>
                             <span><i class="fas fa-map-marker-alt"></i> Antibes</span>
                             <span data-i18n="ct.cdi"><i class="fas fa-file-signature"></i> CDI</span>
                         </div>
@@ -2496,7 +2499,7 @@ section[id] {
                         <h3 class="timeline-company">G-ON <span style="font-weight:400;font-size:0.85rem;color:var(--color-text-light)" data-i18n="sx.gon">(ingénierie durable)</span></h3>
                         <span class="timeline-role" data-i18n="role.fullstack">Développeur Fullstack</span>
                         <div class="timeline-meta">
-                            <span data-i18n="dt.gon"><i class="fas fa-calendar-alt"></i> Mai 2022 – Avril 2024</span>
+                            <span data-i18n="dt.gon"><i class="fas fa-calendar-alt"></i> Mai 2022 - Avril 2024</span>
                             <span><i class="fas fa-map-marker-alt"></i> Paris</span>
                             <span data-i18n="ct.cdi"><i class="fas fa-file-signature"></i> CDI</span>
                         </div>
@@ -2513,11 +2516,11 @@ section[id] {
                         <h3 class="timeline-company">Olinn <span style="font-weight:400;font-size:0.85rem;color:var(--color-text-light)" data-i18n="sx.olinn">(equipment as a service)</span></h3>
                         <span class="timeline-role" data-i18n="role.fullstack">Développeur Fullstack</span>
                         <div class="timeline-meta">
-                            <span data-i18n="dt.olinn"><i class="fas fa-calendar-alt"></i> Mars 2020 – Février 2022</span>
+                            <span data-i18n="dt.olinn"><i class="fas fa-calendar-alt"></i> Mars 2020 - Février 2022</span>
                             <span><i class="fas fa-map-marker-alt"></i> Paris</span>
                             <span data-i18n="ct.cdi"><i class="fas fa-file-signature"></i> CDI</span>
                         </div>
-                        <p class="timeline-context" data-i18n="tl.olinn">Filiale de Crédit Agricole Leasing &amp; Factoring, spécialisée dans la location et la gestion du cycle de vie des équipements professionnels — informatique, mobile, véhicules, matériels industriels et de santé — pour les entreprises et les collectivités. Développement des applications de gestion de parc et de suivi des contrats, utilisées par les équipes du réseau d'agences et par les clients.</p>
+                        <p class="timeline-context" data-i18n="tl.olinn">Filiale de Crédit Agricole Leasing &amp; Factoring, spécialisée dans la location et la gestion du cycle de vie des équipements professionnels (informatique, mobile, véhicules, matériels industriels et de santé) pour les entreprises et les collectivités. Développement des applications de gestion de parc et de suivi des contrats, utilisées par les équipes du réseau d'agences et par les clients.</p>
                     </div>
                 </article>
             </div>
@@ -2529,15 +2532,15 @@ section[id] {
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title">Services</h2>
-                <p class="section-subtitle" data-i18n="services.subtitle">Je me concentre sur trois compétences complémentaires — de la conception applicative à l'exploitation en production.</p>
+                <p class="section-subtitle" data-i18n="services.subtitle">Je me concentre sur trois compétences complémentaires, de la conception applicative à l'exploitation en production.</p>
             </div>
 
             <div class="services-grid">
-                <!-- Photos d'illustration des services (libres de droits, Unsplash) —
+                <!-- Photos d'illustration des services (libres de droits, Unsplash) :
                      illustrent la catégorie, ne sont pas présentées comme des projets réels. -->
                 <article class="service-card reveal">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=500&fit=crop&auto=format" alt="Écran affichant du code — illustration développement full-stack" loading="lazy" width="800" height="500">
+                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=500&fit=crop&auto=format" alt="Écran affichant du code, illustration développement full-stack" loading="lazy" width="800" height="500">
                     </div>
                     <div class="service-body">
                         <h3 class="service-title" data-i18n="svc1.title">Développement full-stack</h3>
@@ -2547,7 +2550,7 @@ section[id] {
 
                 <article class="service-card reveal">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=500&fit=crop&auto=format" alt="Terminal de commandes — illustration DevOps et CI/CD" loading="lazy" width="800" height="500">
+                        <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=500&fit=crop&auto=format" alt="Terminal de commandes, illustration DevOps et CI/CD" loading="lazy" width="800" height="500">
                     </div>
                     <div class="service-body">
                         <h3 class="service-title">DevOps</h3>
@@ -2557,7 +2560,7 @@ section[id] {
 
                 <article class="service-card reveal">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop&auto=format" alt="Baies de serveurs — illustration infrastructure cloud" loading="lazy" width="800" height="500">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop&auto=format" alt="Baies de serveurs, illustration infrastructure cloud" loading="lazy" width="800" height="500">
                     </div>
                     <div class="service-body">
                         <h3 class="service-title" data-i18n="svc3.title">Infrastructure cloud</h3>
@@ -2568,21 +2571,21 @@ section[id] {
         </div>
     </section>
 
-    <!-- Section Réalisations — carrousel de projets.
+    <!-- Section Réalisations : carrousel de projets.
          Visuels : illustrations vectorielles volontairement stylisées, dans la
          palette du site. Ce ne sont pas des captures d'écran des livrables (cf.
-         la mention sous le carrousel) — pas de confidentialité client exposée,
+         la mention sous le carrousel) : pas de confidentialité client exposée,
          pas d'ambiguïté sur ce que voit le prospect.
          Pour ajouter ou remplacer un visuel : deposer une image en 1500x900
          dans projets/ puis remplacer le bloc visuel de la carte par
          <img src="projets/nom.webp" alt="description de l'interface"
               loading="lazy" decoding="async" width="1500" height="900">
-         — le cadre et le format 5/3 sont portes par .projet-visual. -->
+         Le cadre et le format 5/3 sont portes par .projet-visual. -->
     <section class="projets" id="realisations">
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title" data-i18n="proj.title">Réalisations</h2>
-                <p class="section-subtitle" data-i18n="proj.subtitle">Onze projets livrés de bout en bout — plateformes web, applications métier, données et IA.</p>
+                <p class="section-subtitle" data-i18n="proj.subtitle">Onze projets livrés de bout en bout : plateformes web, applications métier, données et IA.</p>
             </div>
 
             <div class="carousel reveal" id="projCarousel" role="region" aria-roledescription="carrousel" aria-label="Réalisations">
@@ -2686,12 +2689,12 @@ section[id] {
                         <li class="carousel-slide">
                             <article class="projet-card">
                                 <div class="projet-visual">
-                                <img src="projets/carrylb.webp" alt="Recherche Paris–New York : voyageur recommandé, carte avec itinéraire aérien et récapitulatif de réservation."
+                                <img src="projets/carrylb.webp" alt="Recherche Paris-New York : voyageur recommandé, carte avec itinéraire aérien et récapitulatif de réservation."
                                      loading="lazy" decoding="async" width="1500" height="900">
                                 </div>
                                 <div class="projet-body">
                                     <span class="projet-tag" data-i18n="p5.tag">Place de marché</span>
-                                    <h3 class="projet-title" data-i18n="p5.title">CarryLB — voyageurs &amp; expéditeurs</h3>
+                                    <h3 class="projet-title" data-i18n="p5.title">CarryLB : voyageurs &amp; expéditeurs</h3>
                                     <p class="projet-desc" data-i18n="p5.desc">Mettre en relation des voyageurs disposant d'espace dans leurs bagages avec des personnes souhaitant faire transporter un colis : recherche par trajet et par dates, voyageurs recommandés, itinéraire cartographié et récapitulatif du tarif et du poids avant réservation.</p>
                                     <div class="projet-stack">
                                         <span class="pill">React</span>
@@ -2771,7 +2774,7 @@ section[id] {
                                 </div>
                                 <div class="projet-body">
                                     <span class="projet-tag" data-i18n="p8.tag">Vitrine premium</span>
-                                    <h3 class="projet-title" data-i18n="p8.title">Bar — vitrine &amp; commande</h3>
+                                    <h3 class="projet-title" data-i18n="p8.title">Bar : vitrine &amp; commande</h3>
                                     <p class="projet-desc" data-i18n="p8.desc">Mettre en valeur la carte d'un bar et faciliter la découverte de l'offre : cocktail mis en avant, identité haut de gamme, promesse claire et appels à l'action vers la réservation ou la commande.</p>
                                     <div class="projet-stack">
                                         <span class="pill">Next.js</span>
@@ -2852,16 +2855,16 @@ section[id] {
                 </div>
             </div>
 
-            <p class="projets-note reveal" data-i18n="proj.note">Interfaces illustratives, reconstituées pour la présentation — ce ne sont pas des captures des livrables finaux. Démonstrations et détails techniques sur demande.</p>
+            <p class="projets-note reveal" data-i18n="proj.note">Interfaces illustratives, reconstituées pour la présentation. Ce ne sont pas des captures des livrables finaux. Démonstrations et détails techniques sur demande.</p>
         </div>
     </section>
 
-    <!-- Section Méthode de travail — frise d'étapes -->
+    <!-- Section Méthode de travail : frise d'étapes -->
     <section class="methode" id="methode">
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title" data-i18n="methode.title">Ma façon de travailler</h2>
-                <p class="section-subtitle" data-i18n="methode.subtitle">De l'idée à la production, chaque mission suit un déroulé clair — transparent, itératif et engagé.</p>
+                <p class="section-subtitle" data-i18n="methode.subtitle">De l'idée à la production, chaque mission suit un déroulé clair, transparent, itératif et engagé.</p>
             </div>
 
             <div class="methode-steps">
@@ -2907,7 +2910,7 @@ section[id] {
                         <span class="methode-num">5</span>
                     </div>
                     <h3 class="methode-title" data-i18n="m5.title">Déploiement &amp; suivi</h3>
-                    <p class="methode-text" data-i18n="m5.text">Mise en production (CI/CD, cloud), monitoring, documentation — je reste disponible après livraison.</p>
+                    <p class="methode-text" data-i18n="m5.text">Mise en production (CI/CD, cloud), monitoring, documentation. Je reste disponible après livraison.</p>
                 </article>
             </div>
         </div>
@@ -2918,7 +2921,7 @@ section[id] {
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title" data-i18n="temo.title">Témoignages</h2>
-                <p class="section-subtitle" data-i18n="temo.subtitle">Ce qu'en disent celles et ceux avec qui j'ai travaillé — noms non publiés par respect de la vie privée.</p>
+                <p class="section-subtitle" data-i18n="temo.subtitle">Ce qu'en disent celles et ceux avec qui j'ai travaillé. Noms non publiés par respect de la vie privée.</p>
             </div>
 
             <!-- Témoignages recueillis auprès d'anciens managers/collègues et validés
@@ -2953,7 +2956,7 @@ section[id] {
                             <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
                         </div>
                     </header>
-                    <p class="temoignage-text" data-i18n="temo.q2">« Antoine a porté seul toute notre chaîne technique, du code à l'infrastructure cloud. Un interlocuteur unique, autonome et fiable — exactement ce qu'il nous fallait. »</p>
+                    <p class="temoignage-text" data-i18n="temo.q2">« Antoine a porté seul toute notre chaîne technique, du code à l'infrastructure cloud. Un interlocuteur unique, autonome et fiable, exactement ce qu'il nous fallait. »</p>
                 </article>
 
                 <article class="temoignage-card reveal">
@@ -2972,11 +2975,11 @@ section[id] {
                 </article>
             </div>
 
-            <p class="references-note reveal" data-i18n="temo.note">Références détaillées et mises en relation disponibles sur demande — <a href="#contact">contactez-moi</a>.</p>
+            <p class="references-note reveal" data-i18n="temo.note">Références détaillées et mises en relation disponibles sur demande : <a href="#contact">contactez-moi</a>.</p>
         </div>
     </section>
 
-    <!-- Section FAQ — repond aux questions que posent reellement les prospects,
+    <!-- Section FAQ : repond aux questions que posent reellement les prospects,
          et donne aux moteurs comme aux assistants IA des reponses courtes et
          citables sur l'identite, la stack, la zone d'intervention et le perimetre. -->
     <section class="faq" id="faq">
@@ -3009,7 +3012,7 @@ section[id] {
 
                 <details class="faq-item reveal">
                     <summary data-i18n="faq5.q">Quelle est votre expérience ?</summary>
-                    <div class="faq-answer" data-i18n="faq5.a">Six ans en tant que développeur salarié — Olinn, G-ON puis Amadeus — sur des applications métier, des plateformes à fort volume et des chaînes de déploiement cloud, avant de fonder Consaltia.</div>
+                    <div class="faq-answer" data-i18n="faq5.a">Six ans en tant que développeur salarié chez Olinn, G-ON puis Amadeus, sur des applications métier, des plateformes à fort volume et des chaînes de déploiement cloud, avant de fonder Consaltia.</div>
                 </details>
             </div>
         </div>
@@ -3027,7 +3030,7 @@ section[id] {
                 <!-- Coordonnées détaillées disponibles dans le footer ; ici, photo + formulaire -->
                 <div class="contact-photo reveal">
                     <div class="contact-photo-frame">
-                        <img src="reachout.webp" alt="Eng. Antoine en réunion de cadrage avec un client"
+                        <img src="reachout.webp" alt="Antoine Laurent en réunion de cadrage avec un client"
                              width="700" height="1052" loading="lazy" decoding="async">
                     </div>
                 </div>
@@ -3092,6 +3095,7 @@ section[id] {
                         <li><a href="#services">Services</a></li>
                         <li><a href="#parcours" data-i18n="nav.parcours">Parcours</a></li>
                         <li><a href="#references" data-i18n="nav.temoignages">Témoignages</a></li>
+                        <li><a href="prestations/" data-i18n="nav.prestations">Prestations</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -3286,7 +3290,7 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
 // CARROUSEL RÉALISATIONS
 // Un projet affiché à la fois : la diapositive entrante paraît pendant que
 // la sortante s'efface (fondu enchaîné), puis retour au premier après le
-// dixième. Le JS ne fait que déplacer la classe .is-current — l'animation
+// dixième. Le JS ne fait que déplacer la classe .is-current, l'animation
 // est portée par le CSS.
 // Conformité WCAG 2.2.2 : bouton pause explicite, arrêt au survol et au
 // focus clavier, aucune rotation si prefers-reduced-motion est actif.
@@ -3445,7 +3449,7 @@ if (statNums.length && !prefersReducedMotion && 'IntersectionObserver' in window
 })();
 
 // ===================================
-// I18N — BASCULE FR / EN
+// I18N : BASCULE FR / EN
 // FR = langue par défaut (contenu dans le HTML). EN = dictionnaire ci-dessous.
 // Au passage en EN, le HTML français de chaque élément [data-i18n] est mis en
 // cache puis restauré au retour en FR. Choix mémorisé (localStorage),
@@ -3458,8 +3462,8 @@ const I18N_EN = {
     'nav.realisations': 'Work',
     'nav.parcours': 'Experience',
     'nav.temoignages': 'Testimonials',
-    'hero.title': 'Full-stack &amp; cloud freelance developer in Paris — I design, deploy, and operate your applications end to end.',
-    'hero.subtitle': 'Consaltia is the freelance practice of a single developer — one point of contact, from the API to the cloud.',
+    'hero.title': 'Full-stack &amp; cloud freelance developer in Paris. I design, deploy, and operate your applications end to end.',
+    'hero.subtitle': 'Consaltia is the freelance practice of a single developer: one point of contact, from the API to the cloud.',
     'hero.cta1': 'Get in touch',
     'hero.cta2': 'See what I do',
     'hero.stat1': '+ years experience',
@@ -3469,13 +3473,13 @@ const I18N_EN = {
     'about.role': 'Full-stack &amp; cloud developer · Freelance',
     'about.badge1': '6+ years experience',
     'about.p1': 'Full-stack &amp; cloud developer, freelancing.',
-    'about.p2': 'After 6 years designing and deploying web applications as a developer — in equipment services, sustainable engineering and travel — I am now available for freelance work under the Consaltia brand.',
+    'about.p2': 'After 6 years designing and deploying web applications as a developer, in equipment services, sustainable engineering and travel, I am now available for freelance work under the Consaltia brand.',
     'about.p3': 'Over those years I covered the whole chain: API and microservice design, backend and frontend development, database modelling, CI/CD pipelines, containerisation and cloud deployment on AWS and Azure. I worked in Agile teams, led code reviews, mentored junior developers and shipped to production in demanding, regulated environments.',
-    'about.p4': 'Today, I put that experience directly to work on your projects — one point of contact, end to end.',
+    'about.p4': 'Today, I put that experience directly to work on your projects: one point of contact, end to end.',
     'about.stack': 'Tech stack',
     'proj.title': 'Selected work',
-    'proj.subtitle': 'Eleven projects delivered end to end — web platforms, business applications, data and AI.',
-    'proj.note': 'Illustrative interfaces, recreated for this presentation — they are not screenshots of the final deliverables. Demos and technical details on request.',
+    'proj.subtitle': 'Eleven projects delivered end to end: web platforms, business applications, data and AI.',
+    'proj.note': 'Illustrative interfaces, recreated for this presentation. They are not screenshots of the final deliverables. Demos and technical details on request.',
     'p1.tag': 'Logistics',
     'p1.title': 'Real-time delivery tracking',
     'p1.desc': 'Giving dispatchers and customers a single view of the run: courier position on the map, route, order status, estimated time of arrival and recipient details, all updated live.',
@@ -3489,7 +3493,7 @@ const I18N_EN = {
     'p4.title': 'Online store',
     'p4.desc': 'Browsing a catalogue and preparing a purchase without friction: category navigation, filters, prices and availability readable at a glance on an uncluttered product grid.',
     'p5.tag': 'Marketplace',
-    'p5.title': 'CarryLB — travellers &amp; senders',
+    'p5.title': 'CarryLB: travellers &amp; senders',
     'p5.desc': 'Connecting travellers with spare luggage capacity to people sending a parcel: search by route and dates, recommended travellers, mapped itinerary and a price and weight summary before booking.',
     'p6.tag': 'Data',
     'p6.title': 'Database migration',
@@ -3498,7 +3502,7 @@ const I18N_EN = {
     'p7.title': 'AI document assistant',
     'p7.desc': 'Querying a document base in natural language: cross-analysis of several sources, contextualised answers, key indicators and systematic citation of the documents used.',
     'p8.tag': 'Premium storefront',
-    'p8.title': 'Bar — storefront &amp; ordering',
+    'p8.title': 'Bar: storefront &amp; ordering',
     'p8.desc': 'Showcasing a bar\'s menu and making the offer easy to discover: featured cocktail, upmarket identity, a clear promise and calls to action towards booking or ordering.',
     'p9.tag': 'Team tool',
     'p9.title': 'Project management',
@@ -3510,25 +3514,25 @@ const I18N_EN = {
     'p11.title': 'Quotes, pricing &amp; invoicing',
     'p11.desc': 'Pricing a job then invoicing it without re-keying: quote settings, editable line items, automatic subtotal, VAT and gross total, then conversion of the quote into an invoice.',
     'parcours.title': 'Experience',
-    'parcours.subtitle': 'Six years of employed experience — three companies, three sectors.',
+    'parcours.subtitle': 'Six years of employed experience: three companies, three sectors.',
     'role.fullstack': 'Full-Stack Developer',
     'ct.cdi': '<i class="fas fa-file-signature"></i> Permanent',
-    'dt.amadeus': '<i class="fas fa-calendar-alt"></i> July 2024 – June 2026',
-    'dt.gon': '<i class="fas fa-calendar-alt"></i> May 2022 – April 2024',
-    'dt.olinn': '<i class="fas fa-calendar-alt"></i> March 2020 – February 2022',
+    'dt.amadeus': '<i class="fas fa-calendar-alt"></i> July 2024 - June 2026',
+    'dt.gon': '<i class="fas fa-calendar-alt"></i> May 2022 - April 2024',
+    'dt.olinn': '<i class="fas fa-calendar-alt"></i> March 2020 - February 2022',
     'sx.gon': '(sustainable engineering)',
     'sx.olinn': '(equipment as a service)',
     'tl.amadeus': 'Very high-volume travel distribution platforms: backend APIs, frontend components, high performance and quality standards (testing, code reviews). International environment, English daily.',
     'tl.gon': 'End-to-end design and delivery of internal tools (project management, data migration, chatbot) with full ownership of the chain: APIs, frontend, database, CI/CD, containerisation and cloud (IaC, monitoring).',
-    'tl.olinn': 'A Crédit Agricole Leasing &amp; Factoring subsidiary specialising in the rental and lifecycle management of professional equipment — IT, mobile, vehicles, industrial and healthcare hardware — for businesses and public bodies. Development of the fleet-management and contract-tracking applications used by the branch-network teams and by clients.',
-    'services.subtitle': 'I focus on three complementary skills — from application design to production operations.',
+    'tl.olinn': 'A Crédit Agricole Leasing &amp; Factoring subsidiary specialising in the rental and lifecycle management of professional equipment (IT, mobile, vehicles, industrial and healthcare hardware) for businesses and public bodies. Development of the fleet-management and contract-tracking applications used by the branch-network teams and by clients.',
+    'services.subtitle': 'I focus on three complementary skills, from application design to production operations.',
     'svc1.title': 'Full-stack development',
     'svc1.desc': 'I design and build your web applications end to end, from the frontend to the API and the database.',
     'svc2.desc': 'I automate your releases and make deployments reliable with CI/CD pipelines and containerisation.',
     'svc3.title': 'Cloud infrastructure',
     'svc3.desc': 'I deploy and operate your applications in the cloud, with reproducible, scalable infrastructure.',
     'methode.title': 'How I work',
-    'methode.subtitle': 'From idea to production, every project follows a clear path — transparent, iterative and committed.',
+    'methode.subtitle': 'From idea to production, every project follows a clear path: transparent, iterative and committed.',
     'm1.title': 'Scoping',
     'm1.text': 'We define the scope, priorities and budget together: you know what will be delivered, and when.',
     'm2.title': 'Design',
@@ -3538,14 +3542,15 @@ const I18N_EN = {
     'm4.title': 'Quality &amp; testing',
     'm4.text': 'Automated tests, code reviews, staging validation: every delivery is production-ready.',
     'm5.title': 'Deployment &amp; follow-up',
-    'm5.text': 'Production rollout (CI/CD, cloud), monitoring, documentation — I stay available after delivery.',
+    'm5.text': 'Production rollout (CI/CD, cloud), monitoring, documentation. I stay available after delivery.',
     'temo.title': 'Testimonials',
-    'temo.subtitle': "What the people I've worked with say — names withheld for privacy.",
+    'temo.subtitle': "What the people I've worked with say. Names withheld for privacy.",
     'temo.q1': '“Immediately effective on our high-volume platforms: reliable code, rigorous testing, genuinely senior level.”',
-    'temo.q2': '“Antoine single-handedly carried our whole technical chain, from code to cloud infrastructure. A single, autonomous, reliable point of contact — exactly what we needed.”',
+    'temo.q2': '“Antoine single-handedly carried our whole technical chain, from code to cloud infrastructure. A single, autonomous, reliable point of contact, exactly what we needed.”',
     'temo.q3': '“Two years on our fleet-management and contract-tracking applications, used every day by our branch-network teams and by our clients. Rigorous, autonomous and always mindful of the reliability delivered.”',
-    'temo.note': 'Detailed references and introductions available on request — <a href="#contact">contact me</a>.',
+    'temo.note': 'Detailed references and introductions available on request: <a href="#contact">contact me</a>.',
     'nav.faq': 'FAQ',
+    'nav.prestations': 'IT services',
     'faq.title': 'Frequently asked questions',
     'faq.subtitle': 'What clients ask before we start.',
     'faq1.q': 'Which technologies do you use?',
@@ -3557,7 +3562,7 @@ const I18N_EN = {
     'faq4.q': 'Can you take over an existing application?',
     'faq4.a': 'Yes. I have delivered handovers of existing codebases, data migrations onto new schemas and CI/CD setups on applications already in service, with cut-over and no downtime.',
     'faq5.q': 'What is your experience?',
-    'faq5.a': 'Six years as an employed developer — Olinn, G-ON and then Amadeus — on business applications, high-volume platforms and cloud delivery pipelines, before founding Consaltia.',
+    'faq5.a': 'Six years as an employed developer at Olinn, G-ON and then Amadeus, on business applications, high-volume platforms and cloud delivery pipelines, before founding Consaltia.',
     'contact.title': "Let's talk about your project",
     'contact.subtitle': "Have a project in mind? Write to me and let's discuss the best way to make it happen.",
     'form.tel': 'Phone',
