@@ -1190,6 +1190,25 @@ button {
     margin-top: var(--spacing-sm);
 }
 
+.service-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-top: var(--spacing-sm);
+}
+
+.service-links a {
+    color: var(--color-primary);
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    align-self: flex-start;
+}
+
+.service-links a:hover,
+.service-links a:focus-visible { border-bottom-color: var(--color-primary); }
+
 /* MÉTHODE DE TRAVAIL : frise d'étapes numérotées.
    Mobile : frise verticale (ligne à gauche). Desktop : stepper horizontal
    dont la ligne traverse les marqueurs. Icônes + numéros, palette inchangée. */
@@ -2366,7 +2385,7 @@ section[id] {
             
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#apropos" class="nav-link" data-i18n="nav.about">À propos</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="services/" class="nav-link">Services</a></li>
                 <li><a href="#realisations" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li>
                 <li><a href="#parcours" class="nav-link" data-i18n="nav.parcours">Parcours</a></li>
                 <li><a href="#references" class="nav-link" data-i18n="nav.temoignages">Témoignages</a></li>
@@ -2545,6 +2564,11 @@ section[id] {
                     <div class="service-body">
                         <h3 class="service-title" data-i18n="svc1.title">Développement full-stack</h3>
                         <p class="service-description" data-i18n="svc1.desc">Je conçois et développe vos applications web de bout en bout, du frontend à l'API et à la base de données.</p>
+                        <p class="service-links">
+                            <a href="services/developpement-application-web/">Application web sur mesure</a>
+                            <a href="services/developpeur-react-nextjs-paris/">Développeur React &amp; Next.js à Paris</a>
+                            <a href="services/developpeur-backend-api/">Développeur backend &amp; API</a>
+                        </p>
                     </div>
                 </article>
 
@@ -2555,6 +2579,10 @@ section[id] {
                     <div class="service-body">
                         <h3 class="service-title">DevOps</h3>
                         <p class="service-description" data-i18n="svc2.desc">J'automatise vos livraisons et fiabilise vos déploiements grâce à des pipelines CI/CD et à la conteneurisation.</p>
+                        <p class="service-links">
+                            <a href="services/developpeur-cloud-devops-paris/">Développeur cloud &amp; DevOps à Paris</a>
+                            <a href="services/developpement-mvp/">Développement de MVP</a>
+                        </p>
                     </div>
                 </article>
 
@@ -2565,6 +2593,10 @@ section[id] {
                     <div class="service-body">
                         <h3 class="service-title" data-i18n="svc3.title">Infrastructure cloud</h3>
                         <p class="service-description" data-i18n="svc3.desc">Je déploie et opère vos applications sur le cloud, avec une infrastructure reproductible et scalable.</p>
+                        <p class="service-links">
+                            <a href="services/developpeur-cloud-devops-paris/">AWS, Azure, Kubernetes et Terraform</a>
+                            <a href="services/">Voir les cinq services</a>
+                        </p>
                     </div>
                 </article>
             </div>
@@ -3092,9 +3124,9 @@ section[id] {
                     <h4 class="footer-title">Navigation</h4>
                     <ul class="footer-links">
                         <li><a href="#apropos" data-i18n="nav.about">À propos</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#parcours" data-i18n="nav.parcours">Parcours</a></li>
+                                                <li><a href="#parcours" data-i18n="nav.parcours">Parcours</a></li>
                         <li><a href="#references" data-i18n="nav.temoignages">Témoignages</a></li>
+                        <li><a href="services/">Services</a></li>
                         <li><a href="prestations/" data-i18n="nav.prestations">Prestations</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
