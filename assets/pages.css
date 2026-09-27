@@ -431,7 +431,8 @@ a { color: var(--color-primary); }
     display: block;
     width: 100%;
     aspect-ratio: 5 / 3;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     border-radius: var(--radius-lg);
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     box-shadow: var(--shadow-md);
@@ -505,7 +506,8 @@ a { color: var(--color-primary); }
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
 }
 
 .proj-card-body {
