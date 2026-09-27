@@ -426,13 +426,18 @@ a { color: var(--color-primary); }
     margin: 0 0 var(--spacing-lg);
 }
 
-.proj-figure img,
+.proj-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
 .proj-figure svg {
     display: block;
     width: 100%;
     aspect-ratio: 5 / 3;
-    object-fit: contain;
-    object-position: center;
     border-radius: var(--radius-lg);
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     box-shadow: var(--shadow-md);
@@ -496,18 +501,20 @@ a { color: var(--color-primary); }
 
 .proj-card-media {
     display: block;
-    aspect-ratio: 5 / 3;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     overflow: hidden;
 }
 
-.proj-card-media img,
+.proj-card-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 .proj-card-media svg {
     display: block;
     width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
+    aspect-ratio: 5 / 3;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
 }
 
 .proj-card-body {
