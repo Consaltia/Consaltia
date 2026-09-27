@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee time tracking and shift management | Consaltia</title>
+    <meta name="description" content="Employee time-tracking app built with Flutter: clocking in and out, schedules, worked hours and attendance monitoring.">
+    <meta name="author" content="Eng. Omar, Consaltia">
+    <link rel="canonical" href="https://consaltia.com/en/case-studies/employee-time-tracking/">
+    <link rel="alternate" hreflang="en" href="https://consaltia.com/en/case-studies/employee-time-tracking/">
+    <link rel="alternate" hreflang="fr-FR" href="https://consaltia.com/realisations/pointage-gestion-des-temps/">
+    <link rel="alternate" hreflang="x-default" href="https://consaltia.com/en/case-studies/employee-time-tracking/">
+
+    <meta property="og:site_name" content="Consaltia">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Employee time tracking and shift management | Consaltia">
+    <meta property="og:description" content="Flutter app for clocking in and out and tracking schedules, worked hours and attendance.">
+    <meta property="og:url" content="https://consaltia.com/en/case-studies/employee-time-tracking/">
+    <meta property="og:image" content="https://consaltia.com/projets/pointage-employes.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Employee time tracking and shift management | Consaltia">
+    <meta name="twitter:description" content="Flutter app for clocking in and out and tracking schedules, worked hours and attendance.">
+    <meta name="twitter:image" content="https://consaltia.com/projets/pointage-employes.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../../assets/pages.css">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://consaltia.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Selected work",
+          "item": "https://consaltia.com/en/case-studies/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Employee time tracking and shift management",
+          "item": "https://consaltia.com/en/case-studies/employee-time-tracking/"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://consaltia.com/en/case-studies/employee-time-tracking/#projet",
+      "name": "Employee time tracking and shift management",
+      "headline": "Employee time tracking and shift management",
+      "description": "Employee time-tracking app built with Flutter: clocking in and out, schedules, worked hours and attendance monitoring.",
+      "url": "https://consaltia.com/en/case-studies/employee-time-tracking/",
+      "genre": "Workforce time management",
+      "inLanguage": "en-GB",
+      "creator": {
+        "@id": "https://consaltia.com/#person"
+      },
+      "author": {
+        "@id": "https://consaltia.com/#person"
+      },
+      "provider": {
+        "@id": "https://consaltia.com/#organization"
+      },
+      "keywords": "Flutter, mobile application, employee time tracking, shift management",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Flutter"
+        },
+        {
+          "@type": "Thing",
+          "name": "Mobile application"
+        },
+        {
+          "@type": "Thing",
+          "name": "Employee time tracking"
+        },
+        {
+          "@type": "Thing",
+          "name": "Shift management"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://consaltia.com/en/case-studies/#collection"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://consaltia.com/en/case-studies/employee-time-tracking/#webpage",
+      "url": "https://consaltia.com/en/case-studies/employee-time-tracking/",
+      "name": "Employee time tracking and shift management | Consaltia",
+      "description": "Employee time-tracking app built with Flutter: clocking in and out, schedules, worked hours and attendance monitoring.",
+      "isPartOf": {
+        "@id": "https://consaltia.com/#website"
+      },
+      "inLanguage": "en-GB",
+      "mainEntity": {
+        "@id": "https://consaltia.com/en/case-studies/employee-time-tracking/#projet"
+      },
+      "author": {
+        "@id": "https://consaltia.com/#person"
+      },
+      "primaryImageOfPage": "https://consaltia.com/projets/pointage-employes.jpg"
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../../" aria-label="Consaltia, home">
+                <img src="../../../logo.png" alt="Consaltia logo" class="nav-logo" width="249" height="102">
+            </a>
+            <ul class="nav-menu">
+                    <li><a href="../../#apropos" class="nav-link">About</a></li>
+                    <li><a href="../../services/" class="nav-link">Services</a></li>
+                    <li><a href="../../case-studies/" class="nav-link">Work</a></li>
+                    <li><a href="../../#parcours" class="nav-link">Background</a></li>
+                    <li><a href="../../#faq" class="nav-link">FAQ</a></li>
+                <li><a href="../../#contact" class="nav-link nav-link-cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="../../">Home</a></li>
+                <li><a href="../">Selected work</a></li>
+                <li><span aria-current="page">Employee time tracking and shift management</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <main id="main">
+        <header class="page-hero">
+            <div class="container">
+                <p class="page-eyebrow">Mobile workforce app</p>
+                <h1>Employee time tracking and shift management</h1>
+                <p class="page-lead">Simple clocking for employees, with a clear view of attendance, arrival times and worked hours for managers.</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <figure class="proj-figure">
+                <img src="../../../projets/pointage-employes.jpg" alt="Employee clock-in mobile app and dashboard tracking attendance, arrival times and worked hours." loading="lazy" decoding="async" width="1500" height="900">
+                <figcaption>Interface illustration, recreated for this presentation. It is not a screenshot of the final deliverable.</figcaption>
+            </figure>
+        </div>
+
+        <div class="page-body">
+            <div class="container">
+                <article class="prose">
+                    <h2>Context</h2>
+                    <p>In an organisation that runs on shifts, arrival and departure times feed the daily record of work. The action has to stay immediate for employees, while managers need structured information to monitor attendance and time worked.</p>
+
+                    <h2>The problem</h2>
+                    <p>Manual or fragmented tracking makes schedules difficult to consolidate. Missed clockings and ambiguous statuses then require checks, when the information should be available throughout the day.</p>
+                    <ul class="checklist">
+                        <li>Arrival and departure times are entered or reconciled manually</li>
+                        <li>A manager cannot immediately see who is currently working</li>
+                        <li>Worked time has to be recalculated from several sources</li>
+                        <li>Employees lack visibility over their own recorded hours</li>
+                    </ul>
+
+                    <h2>The solution</h2>
+                    <p>A Flutter application brings together the employee's daily actions. A management interface turns clockings into a usable view of attendance and hours.</p>
+                    <ul class="checklist">
+                        <li>Start and end shift actions available from the main screen</li>
+                        <li>Today's schedule and time already worked shown at a glance</li>
+                        <li>A personal history of recorded hours</li>
+                        <li>A management view of attendance, arrivals and accumulated time</li>
+                        <li>Clear statuses for employees who are working, absent or finished</li>
+                    </ul>
+
+                    <h2>My role</h2>
+                    <p>I worked on the mobile application with Flutter, particularly the clocking flow, shift-status display, and access to schedules and worked time. The main challenge was making an administrative action simple enough to complete without friction at the start and end of every shift.</p>
+
+                    <h2>Constraints</h2>
+                    <ul class="checklist">
+                        <li>Reduce clocking to one clear action, with no ambiguity between starting and ending a shift</li>
+                        <li>Keep a consistent state when an employee opens the application again</li>
+                        <li>Make schedules and durations readable within seconds on a phone</li>
+                        <li>Present data for several employees without overloading the management interface</li>
+                    </ul>
+
+                    <h2>Outcome</h2>
+                    <p>Each shift leaves a clear record of its start and end. Employees can review their work information, while managers get a consolidated view of attendance and schedules.</p>
+                    <ul class="checklist">
+                        <li>Daily clocking is centralised in the mobile application</li>
+                        <li>Attendance status becomes visible without manual consolidation</li>
+                        <li>Recorded hours remain available to employees and usable for monitoring</li>
+                    </ul>
+
+                    <div class="callout">
+                        <p>Outcomes are described by the capability delivered. No commercial performance metric is claimed here: usage figures belong to the client, and I do not publish numbers I cannot substantiate.</p>
+                    </div>
+                </article>
+
+                <aside>
+                    <div class="aside-card">
+                        <h2>Project facts</h2>
+                        <dl class="factbox">
+                            <dt>Domain</dt><dd>Workforce time management</dd>
+                            <dt>Type</dt><dd>Mobile time-tracking application</dd>
+                            <dt>Role</dt><dd>Flutter application development</dd>
+                        </dl>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Stack</h2>
+                        <span class="pill">Flutter</span>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Related services</h2>
+                        <ul class="aside-links">
+                        <li><a href="../../services/mobile-app-development/">Mobile application development</a></li>
+                        <li><a href="../../services/web-application-development/">Custom web application development</a></li>
+                        </ul>
+                    </div>
+                    <div class="aside-card">
+                        <h2>Other projects</h2>
+                        <ul class="aside-links">
+                        <li><a href="../real-time-delivery/">Real-time delivery platform</a></li>
+                        <li><a href="../project-management-tool/">Internal project management tool</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <section class="cta-band">
+            <div class="container">
+                <h2>A project of this kind?</h2>
+                <p>Describe your need in a few lines. I will tell you what is feasible, what is not, and where to start.</p>
+                <a href="../../#contact" class="btn btn-light">Get in touch</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cellipse cx='100' cy='30' rx='95' ry='25' fill='white'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23001656' font-family='Arial, sans-serif' font-size='24' font-weight='bold'%3ECONSALTIA%3C/text%3E%3C/svg%3E" alt="Consaltia logo" class="footer-logo">
+                    <p>Freelance full-stack and cloud developer in Paris. From the API to deployment, a single point of contact.</p>
+                </div>
+                <div>
+                    <h2>Development</h2>
+                    <ul>
+                        <li><a href="../../services/react-nextjs-developer-paris/">React & Next.js</a></li>
+                        <li><a href="../../services/backend-api-developer/">Backend & API</a></li>
+                        <li><a href="../../services/cloud-devops-developer-paris/">Cloud & DevOps</a></li>
+                        <li><a href="../../services/web-application-development/">Web application</a></li>
+                        <li><a href="../../services/mvp-development/">MVP</a></li>
+                        <li><a href="../../services/mobile-app-development/">Mobile</a></li>
+                        <li><a href="../../case-studies/">Selected work</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Contact</h2>
+                    <ul>
+                        <li><a href="mailto:consaltia@gmail.com">consaltia@gmail.com</a></li>
+                        <li><a href="tel:+33664941229">+33 6 64 94 12 29</a></li>
+                        <li>Paris and Île-de-France, on site or remote</li>
+                        <li><a href="../../">Back to home</a></li>
+                        <li><a href="../../../realisations/pointage-gestion-des-temps/" hreflang="fr-FR">Version française</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Consaltia. All rights reserved.</span>
+                <span><a href="../../../mentions-legales.html">Legal notice</a></span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -100,6 +100,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://consaltia.com/realisations/pointage-gestion-des-temps/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://consaltia.com/realisations/location-de-vehicules/</loc>
     <lastmod>2026-08-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -252,6 +258,12 @@
   <url>
     <loc>https://consaltia.com/en/case-studies/real-time-delivery/</loc>
     <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://consaltia.com/en/case-studies/employee-time-tracking/</loc>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
