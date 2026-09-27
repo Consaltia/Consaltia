@@ -762,11 +762,9 @@ button {
     }
 }
 
-/* Mobile et tablette : en-tête sur deux colonnes.
-   display: contents fait des enfants de .hero-content des éléments de
-   grille de .hero-grid, ce qui permet de placer le titre et la photo sur
-   la même ligne sans modifier le HTML. Le reste passe pleine largeur,
-   pour garder des boutons confortables à toucher. */
+/* Mobile et tablette : le titre et le sous-titre restent groupés à
+   gauche, centrés face à la photo. Les actions et statistiques passent
+   ensuite en pleine largeur pour rester confortables à utiliser. */
 @media (max-width: 991px) {
     .hero {
         min-height: 0;
@@ -784,12 +782,16 @@ button {
         display: contents;
     }
 
-    .hero-title {
+    .hero-copy {
         grid-column: 1;
         grid-row: 1;
         align-self: center;
+        min-width: 0;
+    }
+
+    .hero-title {
         text-align: left;
-        margin-bottom: 0;
+        margin-bottom: var(--spacing-xs);
         font-size: clamp(1.5rem, 0.9rem + 2.6vw, 2.6rem);
         /* A 320px la colonne ne fait que 163px : un mot long doit ceder */
         overflow-wrap: break-word;
@@ -808,7 +810,6 @@ button {
         inset: 10% -8px -8px 10%;
     }
 
-    .hero-subtitle,
     .hero-cta,
     .hero-stats {
         grid-column: 1 / -1;
@@ -816,7 +817,9 @@ button {
     }
 
     .hero-subtitle {
-        margin-bottom: var(--spacing-xs);
+        margin-bottom: 0;
+        font-size: clamp(0.92rem, 0.86rem + 0.35vw, 1.05rem);
+        line-height: 1.45;
     }
 
     .hero-cta,
@@ -2478,8 +2481,10 @@ section[id] {
         <div class="container hero-container">
             <div class="hero-grid">
                 <div class="hero-content">
-                    <h1 class="hero-title" data-i18n="hero.title">Développeur full-stack &amp; cloud freelance à Paris.</h1>
-                    <p class="hero-subtitle" data-i18n="hero.subtitle">Je conçois, déploie et opère vos applications, de l'API au cloud.</p>
+                    <div class="hero-copy">
+                        <h1 class="hero-title" data-i18n="hero.title">Développeur full-stack &amp; cloud freelance à Paris.</h1>
+                        <p class="hero-subtitle" data-i18n="hero.subtitle">Je conçois, déploie et opère vos applications, de l'API au cloud.</p>
+                    </div>
                     <div class="hero-cta">
                         <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Me contacter</a>
                         <a href="services/" class="btn btn-secondary" data-i18n="hero.cta2">Voir mon expertise</a>
