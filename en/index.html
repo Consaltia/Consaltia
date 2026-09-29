@@ -3584,13 +3584,10 @@ function getLang() {
 
 // IMPORTANT : Remplacez ces valeurs par vos vraies clés EmailJS
 const EMAILJS_CONFIG = {
-    publicKey: 'GzOwIG4VnYV5L60O8',      // ← À remplacer
+    publicKey: 'TmFvROKV6MVhKTAzD',
     serviceId: 'service_2d16zmd',       // ← À remplacer
     templateId: 'template_gwu3czl'      // ← À remplacer
 };
-
-// Initialiser EmailJS
-emailjs.init(EMAILJS_CONFIG.publicKey);
 
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
@@ -3628,6 +3625,9 @@ if (contactForm && formMessage) {
         submitBtn.disabled = true;
         
         try {
+            // Initialiser à l'envoi : le SDK est chargé avec defer.
+            emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+
             // Envoyer via EmailJS
             const response = await emailjs.send(
                 EMAILJS_CONFIG.serviceId,
